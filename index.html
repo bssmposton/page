@@ -1,0 +1,1970 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026 BSSM Poston : Dear AI</title>
+  <meta name="description" content="2026 BSSM Poston : Dear AI 행사 소개 페이지">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css">
+  <style>
+    /* =========================================================
+       DESIGN SYSTEM - matching aitop100.org exactly
+       ========================================================= */
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --card-bg: #141516;
+      --hairline: rgba(255,255,255,0.13);
+      --hairline-strong: rgba(255,255,255,0.22);
+      --muted: rgba(255,255,255,0.55);
+      --gradient-warm: linear-gradient(90deg, #ddf730, #ffbd19);
+      --gradient-cool: linear-gradient(90deg, #04f3ff, #90f779);
+      --gradient-hot: linear-gradient(90deg, #ff638a, #ff1fe0);
+      --max-width: 1200px;
+      --radius-card: 16px;
+      --radius-btn: 40px;
+      --section-pad: 80px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SUITE Variable', 'SUIT', 'Apple SD Gothic Neo', system-ui, sans-serif;
+      font-weight: 500;
+      letter-spacing: -0.25px;
+      line-height: 1.625;
+      word-break: keep-all;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    /* thin white scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.35); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.55); }
+
+    /* =========================================================
+       UTILITIES
+       ========================================================= */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .gradient-text-warm {
+      background: var(--gradient-warm);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-cool {
+      background: var(--gradient-cool);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-hot {
+      background: var(--gradient-hot);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1001;
+      background: var(--bg);
+      transition: box-shadow 300ms ease;
+    }
+
+    .site-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--hairline);
+      transition: background 300ms ease;
+    }
+
+    .site-header.is-scrolled::after {
+      background: var(--gradient-cool);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 20px;
+    }
+
+    .header-logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .header-nav a {
+      color: var(--muted);
+      transition: color 200ms ease;
+      position: relative;
+    }
+
+    .header-nav a:hover { color: var(--text); }
+
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-cool);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 250ms ease;
+    }
+
+    .header-nav a:hover::after { transform: scaleX(1); }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      padding: 8px;
+      background: none;
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 300ms ease, opacity 300ms ease;
+      transform-origin: center;
+    }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('media/03_workshop.jpg') center/cover no-repeat;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.95) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 24px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin: 0 0 20px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2.2vw, 22px);
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 32px;
+      font-weight: 500;
+    }
+
+    /* =========================================================
+       SECTIONS GENERAL
+       ========================================================= */
+    section {
+      padding: var(--section-pad) 0;
+    }
+
+    .section-kicker {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin: 0 0 16px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .section-head {
+      margin-bottom: 48px;
+    }
+
+    .section-head-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================
+       EVENT INFO (REASON CARDS)
+       ========================================================= */
+    .event-info-lead {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .event-info-body {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .reason-card {
+      background: var(--card-bg);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      transition: border-color 300ms ease, transform 300ms ease;
+    }
+
+    .reason-card:hover {
+      border-color: var(--hairline-strong);
+      transform: translateY(-4px);
+    }
+
+    .reason-card .check {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 14px;
+    }
+
+    .reason-card p {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: var(--radius-btn);
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      background: var(--gradient-warm);
+      color: #000;
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .btn-disabled {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: var(--radius-btn);
+      font-size: 15px;
+      font-weight: 700;
+      border: 1px solid var(--hairline);
+      background: transparent;
+      color: var(--muted);
+      cursor: not-allowed;
+    }
+
+    /* =========================================================
+       ABOUT CARDS
+       ========================================================= */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      padding: 28px;
+      transition: border-color 300ms ease, transform 300ms ease;
+    }
+
+    .about-card:hover {
+      border-color: var(--hairline-strong);
+      transform: translateY(-4px);
+    }
+
+    .about-card .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--gradient-cool);
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(4, 243, 255, 0.25);
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+
+    .about-card:hover .icon {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(4, 243, 255, 0.35);
+    }
+
+    .about-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .about-card p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       TABLES (TIMELINE & DELIVERABLES)
+       ========================================================= */
+    .data-table-wrap {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .data-table thead th {
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .data-table tbody td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--hairline);
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+
+    .data-table tbody td strong {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* =========================================================
+       FLOW STEPS
+       ========================================================= */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .flow-card {
+      background: var(--card-bg);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      text-align: center;
+      transition: border-color 300ms ease, transform 300ms ease;
+      position: relative;
+    }
+
+    .flow-card:hover {
+      border-color: var(--hairline-strong);
+      transform: translateY(-4px);
+    }
+
+    .flow-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -14px;
+      width: 14px;
+      height: 1px;
+      background: var(--hairline);
+    }
+
+    .flow-num {
+      display: inline-grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: 800;
+      background: var(--gradient-cool);
+      color: #000;
+      margin-bottom: 14px;
+    }
+
+    .flow-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .flow-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       GALLERY
+       ========================================================= */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--card-bg);
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 16px 14px 12px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      transform: translateY(0);
+      opacity: 1;
+      transition: opacity 300ms ease;
+    }
+
+    /* =========================================================
+       LIGHTBOX
+       ========================================================= */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 300ms ease, visibility 300ms ease;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      transform: scale(0.96);
+      transition: transform 300ms ease;
+    }
+
+    .lightbox.is-open .lightbox-img { transform: scale(1); }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 15px;
+      text-align: center;
+      max-width: 80vw;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--hairline);
+      color: #fff;
+      font-size: 24px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 200ms ease;
+    }
+
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--hairline);
+      color: #fff;
+      font-size: 20px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 200ms ease;
+    }
+
+    .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+
+    /* =========================================================
+       TEAM
+       ========================================================= */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .team-card {
+      background: var(--card-bg);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      padding: 22px;
+      transition: border-color 300ms ease, transform 300ms ease;
+    }
+
+    .team-card:hover {
+      border-color: var(--hairline-strong);
+      transform: translateY(-4px);
+    }
+
+    .team-role {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .team-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .team-names {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       FAQ
+       ========================================================= */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+      letter-spacing: -0.25px;
+      line-height: 1.5;
+    }
+
+    .faq-q:hover { color: var(--text); }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--text);
+      transition: transform 300ms ease;
+    }
+
+    .faq-icon::before {
+      top: 50%; left: 0; right: 0;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+
+    .faq-icon::after {
+      left: 50%; top: 0; bottom: 0;
+      width: 2px;
+      transform: translateX(-50%);
+    }
+
+    .faq-item.is-open .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 400ms ease, padding 400ms ease;
+    }
+
+    .faq-item.is-open .faq-a {
+      max-height: 500px;
+      padding-bottom: 22px;
+    }
+
+    .faq-a p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    .site-footer {
+      border-top: 1px solid var(--hairline);
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-contact {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       MARQUEE
+       ========================================================= */
+    .marquee-bar {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 14px 0;
+      border-top: 1px solid var(--hairline);
+      background: var(--bg);
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--gradient-cool);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-right: 40px;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* =========================================================
+       STICKY CTA
+       ========================================================= */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--gradient-warm);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 14px 0;
+    }
+
+    .sticky-cta-track {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+
+    .sticky-cta-text {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 800;
+      color: #000;
+      padding-right: 60px;
+    }
+
+    /* body padding for sticky cta */
+    body { padding-bottom: 50px; }
+
+    /* =========================================================
+       REVEAL ANIMATIONS
+       ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-children > .reveal:nth-child(1) { transition-delay: 0ms; }
+    .stagger-children > .reveal:nth-child(2) { transition-delay: 80ms; }
+    .stagger-children > .reveal:nth-child(3) { transition-delay: 160ms; }
+    .stagger-children > .reveal:nth-child(4) { transition-delay: 240ms; }
+    .stagger-children > .reveal:nth-child(5) { transition-delay: 320ms; }
+    .stagger-children > .reveal:nth-child(6) { transition-delay: 400ms; }
+    .stagger-children > .reveal:nth-child(7) { transition-delay: 480ms; }
+    .stagger-children > .reveal:nth-child(8) { transition-delay: 560ms; }
+
+    /* =========================================================
+       PLANNING PROCESS
+       ========================================================= */
+    .planning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .planning-card {
+      background: var(--card-bg);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      transition: border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    }
+
+    .planning-card:hover {
+      border-color: var(--hairline-strong);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+
+    .planning-num {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 14px;
+      border: 2px solid rgba(255,255,255,0.15);
+      transform: rotate(-5deg);
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+
+    .planning-num-warm { background: var(--gradient-warm); box-shadow: 0 4px 20px rgba(221, 247, 48, 0.3); }
+    .planning-num-cool { background: var(--gradient-cool); box-shadow: 0 4px 20px rgba(4, 243, 255, 0.3); }
+    .planning-num-hot  { background: var(--gradient-hot);  box-shadow: 0 4px 20px rgba(255, 99, 138, 0.3); }
+
+    .planning-card:hover .planning-num {
+      transform: rotate(0deg) scale(1.1);
+    }
+
+    .planning-card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0 0 6px;
+      line-height: 1.4;
+    }
+
+    .planning-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* =========================================================
+       CARD DESIGNS & CERTIFICATES
+       ========================================================= */
+    .design-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .design-card {
+      background: var(--card-bg);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      transition: border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    }
+
+    .design-card:hover {
+      border-color: var(--hairline-strong);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+
+    .design-card-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      background: rgba(255,255,255,0.02);
+      min-height: 220px;
+    }
+
+    .design-card-img img {
+      max-width: 220px;
+      max-height: 200px;
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .design-card-body {
+      padding: 20px 24px 24px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .design-card-body h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .design-card-body p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       POSTER / BANNER SECTION
+       ========================================================= */
+    .poster-banner {
+      width: 100%;
+      border-radius: var(--radius-card);
+      border: 1px solid var(--hairline);
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .poster-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* =========================================================
+       DECORATIVE SVG ELEMENTS
+       ========================================================= */
+    .deco-svg {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .deco-svg img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 960px) {
+      .reason-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-grid { grid-template-columns: repeat(3, 1fr); }
+      .flow-card:not(:last-child)::after { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .planning-grid { grid-template-columns: repeat(2, 1fr); }
+      .design-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-head-flex { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .header-nav {
+        display: none;
+        position: fixed;
+        top: 64px; left: 12px; right: 12px;
+        flex-direction: column;
+        gap: 0;
+        background: var(--card-bg);
+        border: 1px solid var(--hairline);
+        border-radius: 14px;
+        padding: 8px;
+        z-index: 1002;
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: transform 300ms ease, opacity 300ms ease;
+      }
+      .header-nav.is-open {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .header-nav a {
+        padding: 12px 16px;
+        width: 100%;
+        border-radius: 10px;
+      }
+      .header-nav a:hover { background: rgba(255,255,255,0.05); }
+      .header-nav a::after { display: none; }
+      .hamburger { display: flex; }
+
+      .reason-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .planning-grid { grid-template-columns: 1fr; }
+      .design-grid { grid-template-columns: 1fr; }
+
+      .lightbox-nav { display: none; }
+      .lightbox-img { max-width: 94vw; max-height: 70vh; }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="header-logo" href="#top">Poston : Dear AI</a>
+      <nav class="header-nav" id="header-nav">
+        <a href="#event-info">행사 소개</a>
+        <a href="#planning">기획 과정</a>
+        <a href="#schedule">일정</a>
+        <a href="#gallery">갤러리</a>
+        <a href="#team">운영진</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-badge">2026.05.14 - 05.15 / BSSM 1학년</div>
+      <h1 class="hero-title">2026 BSSM Poston :<br>Dear AI</h1>
+      <p class="hero-subtitle">
+        인간과 AI가 공존하는 미래 서비스를 종이와 편지 기반의 아날로그 방식으로 기획한<br>BSSM 1학년 서비스 설계 행사
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== EVENT INFO ===================== -->
+  <section id="event-info" style="position:relative;overflow:hidden;">
+    <div class="deco-svg" style="top:-40px;right:-40px;width:280px;height:280px;">
+      <img src="assets/Group%2048.svg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker">About the Event</div>
+        <h2 class="section-title">Dear AI</h2>
+      </div>
+
+      <p class="event-info-lead reveal">64명의 1학년이 AI와 협업하는 방식을 직접 설계했습니다</p>
+      <p class="event-info-body reveal">Zero-Device, AI 우체국, 아날로그 산출물. 이틀간의 기획 여정을 기록합니다.</p>
+
+      <div class="reason-grid stagger-children">
+        <div class="reason-card reveal">
+          <svg class="check" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="url(#g1)"/>
+            <path d="M8 14l4 4 8-8" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#04f3ff"/><stop offset="1" stop-color="#90f779"/></linearGradient></defs>
+          </svg>
+          <p>스마트폰 없이 종이와 펜으로 기획해본 적이 있다면?</p>
+        </div>
+        <div class="reason-card reveal">
+          <svg class="check" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="url(#g2)"/>
+            <path d="M8 14l4 4 8-8" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#ddf730"/><stop offset="1" stop-color="#ffbd19"/></linearGradient></defs>
+          </svg>
+          <p>AI에게 편지를 써서 답변을 받아본 적이 있다면?</p>
+        </div>
+        <div class="reason-card reveal">
+          <svg class="check" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="url(#g3)"/>
+            <path d="M8 14l4 4 8-8" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="g3" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#ff638a"/><stop offset="1" stop-color="#ff1fe0"/></linearGradient></defs>
+          </svg>
+          <p>팀원들과 밤새 보드를 만들어본 적이 있다면?</p>
+        </div>
+        <div class="reason-card reveal">
+          <svg class="check" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="url(#g4)"/>
+            <path d="M8 14l4 4 8-8" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="g4" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#04f3ff"/><stop offset="1" stop-color="#90f779"/></linearGradient></defs>
+          </svg>
+          <p>서비스 구조를 데이터 설계까지 해본 적이 있다면?</p>
+        </div>
+        <div class="reason-card reveal">
+          <svg class="check" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="url(#g5)"/>
+            <path d="M8 14l4 4 8-8" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="g5" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#ddf730"/><stop offset="1" stop-color="#ffbd19"/></linearGradient></defs>
+          </svg>
+          <p>심사위원 앞에서 부스 발표를 해본 적이 있다면?</p>
+        </div>
+        <div class="reason-card reveal">
+          <svg class="check" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="8" fill="url(#g6)"/>
+            <path d="M8 14l4 4 8-8" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="g6" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#ff638a"/><stop offset="1" stop-color="#ff1fe0"/></linearGradient></defs>
+          </svg>
+          <p>AI 크레딧을 전략적으로 사용해본 적이 있다면?</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <button class="btn-disabled" disabled>행사 종료</button>
+        <span style="display:inline-block;margin-left:12px;font-size:14px;color:var(--muted);">뜨거운 관심과 적극적인 참여로 대회가 잘 마무리 되었습니다. 진심으로 감사드립니다.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== POSTER & BANNER ===================== -->
+  <section id="poster">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker gradient-text-cool">Poster & Banner</div>
+        <h2 class="section-title">포스터 &amp; 배너</h2>
+      </div>
+      <div class="poster-banner reveal">
+        <img src="assets/Flex%20Banner.svg" alt="Flex Banner" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT 1 - 행사 방식 ===================== -->
+  <section id="purpose">
+    <div class="container">
+      <div class="section-head section-head-flex">
+        <div class="reveal">
+          <div class="section-kicker">How It Works</div>
+          <h2 class="section-title">행사 방식</h2>
+        </div>
+        <p class="section-desc reveal">
+          Dear AI는 앱 구현 중심의 해커톤이 아니라, 문제 정의와 서비스 설계를 중심으로 운영된 기획 행사입니다.
+        </p>
+      </div>
+
+      <div class="about-grid stagger-children">
+        <div class="about-card reveal">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
+          <h3>Zero-Device</h3>
+          <p>개인 디지털 기기 없이 진행. 스마트폰, 노트북 사용을 제한하고 종이와 펜으로 기획합니다.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/><path d="M12 2l1.5 3 3 0.5-2.5 2.5 0.5 3L12 9.5 9.5 11l0.5-3L7.5 7.5l3-0.5z"/></svg></div>
+          <h3>AI Post Office</h3>
+          <p>AI에게 편지를 보내는 방식. 종이에 질문을 작성하면 운영진이 중계하여 답변을 전달합니다.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+          <h3>Analog Output</h3>
+          <p>종이 위에 남긴 설계. 문제 정의 카드부터 최종 보드까지 모든 산출물을 아날로그로 제작합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PLANNING PROCESS ===================== -->
+  <section id="planning" style="position:relative;overflow:hidden;">
+    <div class="deco-svg" style="top:-20px;left:-20px;width:260px;height:260px;">
+      <img src="assets/Group%2046.svg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker gradient-text-cool">Planning Process</div>
+        <h2 class="section-title">기획 과정</h2>
+        <p class="section-desc">13단계 기획 문서로 완성된 행사 운영 체계</p>
+      </div>
+
+      <div class="planning-grid stagger-children">
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-warm">1</div>
+          <h4>전체 행사 개요</h4>
+          <p>행사 목적, 핵심 운영 원칙, 팀빌딩 방식</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-warm">2</div>
+          <h4>운영진 담당 업무</h4>
+          <p>운영 조직, AI 우체국, 산출물 관리</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-warm">3</div>
+          <h4>세부 진행 시나리오</h4>
+          <p>사전 일정, 1일차·2일차 진행 흐름</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-warm">4</div>
+          <h4>산출물 형태</h4>
+          <p>문제 정의 카드, 서비스 로직 설계지, 데이터 구조 설계지, AI 크레딧 기록지</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-warm">5</div>
+          <h4>채점기준</h4>
+          <p>평가 영역, 배점, 5점 척도</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-cool">6</div>
+          <h4>시상 계획</h4>
+          <p>수상 기준, 동점자 처리</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-cool">7</div>
+          <h4>팀빌딩 고사</h4>
+          <p>사전 고사 문항, 정답, 배점</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-cool">8</div>
+          <h4>1학년 행사 가이드</h4>
+          <p>참가자 목표, 규칙, 활동 순서</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-cool">9</div>
+          <h4>홍보 계획</h4>
+          <p>다큐형 롱폼, 숏폼 컷다운</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-hot">10</div>
+          <h4>시범운영 계획</h4>
+          <p>100분 리허설 절차</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-hot">11</div>
+          <h4>학생 멘토 가이드</h4>
+          <p>질문 응답 범위, 멘토링 운영</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-hot">12</div>
+          <h4>요약본</h4>
+          <p>행사 기본 정보 전체 요약</p>
+        </div>
+        <div class="planning-card reveal">
+          <div class="planning-num planning-num-hot">13</div>
+          <h4>설문조사</h4>
+          <p>종료 피드백 설문</p>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:48px;">
+        <a href="https://drive.google.com/drive/folders/1_reIR3Dn1qMADM8sSQtKvnABjqma3wZf" target="_blank" rel="noreferrer" class="btn-primary">기획 문서 및 채점 자료 보기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT 2 - 상세 일정 ===================== -->
+  <section id="schedule" style="position:relative;overflow:hidden;">
+    <div class="deco-svg" style="bottom:-30px;left:-30px;width:240px;height:240px;">
+      <img src="assets/Group%2047.svg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker">Schedule</div>
+        <h2 class="section-title">행사 일정</h2>
+      </div>
+
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width:110px">구분</th>
+              <th style="width:140px">시간</th>
+              <th>내용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Day 0</td><td>7교시</td><td><strong>팀빌딩 고사</strong></td></tr>
+            <tr><td>Day 0</td><td>8~11교시</td><td><strong>운영진·교사 팀 편성 검수</strong></td></tr>
+            <tr><td>Day 0</td><td>점호 후</td><td><strong>체육관 물품 사전 이동</strong></td></tr>
+            <tr><td>Day 1 오전</td><td>08:20~09:00</td><td><strong>등교 및 팀 공개</strong></td></tr>
+            <tr><td>Day 1 오전</td><td>09:00~09:20</td><td><strong>오리엔테이션</strong></td></tr>
+            <tr><td>Day 1 오전</td><td>09:20~09:45</td><td><strong>AI 편지 고백 게임 튜토리얼</strong></td></tr>
+            <tr><td>Day 1 오전</td><td>09:45~12:30</td><td><strong>문제 정의 카드 및 아이디어 카드</strong></td></tr>
+            <tr><td>Day 1 오후</td><td>13:20~17:40</td><td><strong>서비스 로직 설계 및 DB 설계</strong></td></tr>
+            <tr><td>Day 1 오후</td><td>14:10~14:25</td><td><strong>AI 편지 1차 제출</strong></td></tr>
+            <tr><td>Day 1 오후</td><td>16:10~16:25</td><td><strong>AI 편지 2차 제출</strong></td></tr>
+            <tr><td>Day 1 저녁</td><td>18:10~21:20</td><td><strong>최종 보드 제작</strong></td></tr>
+            <tr><td>Day 1 저녁</td><td>19:30~19:45</td><td><strong>AI 편지 3차 제출</strong></td></tr>
+            <tr><td>Day 1 저녁</td><td><strong>21:05~21:20</strong></td><td><strong>AI 편지 4차 제출</strong></td></tr>
+            <tr><td>Day 1 저녁</td><td><strong>21:20~22:20</strong></td><td><strong>싸이버거 배부 및 최종 정리</strong></td></tr>
+            <tr><td>Day 1 밤</td><td>22:20~22:30</td><td><strong>기숙사 이동</strong></td></tr>
+            <tr><td>Day 2 오전</td><td>08:40~09:00</td><td><strong>등교 및 산출물 확인</strong></td></tr>
+            <tr><td>Day 2 오전</td><td><strong>09:00~09:15</strong></td><td><strong>심사 안내</strong></td></tr>
+            <tr><td>Day 2 오전</td><td><strong>09:15~12:00</strong></td><td><strong>부스 순회 최종 발표 심사</strong></td></tr>
+            <tr><td>Day 2 오전</td><td>12:00~12:30</td><td><strong>폐회식</strong></td></tr>
+            <tr><td>Day 2 오전</td><td>12:30~13:20</td><td><strong>중식</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT 3 - AI 우체국 흐름 ===================== -->
+  <section>
+    <div class="container">
+      <div class="section-head section-head-flex">
+        <div class="reveal">
+          <div class="section-kicker">AI Letter Flow</div>
+          <h2 class="section-title">AI 우체국</h2>
+        </div>
+        <p class="section-desc reveal">
+          학생이 AI를 직접 조작하지 않고, 질문을 종이에 작성하면 운영진이 스캔과 출력을 담당했습니다.
+        </p>
+      </div>
+
+      <div class="flow-grid stagger-children">
+        <div class="flow-card reveal">
+          <div class="flow-num">1</div>
+          <h4>편지 작성</h4>
+          <p>팀이 Dear AI 편지지에 질문 목적, 모델, From 팀 정보를 작성합니다.</p>
+        </div>
+        <div class="flow-card reveal">
+          <div class="flow-num">2</div>
+          <h4>AI 우체국 접수</h4>
+          <p>운영진이 모델과 크레딧을 확인하고 접수 시점에 크레딧을 차감합니다.</p>
+        </div>
+        <div class="flow-card reveal">
+          <div class="flow-num">3</div>
+          <h4>스캔·서버 전달</h4>
+          <p>운영진이 편지를 이미지로 스캔해 내부 서버를 통해 LLM에 전달합니다.</p>
+        </div>
+        <div class="flow-card reveal">
+          <div class="flow-num">4</div>
+          <h4>A4 답변 출력</h4>
+          <p>AI 답변은 수정하지 않고 원문 그대로 출력해 팀별로 분류합니다.</p>
+        </div>
+        <div class="flow-card reveal">
+          <div class="flow-num">5</div>
+          <h4>팀 판단</h4>
+          <p>팀은 답변을 읽고 채택, 수정, 폐기할 내용을 스스로 결정합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT 4 - 팀별 산출물 ===================== -->
+  <section style="position:relative;overflow:hidden;">
+    <div class="deco-svg" style="top:20px;right:-20px;width:220px;height:220px;">
+      <img src="assets/Vector%20110.svg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker">Outputs</div>
+        <h2 class="section-title">최종 산출물</h2>
+      </div>
+
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width:200px">산출물</th>
+              <th>설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>문제 정의 카드</strong></td>
+              <td>다루는 문제, 사용자, 상황 구체화</td>
+            </tr>
+            <tr>
+              <td><strong>서비스 로직 설계지</strong></td>
+              <td>사용자 흐름, 핵심 기능, 예외 상황 정리</td>
+            </tr>
+            <tr>
+              <td><strong>데이터 구조 설계지</strong></td>
+              <td>데이터, 조건 처리, 의사코드 설계</td>
+            </tr>
+            <tr>
+              <td><strong>AI 크레딧 기록지</strong></td>
+              <td>AI 질문, 모델, 답변 검토 기록</td>
+            </tr>
+            <tr>
+              <td><strong>최종 아날로그 보드</strong></td>
+              <td>전지와 폼보드 위 통합 설계</td>
+            </tr>
+            <tr>
+              <td><strong>부스 순회 발표</strong></td>
+              <td>담당 영역별 팀 부스 직접 설명</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker">Photo Story</div>
+        <h2 class="section-title">현장 기록</h2>
+      </div>
+
+      <div class="gallery-grid stagger-children" id="gallery-grid">
+        <figure class="gallery-item reveal" data-index="0">
+          <img src="media/01_setup.jpg" alt="행사 준비 장면" loading="lazy">
+          <figcaption class="gallery-caption">행사 준비와 공간 세팅</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="1">
+          <img src="media/02_entry.jpg" alt="학생 입장 장면" loading="lazy">
+          <figcaption class="gallery-caption">학생 입장과 팀 활동 시작</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="2">
+          <img src="media/03_workshop.jpg" alt="팀별 문제 정의 활동" loading="lazy">
+          <figcaption class="gallery-caption">문제 정의와 아이디어 정리</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="3">
+          <img src="media/04_midday.jpg" alt="중간 작업 전환 장면" loading="lazy">
+          <figcaption class="gallery-caption">점심 이후 다시 이어진 작업</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="4">
+          <img src="media/05_design.jpg" alt="서비스 설계 활동" loading="lazy">
+          <figcaption class="gallery-caption">서비스 로직과 데이터 구조 설계</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="5">
+          <img src="media/06_letter.jpg" alt="AI 편지 작업" loading="lazy">
+          <figcaption class="gallery-caption">AI 편지와 답변 활용</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="6">
+          <img src="media/07_mentor.jpg" alt="멘토와 학생 활동" loading="lazy">
+          <figcaption class="gallery-caption">멘토 질문과 협업 점검</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="7">
+          <img src="media/08_evening.jpg" alt="야간 최종 보드 제작" loading="lazy">
+          <figcaption class="gallery-caption">야간 마감과 최종 보드 제작</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="8">
+          <img src="media/09_morning-board.jpg" alt="오전 산출물 작업" loading="lazy">
+          <figcaption class="gallery-caption">2일차 준비</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="9">
+          <img src="media/10_team-discussion.jpg" alt="팀별 토의 장면" loading="lazy">
+          <figcaption class="gallery-caption">팀별 토의와 역할 분담</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="10">
+          <img src="media/11_lunch-break.jpg" alt="점심 시간 장면" loading="lazy">
+          <figcaption class="gallery-caption">점심 시간과 재정비</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="11">
+          <img src="media/12_midday-reset.jpg" alt="오후 활동 전환" loading="lazy">
+          <figcaption class="gallery-caption">오후 활동으로 전환</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="12">
+          <img src="media/13_afternoon-start.jpg" alt="오후 설계 활동 시작" loading="lazy">
+          <figcaption class="gallery-caption">오후 설계 활동 시작</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="13">
+          <img src="media/14_design-session.jpg" alt="서비스 설계 토의" loading="lazy">
+          <figcaption class="gallery-caption">서비스 흐름 구체화</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="14">
+          <img src="media/15_ai-letter-moment.jpg" alt="AI 편지 제출 장면" loading="lazy">
+          <figcaption class="gallery-caption">AI 편지 제출과 답변 대기</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="15">
+          <img src="media/16_mentor-time.jpg" alt="멘토 질문 장면" loading="lazy">
+          <figcaption class="gallery-caption">멘토 질문과 방향 점검</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="16">
+          <img src="media/17_group-work.jpg" alt="팀 작업 장면" loading="lazy">
+          <figcaption class="gallery-caption">팀 작업과 산출물 정리</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="17">
+          <img src="media/18_evening-build.jpg" alt="야간 최종 작업" loading="lazy">
+          <figcaption class="gallery-caption">야간 최종 작업 시작</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="18">
+          <img src="media/19_night-board.jpg" alt="최종 보드 제작" loading="lazy">
+          <figcaption class="gallery-caption">최종 보드 제작</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="19">
+          <img src="media/20_night-checkpoint.jpg" alt="야간 체크포인트" loading="lazy">
+          <figcaption class="gallery-caption">야간 체크포인트</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="20">
+          <img src="media/21_leave-materials.jpg" alt="산출물 보관 장면" loading="lazy">
+          <figcaption class="gallery-caption">산출물 정리와 보관</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="21">
+          <img src="media/22_day2-start.jpg" alt="2일차 시작 장면" loading="lazy">
+          <figcaption class="gallery-caption">2일차 현장</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="22">
+          <img src="media/23_judging.jpg" alt="부스 순회 심사" loading="lazy">
+          <figcaption class="gallery-caption">부스 순회 심사</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-index="23">
+          <img src="media/24_final-review.jpg" alt="최종 확인 장면" loading="lazy">
+          <figcaption class="gallery-caption">최종 확인과 마무리</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CARD DESIGNS ===================== -->
+  <section id="card-designs">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker gradient-text-cool">Card Designs</div>
+        <h2 class="section-title">행사 카드 디자인</h2>
+        <p class="section-desc">현장에서 사용된 카드 디자인</p>
+      </div>
+
+      <div class="design-grid stagger-children">
+        <div class="design-card reveal">
+          <div class="design-card-img">
+            <img src="assets/AI%EC%B9%B4%EB%93%9C%20v1.svg" alt="AI 카드" loading="lazy">
+          </div>
+          <div class="design-card-body">
+            <h4>AI 카드</h4>
+            <p>AI 우체국과 크레딧 시스템</p>
+          </div>
+        </div>
+        <div class="design-card reveal">
+          <div class="design-card-img">
+            <img src="assets/%EB%A9%98%ED%86%A0%EC%B9%B4%EB%93%9C%20v1.svg" alt="멘토 카드" loading="lazy">
+          </div>
+          <div class="design-card-body">
+            <h4>멘토 카드</h4>
+            <p>학생 멘토 질문 이용권</p>
+          </div>
+        </div>
+        <div class="design-card reveal">
+          <div class="design-card-img">
+            <img src="assets/%EB%A7%8C%EB%8A%A5%EC%B9%B4%EB%93%9C%20v1.svg" alt="만능 카드" loading="lazy">
+          </div>
+          <div class="design-card-body">
+            <h4>만능 카드</h4>
+            <p>현장 보조 카드</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CERTIFICATES ===================== -->
+  <section id="certificates">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker gradient-text-cool">Certificates</div>
+        <h2 class="section-title">수료증 디자인</h2>
+      </div>
+
+      <div class="design-grid stagger-children">
+        <div class="design-card reveal">
+          <div class="design-card-img">
+            <img src="assets/certificate%20of%20award.svg" alt="수료증 1" loading="lazy">
+          </div>
+          <div class="design-card-body">
+            <h4>수료증 디자인 1</h4>
+          </div>
+        </div>
+        <div class="design-card reveal">
+          <div class="design-card-img">
+            <img src="assets/certificate%20of%20award-1.svg" alt="수료증 2" loading="lazy">
+          </div>
+          <div class="design-card-body">
+            <h4>수료증 디자인 2</h4>
+          </div>
+        </div>
+        <div class="design-card reveal">
+          <div class="design-card-img">
+            <img src="assets/certificate%20of%20award-2.svg" alt="수료증 3" loading="lazy">
+          </div>
+          <div class="design-card-body">
+            <h4>수료증 디자인 3</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEAM ===================== -->
+  <section id="team">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-kicker">People</div>
+        <h2 class="section-title">운영진 및 멘토진</h2>
+      </div>
+
+      <div class="team-grid stagger-children">
+        <div class="team-card reveal">
+          <div class="team-role">총괄·사회</div>
+          <h3>총괄·사회</h3>
+          <p class="team-names">허동운, 이재환</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-role">AI 우체국</div>
+          <h3>AI 우체국</h3>
+          <p class="team-names">정태양, 허동운</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-role">산출물·물품</div>
+          <h3>산출물·물품</h3>
+          <p class="team-names">정태양, 허동운</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-role">글가람실·안전</div>
+          <h3>글가람실·안전</h3>
+          <p class="team-names">방세준, 박동현</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-role">촬영·기록</div>
+          <h3>촬영·기록</h3>
+          <p class="team-names">이재환, 조하민</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-role">심사 지원</div>
+          <h3>심사 지원</h3>
+          <p class="team-names">허동운, 정태양</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-role">식음료·환경</div>
+          <h3>식음료·환경</h3>
+          <p class="team-names">허동운, 정태양</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-role">학생 멘토 평가조</div>
+          <h3>학생 멘토 평가조</h3>
+          <p class="team-names">방세준, 김민재, 권민재, 구현우</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head" style="text-align:center;margin-bottom:48px;">
+        <div class="section-kicker reveal">FAQ</div>
+        <h2 class="section-title reveal">자주 묻는 질문</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>행사는 어떤 방식으로 진행되나요?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>Zero-Device 방식으로 개인 디지털 기기 없이 종이와 펜으로 기획을 진행합니다. AI 활용은 종이 편지를 통해 운영진이 중계하는 방식으로 이루어집니다.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>AI 우체국은 무엇인가요?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>팀이 종이에 질문을 작성하면 운영진이 스캔, 내부 서버 전달, LLM 답변 출력, 팀별 반환을 담당하는 시스템입니다.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>어떤 산출물을 만들어야 하나요?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>문제 정의 카드, 서비스 로직 설계지, 데이터 구조 설계지, AI 크레딧 기록지, 최종 아날로그 보드 총 5종입니다.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>심사는 어떻게 이루어지나요?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>선생님 채점위원 4명이 담당 영역별로 부스를 순회하며 발표와 꼬리질문을 평가합니다. 학생 멘토 평가조는 구성 및 협업을 관찰평가합니다.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">
+            <span>개인 기기를 사용할 수 있나요?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a">
+            <p>Zero-Device 원칙에 따라 스마트폰, 노트북 등 개인 디지털 기기 사용이 제한됩니다. 글가람실 자료조사만 허용됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">2026 BSSM Poston : Dear AI</div>
+      <div class="footer-links">
+        <a href="https://drive.google.com/drive/folders/1_reIR3Dn1qMADM8sSQtKvnABjqma3wZf" target="_blank" rel="noreferrer">Google Drive 기록</a>
+        <a href="#">개인정보처리방침</a>
+      </div>
+      <div class="footer-contact">문의 허동운</div>
+    </div>
+  </footer>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-text">&bull; 2026 BSSM Poston : Dear AI &bull; 1학년 64명 참가 &bull; Zero-Device &bull; AI Post Office &bull; Analog Output &bull; 2일간의 기획 여정 &bull;</span>
+      <span class="marquee-text">&bull; 2026 BSSM Poston : Dear AI &bull; 1학년 64명 참가 &bull; Zero-Device &bull; AI Post Office &bull; Analog Output &bull; 2일간의 기획 여정 &bull;</span>
+      <span class="marquee-text">&bull; 2026 BSSM Poston : Dear AI &bull; 1학년 64명 참가 &bull; Zero-Device &bull; AI Post Office &bull; Analog Output &bull; 2일간의 기획 여정 &bull;</span>
+      <span class="marquee-text">&bull; 2026 BSSM Poston : Dear AI &bull; 1학년 64명 참가 &bull; Zero-Device &bull; AI Post Office &bull; Analog Output &bull; 2일간의 기획 여정 &bull;</span>
+    </div>
+  </div>
+
+  <!-- ===================== STICKY CTA ===================== -->
+  <div class="sticky-cta" aria-hidden="true">
+    <div class="sticky-cta-track">
+      <span class="sticky-cta-text">&#127881; 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다</span>
+      <span class="sticky-cta-text">&#127881; 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다</span>
+      <span class="sticky-cta-text">&#127881; 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다</span>
+      <span class="sticky-cta-text">&#127881; 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다</span>
+    </div>
+  </div>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="닫기">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="이전">&#10094;</button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="다음">&#10095;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ---------- Header scroll gradient border ---------- */
+      const header = document.querySelector('.site-header');
+      function onScroll() {
+        header.classList.toggle('is-scrolled', window.scrollY > 10);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ---------- Mobile hamburger ---------- */
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('header-nav');
+      if (hamburger && nav) {
+        hamburger.addEventListener('click', function() {
+          const open = nav.classList.toggle('is-open');
+          hamburger.classList.toggle('is-open', open);
+          hamburger.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            nav.classList.remove('is-open');
+            hamburger.classList.remove('is-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      /* ---------- Reveal on scroll ---------- */
+      const revealEls = document.querySelectorAll('.reveal');
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const revealObs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObs.unobserve(entry.target);
+            }
+          });
+        }, { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.05 });
+        revealEls.forEach(function(el) { revealObs.observe(el); });
+      } else {
+        revealEls.forEach(function(el) { el.classList.add('is-visible'); });
+      }
+
+      /* ---------- FAQ accordion ---------- */
+      document.querySelectorAll('.faq-item').forEach(function(item) {
+        const btn = item.querySelector('.faq-q');
+        btn.addEventListener('click', function() {
+          const isOpen = item.classList.contains('is-open');
+          // close all
+          document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('is-open'); });
+          if (!isOpen) item.classList.add('is-open');
+        });
+      });
+
+      /* ---------- Lightbox (all images) ---------- */
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbCaption = document.getElementById('lightbox-caption');
+      const lbPrev = document.getElementById('lightbox-prev');
+      const lbNext = document.getElementById('lightbox-next');
+      let currentIdx = 0;
+      let isGalleryMode = false;
+
+      function openLightbox(src, alt, caption) {
+        lbImg.src = src;
+        lbImg.alt = alt;
+        lbCaption.textContent = caption || alt || '';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lbPrev.style.display = isGalleryMode ? '' : 'none';
+        lbNext.style.display = isGalleryMode ? '' : 'none';
+      }
+
+      function openGalleryLightbox(index) {
+        currentIdx = index;
+        isGalleryMode = true;
+        const item = galleryItems[index];
+        const img = item.querySelector('img');
+        const cap = item.querySelector('.gallery-caption');
+        openLightbox(img.src, img.alt, cap ? cap.textContent : '');
+      }
+
+      function openSingleLightbox(img) {
+        isGalleryMode = false;
+        openLightbox(img.src, img.alt, img.alt);
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      function prevImage() {
+        if (!isGalleryMode) return;
+        currentIdx = (currentIdx - 1 + galleryItems.length) % galleryItems.length;
+        openGalleryLightbox(currentIdx);
+      }
+
+      function nextImage() {
+        if (!isGalleryMode) return;
+        currentIdx = (currentIdx + 1) % galleryItems.length;
+        openGalleryLightbox(currentIdx);
+      }
+
+      // Event delegation: any image click opens lightbox
+      document.addEventListener('click', function(e) {
+        const img = e.target.closest('img');
+        if (!img) return;
+        // Skip decorative SVGs
+        if (img.closest('.deco-svg')) return;
+        const galleryItem = img.closest('.gallery-item');
+        if (galleryItem) {
+          const index = parseInt(galleryItem.dataset.index, 10);
+          if (!isNaN(index)) openGalleryLightbox(index);
+        } else {
+          openSingleLightbox(img);
+        }
+      });
+
+      document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+      document.getElementById('lightbox-prev').addEventListener('click', function(e) { e.stopPropagation(); prevImage(); });
+      document.getElementById('lightbox-next').addEventListener('click', function(e) { e.stopPropagation(); nextImage(); });
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+      });
+    })();
+  </script>
+</body>
+</html>

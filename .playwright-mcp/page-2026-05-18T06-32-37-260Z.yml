@@ -1,0 +1,522 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - 'link "Poston : Dear AI" [ref=e4] [cursor=pointer]':
+        - /url: "#top"
+      - navigation [ref=e5]:
+        - link "행사 소개" [ref=e6] [cursor=pointer]:
+          - /url: "#event-info"
+        - link "기획 과정" [ref=e7] [cursor=pointer]:
+          - /url: "#planning"
+        - link "일정" [ref=e8] [cursor=pointer]:
+          - /url: "#schedule"
+        - link "갤러리" [ref=e9] [cursor=pointer]:
+          - /url: "#gallery"
+        - link "운영진" [ref=e10] [cursor=pointer]:
+          - /url: "#team"
+  - generic [ref=e13]:
+    - generic [ref=e14]: 2026.05.14 - 05.15 / BSSM 1학년
+    - 'heading "2026 BSSM Poston : Dear AI" [level=1] [ref=e15]':
+      - text: "2026 BSSM Poston :"
+      - text: Dear AI
+    - paragraph [ref=e16]:
+      - text: 인간과 AI가 공존하는 미래 서비스를 종이와 편지 기반의 아날로그 방식으로 기획한
+      - text: BSSM 1학년 서비스 설계 행사
+  - generic [ref=e17]:
+    - generic:
+      - img
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]: About the Event
+        - heading "Dear AI" [level=2] [ref=e21]
+      - paragraph [ref=e22]: 64명의 1학년이 AI와 협업하는 방식을 직접 설계했습니다
+      - paragraph [ref=e23]: Zero-Device, AI 우체국, 아날로그 산출물. 이틀간의 기획 여정을 기록합니다.
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - img [ref=e26]
+          - paragraph [ref=e29]: 스마트폰 없이 종이와 펜으로 기획해본 적이 있다면?
+        - generic [ref=e30]:
+          - img [ref=e31]
+          - paragraph [ref=e34]: AI에게 편지를 써서 답변을 받아본 적이 있다면?
+        - generic [ref=e35]:
+          - img [ref=e36]
+          - paragraph [ref=e39]: 팀원들과 밤새 보드를 만들어본 적이 있다면?
+        - generic [ref=e40]:
+          - img [ref=e41]
+          - paragraph [ref=e44]: 서비스 구조를 데이터 설계까지 해본 적이 있다면?
+        - generic [ref=e45]:
+          - img [ref=e46]
+          - paragraph [ref=e49]: 심사위원 앞에서 부스 발표를 해본 적이 있다면?
+        - generic [ref=e50]:
+          - img [ref=e51]
+          - paragraph [ref=e54]: AI 크레딧을 전략적으로 사용해본 적이 있다면?
+      - generic [ref=e55]:
+        - button "행사 종료" [disabled] [ref=e56]
+        - generic [ref=e57]: 뜨거운 관심과 적극적인 참여로 대회가 잘 마무리 되었습니다. 진심으로 감사드립니다.
+  - generic [ref=e59]:
+    - generic [ref=e60]:
+      - generic [ref=e61]: Poster & Banner
+      - heading "포스터 & 배너" [level=2] [ref=e62]
+    - generic [ref=e63]:
+      - img "Flex Banner"
+  - generic [ref=e65]:
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]: How It Works
+        - heading "행사 방식" [level=2] [ref=e69]
+      - paragraph [ref=e70]: Dear AI는 앱 구현 중심의 해커톤이 아니라, 문제 정의와 서비스 설계를 중심으로 운영된 기획 행사입니다.
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]: 📱❌
+        - heading "Zero-Device" [level=3] [ref=e74]
+        - paragraph [ref=e75]: 개인 디지털 기기 없이 진행. 스마트폰, 노트북 사용을 제한하고 종이와 펜으로 기획합니다.
+      - generic [ref=e76]:
+        - generic [ref=e77]: ✉
+        - heading "AI Post Office" [level=3] [ref=e78]
+        - paragraph [ref=e79]: AI에게 편지를 보내는 방식. 종이에 질문을 작성하면 운영진이 중계하여 답변을 전달합니다.
+      - generic [ref=e80]:
+        - generic [ref=e81]: 📒
+        - heading "Analog Output" [level=3] [ref=e82]
+        - paragraph [ref=e83]: 종이 위에 남긴 설계. 문제 정의 카드부터 최종 보드까지 모든 산출물을 아날로그로 제작합니다.
+  - generic [ref=e84]:
+    - generic:
+      - img
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - generic [ref=e87]: Planning Process
+        - heading "기획 과정" [level=2] [ref=e88]
+        - paragraph [ref=e89]: 13단계 기획 문서로 완성된 행사 운영 체계
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]: "1"
+          - heading "전체 행사 개요" [level=4] [ref=e93]
+          - paragraph [ref=e94]: 행사 목적, 핵심 운영 원칙, 팀빌딩 방식
+        - generic [ref=e95]:
+          - generic [ref=e96]: "2"
+          - heading "운영진 담당 업무" [level=4] [ref=e97]
+          - paragraph [ref=e98]: 운영 조직, AI 우체국, 산출물 관리
+        - generic [ref=e99]:
+          - generic [ref=e100]: "3"
+          - heading "세부 진행 시나리오" [level=4] [ref=e101]
+          - paragraph [ref=e102]: 사전 일정, 1일차·2일차 진행 흐름
+        - generic [ref=e103]:
+          - generic [ref=e104]: "4"
+          - heading "산출물 형태" [level=4] [ref=e105]
+          - paragraph [ref=e106]: 문제 정의 카드, 서비스 로직 설계지, 데이터 구조 설계지, AI 크레딧 기록지
+        - generic [ref=e107]:
+          - generic [ref=e108]: "5"
+          - heading "채점기준" [level=4] [ref=e109]
+          - paragraph [ref=e110]: 평가 영역, 배점, 5점 척도
+        - generic [ref=e111]:
+          - generic [ref=e112]: "6"
+          - heading "시상 계획" [level=4] [ref=e113]
+          - paragraph [ref=e114]: 수상 기준, 동점자 처리
+        - generic [ref=e115]:
+          - generic [ref=e116]: "7"
+          - heading "팀빌딩 고사" [level=4] [ref=e117]
+          - paragraph [ref=e118]: 사전 고사 문항, 정답, 배점
+        - generic [ref=e119]:
+          - generic [ref=e120]: "8"
+          - heading "1학년 행사 가이드" [level=4] [ref=e121]
+          - paragraph [ref=e122]: 참가자 목표, 규칙, 활동 순서
+        - generic [ref=e123]:
+          - generic [ref=e124]: "9"
+          - heading "홍보 계획" [level=4] [ref=e125]
+          - paragraph [ref=e126]: 다큐형 롱폼, 숏폼 컷다운
+        - generic [ref=e127]:
+          - generic [ref=e128]: "10"
+          - heading "시범운영 계획" [level=4] [ref=e129]
+          - paragraph [ref=e130]: 100분 리허설 절차
+        - generic [ref=e131]:
+          - generic [ref=e132]: "11"
+          - heading "학생 멘토 가이드" [level=4] [ref=e133]
+          - paragraph [ref=e134]: 질문 응답 범위, 멘토링 운영
+        - generic [ref=e135]:
+          - generic [ref=e136]: "12"
+          - heading "요약본" [level=4] [ref=e137]
+          - paragraph [ref=e138]: 행사 기본 정보 전체 요약
+        - generic [ref=e139]:
+          - generic [ref=e140]: "13"
+          - heading "설문조사" [level=4] [ref=e141]
+          - paragraph [ref=e142]: 종료 피드백 설문
+  - generic [ref=e143]:
+    - generic:
+      - img
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - generic [ref=e146]: Schedule
+        - heading "행사 일정" [level=2] [ref=e147]
+      - table [ref=e149]:
+        - rowgroup [ref=e150]:
+          - row "구분 시간 내용" [ref=e151]:
+            - columnheader "구분" [ref=e152]
+            - columnheader "시간" [ref=e153]
+            - columnheader "내용" [ref=e154]
+        - rowgroup [ref=e155]:
+          - row "Day 0 7교시 팀빌딩 고사" [ref=e156]:
+            - cell "Day 0" [ref=e157]
+            - cell "7교시" [ref=e158]
+            - cell "팀빌딩 고사" [ref=e159]:
+              - strong [ref=e160]: 팀빌딩 고사
+          - row "Day 0 8~11교시 운영진·교사 팀 편성 검수" [ref=e161]:
+            - cell "Day 0" [ref=e162]
+            - cell "8~11교시" [ref=e163]
+            - cell "운영진·교사 팀 편성 검수" [ref=e164]:
+              - strong [ref=e165]: 운영진·교사 팀 편성 검수
+          - row "Day 0 점호 후 체육관 물품 사전 이동" [ref=e166]:
+            - cell "Day 0" [ref=e167]
+            - cell "점호 후" [ref=e168]
+            - cell "체육관 물품 사전 이동" [ref=e169]:
+              - strong [ref=e170]: 체육관 물품 사전 이동
+          - row "Day 1 오전 08:20~09:00 등교 및 팀 공개" [ref=e171]:
+            - cell "Day 1 오전" [ref=e172]
+            - cell "08:20~09:00" [ref=e173]
+            - cell "등교 및 팀 공개" [ref=e174]:
+              - strong [ref=e175]: 등교 및 팀 공개
+          - row "Day 1 오전 09:00~09:20 오리엔테이션" [ref=e176]:
+            - cell "Day 1 오전" [ref=e177]
+            - cell "09:00~09:20" [ref=e178]
+            - cell "오리엔테이션" [ref=e179]:
+              - strong [ref=e180]: 오리엔테이션
+          - row "Day 1 오전 09:20~09:45 AI 편지 고백 게임 튜토리얼" [ref=e181]:
+            - cell "Day 1 오전" [ref=e182]
+            - cell "09:20~09:45" [ref=e183]
+            - cell "AI 편지 고백 게임 튜토리얼" [ref=e184]:
+              - strong [ref=e185]: AI 편지 고백 게임 튜토리얼
+          - row "Day 1 오전 09:45~12:30 문제 정의 카드 및 아이디어 카드" [ref=e186]:
+            - cell "Day 1 오전" [ref=e187]
+            - cell "09:45~12:30" [ref=e188]
+            - cell "문제 정의 카드 및 아이디어 카드" [ref=e189]:
+              - strong [ref=e190]: 문제 정의 카드 및 아이디어 카드
+          - row "Day 1 오후 13:20~17:40 서비스 로직 설계 및 DB 설계" [ref=e191]:
+            - cell "Day 1 오후" [ref=e192]
+            - cell "13:20~17:40" [ref=e193]
+            - cell "서비스 로직 설계 및 DB 설계" [ref=e194]:
+              - strong [ref=e195]: 서비스 로직 설계 및 DB 설계
+          - row "Day 1 오후 14:10~14:25 AI 편지 1차 제출" [ref=e196]:
+            - cell "Day 1 오후" [ref=e197]
+            - cell "14:10~14:25" [ref=e198]
+            - cell "AI 편지 1차 제출" [ref=e199]:
+              - strong [ref=e200]: AI 편지 1차 제출
+          - row "Day 1 오후 16:10~16:25 AI 편지 2차 제출" [ref=e201]:
+            - cell "Day 1 오후" [ref=e202]
+            - cell "16:10~16:25" [ref=e203]
+            - cell "AI 편지 2차 제출" [ref=e204]:
+              - strong [ref=e205]: AI 편지 2차 제출
+          - row "Day 1 저녁 18:10~21:20 최종 보드 제작" [ref=e206]:
+            - cell "Day 1 저녁" [ref=e207]
+            - cell "18:10~21:20" [ref=e208]
+            - cell "최종 보드 제작" [ref=e209]:
+              - strong [ref=e210]: 최종 보드 제작
+          - row "Day 1 저녁 19:30~19:45 AI 편지 3차 제출" [ref=e211]:
+            - cell "Day 1 저녁" [ref=e212]
+            - cell "19:30~19:45" [ref=e213]
+            - cell "AI 편지 3차 제출" [ref=e214]:
+              - strong [ref=e215]: AI 편지 3차 제출
+          - row "Day 1 저녁 21:05~21:20 AI 편지 4차 제출" [ref=e216]:
+            - cell "Day 1 저녁" [ref=e217]
+            - cell "21:05~21:20" [ref=e218]:
+              - strong [ref=e219]: 21:05~21:20
+            - cell "AI 편지 4차 제출" [ref=e220]:
+              - strong [ref=e221]: AI 편지 4차 제출
+          - row "Day 1 저녁 21:20~22:20 싸이버거 배부 및 최종 정리" [ref=e222]:
+            - cell "Day 1 저녁" [ref=e223]
+            - cell "21:20~22:20" [ref=e224]:
+              - strong [ref=e225]: 21:20~22:20
+            - cell "싸이버거 배부 및 최종 정리" [ref=e226]:
+              - strong [ref=e227]: 싸이버거 배부 및 최종 정리
+          - row "Day 1 밤 22:20~22:30 기숙사 이동" [ref=e228]:
+            - cell "Day 1 밤" [ref=e229]
+            - cell "22:20~22:30" [ref=e230]
+            - cell "기숙사 이동" [ref=e231]:
+              - strong [ref=e232]: 기숙사 이동
+          - row "Day 2 오전 08:40~09:00 등교 및 산출물 확인" [ref=e233]:
+            - cell "Day 2 오전" [ref=e234]
+            - cell "08:40~09:00" [ref=e235]
+            - cell "등교 및 산출물 확인" [ref=e236]:
+              - strong [ref=e237]: 등교 및 산출물 확인
+          - row "Day 2 오전 09:00~09:15 심사 안내" [ref=e238]:
+            - cell "Day 2 오전" [ref=e239]
+            - cell "09:00~09:15" [ref=e240]:
+              - strong [ref=e241]: 09:00~09:15
+            - cell "심사 안내" [ref=e242]:
+              - strong [ref=e243]: 심사 안내
+          - row "Day 2 오전 09:15~12:00 부스 순회 최종 발표 심사" [ref=e244]:
+            - cell "Day 2 오전" [ref=e245]
+            - cell "09:15~12:00" [ref=e246]:
+              - strong [ref=e247]: 09:15~12:00
+            - cell "부스 순회 최종 발표 심사" [ref=e248]:
+              - strong [ref=e249]: 부스 순회 최종 발표 심사
+          - row "Day 2 오전 12:00~12:30 폐회식" [ref=e250]:
+            - cell "Day 2 오전" [ref=e251]
+            - cell "12:00~12:30" [ref=e252]
+            - cell "폐회식" [ref=e253]:
+              - strong [ref=e254]: 폐회식
+          - row "Day 2 오전 12:30~13:20 중식" [ref=e255]:
+            - cell "Day 2 오전" [ref=e256]
+            - cell "12:30~13:20" [ref=e257]
+            - cell "중식" [ref=e258]:
+              - strong [ref=e259]: 중식
+  - generic [ref=e261]:
+    - generic [ref=e262]:
+      - generic [ref=e263]:
+        - generic [ref=e264]: AI Letter Flow
+        - heading "AI 우체국" [level=2] [ref=e265]
+      - paragraph [ref=e266]: 학생이 AI를 직접 조작하지 않고, 질문을 종이에 작성하면 운영진이 스캔과 출력을 담당했습니다.
+    - generic [ref=e267]:
+      - generic [ref=e268]:
+        - generic [ref=e269]: "1"
+        - heading "편지 작성" [level=4] [ref=e270]
+        - paragraph [ref=e271]: 팀이 Dear AI 편지지에 질문 목적, 모델, From 팀 정보를 작성합니다.
+      - generic [ref=e272]:
+        - generic [ref=e273]: "2"
+        - heading "AI 우체국 접수" [level=4] [ref=e274]
+        - paragraph [ref=e275]: 운영진이 모델과 크레딧을 확인하고 접수 시점에 크레딧을 차감합니다.
+      - generic [ref=e276]:
+        - generic [ref=e277]: "3"
+        - heading "스캔·서버 전달" [level=4] [ref=e278]
+        - paragraph [ref=e279]: 운영진이 편지를 이미지로 스캔해 내부 서버를 통해 LLM에 전달합니다.
+      - generic [ref=e280]:
+        - generic [ref=e281]: "4"
+        - heading "A4 답변 출력" [level=4] [ref=e282]
+        - paragraph [ref=e283]: AI 답변은 수정하지 않고 원문 그대로 출력해 팀별로 분류합니다.
+      - generic [ref=e284]:
+        - generic [ref=e285]: "5"
+        - heading "팀 판단" [level=4] [ref=e286]
+        - paragraph [ref=e287]: 팀은 답변을 읽고 채택, 수정, 폐기할 내용을 스스로 결정합니다.
+  - generic [ref=e288]:
+    - generic:
+      - img
+    - generic [ref=e289]:
+      - generic [ref=e290]:
+        - generic [ref=e291]: Outputs
+        - heading "최종 산출물" [level=2] [ref=e292]
+      - table [ref=e294]:
+        - rowgroup [ref=e295]:
+          - row "산출물 설명" [ref=e296]:
+            - columnheader "산출물" [ref=e297]
+            - columnheader "설명" [ref=e298]
+        - rowgroup [ref=e299]:
+          - row "문제 정의 카드 다루는 문제, 사용자, 상황 구체화" [ref=e300]:
+            - cell "문제 정의 카드" [ref=e301]:
+              - strong [ref=e302]: 문제 정의 카드
+            - cell "다루는 문제, 사용자, 상황 구체화" [ref=e303]
+          - row "서비스 로직 설계지 사용자 흐름, 핵심 기능, 예외 상황 정리" [ref=e304]:
+            - cell "서비스 로직 설계지" [ref=e305]:
+              - strong [ref=e306]: 서비스 로직 설계지
+            - cell "사용자 흐름, 핵심 기능, 예외 상황 정리" [ref=e307]
+          - row "데이터 구조 설계지 데이터, 조건 처리, 의사코드 설계" [ref=e308]:
+            - cell "데이터 구조 설계지" [ref=e309]:
+              - strong [ref=e310]: 데이터 구조 설계지
+            - cell "데이터, 조건 처리, 의사코드 설계" [ref=e311]
+          - row "AI 크레딧 기록지 AI 질문, 모델, 답변 검토 기록" [ref=e312]:
+            - cell "AI 크레딧 기록지" [ref=e313]:
+              - strong [ref=e314]: AI 크레딧 기록지
+            - cell "AI 질문, 모델, 답변 검토 기록" [ref=e315]
+          - row "최종 아날로그 보드 전지와 폼보드 위 통합 설계" [ref=e316]:
+            - cell "최종 아날로그 보드" [ref=e317]:
+              - strong [ref=e318]: 최종 아날로그 보드
+            - cell "전지와 폼보드 위 통합 설계" [ref=e319]
+          - row "부스 순회 발표 담당 영역별 팀 부스 직접 설명" [ref=e320]:
+            - cell "부스 순회 발표" [ref=e321]:
+              - strong [ref=e322]: 부스 순회 발표
+            - cell "담당 영역별 팀 부스 직접 설명" [ref=e323]
+  - generic [ref=e325]:
+    - generic [ref=e326]:
+      - generic [ref=e327]: Photo Story
+      - heading "현장 기록" [level=2] [ref=e328]
+    - generic [ref=e329]:
+      - figure "행사 준비와 공간 세팅" [ref=e330] [cursor=pointer]:
+        - img "행사 준비 장면" [ref=e331]
+        - generic [ref=e332]: 행사 준비와 공간 세팅
+      - figure "학생 입장과 팀 활동 시작" [ref=e333] [cursor=pointer]:
+        - img "학생 입장 장면" [ref=e334]
+        - generic [ref=e335]: 학생 입장과 팀 활동 시작
+      - figure "문제 정의와 아이디어 정리" [ref=e336] [cursor=pointer]:
+        - img "팀별 문제 정의 활동" [ref=e337]
+        - generic [ref=e338]: 문제 정의와 아이디어 정리
+      - figure "점심 이후 다시 이어진 작업" [ref=e339] [cursor=pointer]:
+        - img "중간 작업 전환 장면" [ref=e340]
+        - generic [ref=e341]: 점심 이후 다시 이어진 작업
+      - figure "서비스 로직과 데이터 구조 설계" [ref=e342] [cursor=pointer]:
+        - img "서비스 설계 활동" [ref=e343]
+        - generic [ref=e344]: 서비스 로직과 데이터 구조 설계
+      - figure "AI 편지와 답변 활용" [ref=e345] [cursor=pointer]:
+        - img "AI 편지 작업" [ref=e346]
+        - generic [ref=e347]: AI 편지와 답변 활용
+      - figure "멘토 질문과 협업 점검" [ref=e348] [cursor=pointer]:
+        - img "멘토와 학생 활동" [ref=e349]
+        - generic [ref=e350]: 멘토 질문과 협업 점검
+      - figure "야간 마감과 최종 보드 제작" [ref=e351] [cursor=pointer]:
+        - img "야간 최종 보드 제작" [ref=e352]
+        - generic [ref=e353]: 야간 마감과 최종 보드 제작
+      - figure "2일차 준비" [ref=e354] [cursor=pointer]:
+        - img "오전 산출물 작업" [ref=e355]
+        - generic [ref=e356]: 2일차 준비
+      - figure "팀별 토의와 역할 분담" [ref=e357] [cursor=pointer]:
+        - img "팀별 토의 장면" [ref=e358]
+        - generic [ref=e359]: 팀별 토의와 역할 분담
+      - figure "점심 시간과 재정비" [ref=e360] [cursor=pointer]:
+        - img "점심 시간 장면" [ref=e361]
+        - generic [ref=e362]: 점심 시간과 재정비
+      - figure "오후 활동으로 전환" [ref=e363] [cursor=pointer]:
+        - img "오후 활동 전환" [ref=e364]
+        - generic [ref=e365]: 오후 활동으로 전환
+      - figure "오후 설계 활동 시작" [ref=e366] [cursor=pointer]:
+        - img "오후 설계 활동 시작" [ref=e367]
+        - generic [ref=e368]: 오후 설계 활동 시작
+      - figure "서비스 흐름 구체화" [ref=e369] [cursor=pointer]:
+        - img "서비스 설계 토의" [ref=e370]
+        - generic [ref=e371]: 서비스 흐름 구체화
+      - figure "AI 편지 제출과 답변 대기" [ref=e372] [cursor=pointer]:
+        - img "AI 편지 제출 장면" [ref=e373]
+        - generic [ref=e374]: AI 편지 제출과 답변 대기
+      - figure "멘토 질문과 방향 점검" [ref=e375] [cursor=pointer]:
+        - img "멘토 질문 장면" [ref=e376]
+        - generic [ref=e377]: 멘토 질문과 방향 점검
+      - figure "팀 작업과 산출물 정리" [ref=e378] [cursor=pointer]:
+        - img "팀 작업 장면" [ref=e379]
+        - generic [ref=e380]: 팀 작업과 산출물 정리
+      - figure "야간 최종 작업 시작" [ref=e381] [cursor=pointer]:
+        - img "야간 최종 작업" [ref=e382]
+        - generic [ref=e383]: 야간 최종 작업 시작
+      - figure "최종 보드 제작" [ref=e384] [cursor=pointer]:
+        - img "최종 보드 제작" [ref=e385]
+        - generic [ref=e386]: 최종 보드 제작
+      - figure "야간 체크포인트" [ref=e387] [cursor=pointer]:
+        - img "야간 체크포인트" [ref=e388]
+        - generic [ref=e389]: 야간 체크포인트
+      - figure "산출물 정리와 보관" [ref=e390] [cursor=pointer]:
+        - img "산출물 보관 장면" [ref=e391]
+        - generic [ref=e392]: 산출물 정리와 보관
+      - figure "2일차 현장" [ref=e393] [cursor=pointer]:
+        - img "2일차 시작 장면" [ref=e394]
+        - generic [ref=e395]: 2일차 현장
+      - figure "부스 순회 심사" [ref=e396] [cursor=pointer]:
+        - img "부스 순회 심사" [ref=e397]
+        - generic [ref=e398]: 부스 순회 심사
+      - figure "최종 확인과 마무리" [ref=e399] [cursor=pointer]:
+        - img "최종 확인 장면" [ref=e400]
+        - generic [ref=e401]: 최종 확인과 마무리
+  - generic [ref=e403]:
+    - generic [ref=e404]:
+      - generic [ref=e405]: Card Designs
+      - heading "행사 카드 디자인" [level=2] [ref=e406]
+      - paragraph [ref=e407]: 현장에서 사용된 카드 디자인
+    - generic [ref=e408]:
+      - generic [ref=e409]:
+        - generic [ref=e410]:
+          - img "AI 카드"
+        - generic [ref=e411]:
+          - heading "AI 카드" [level=4] [ref=e412]
+          - paragraph [ref=e413]: AI 우체국과 크레딧 시스템
+      - generic [ref=e414]:
+        - generic [ref=e415]:
+          - img "멘토 카드"
+        - generic [ref=e416]:
+          - heading "멘토 카드" [level=4] [ref=e417]
+          - paragraph [ref=e418]: 학생 멘토 질문 이용권
+      - generic [ref=e419]:
+        - generic [ref=e420]:
+          - img "만능 카드"
+        - generic [ref=e421]:
+          - heading "만능 카드" [level=4] [ref=e422]
+          - paragraph [ref=e423]: 현장 보조 카드
+  - generic [ref=e425]:
+    - generic [ref=e426]:
+      - generic [ref=e427]: Certificates
+      - heading "수료증 디자인" [level=2] [ref=e428]
+    - generic [ref=e429]:
+      - generic [ref=e430]:
+        - generic [ref=e431]:
+          - img "수료증 1"
+        - heading "수료증 디자인 1" [level=4] [ref=e433]
+      - generic [ref=e434]:
+        - generic [ref=e435]:
+          - img "수료증 2"
+        - heading "수료증 디자인 2" [level=4] [ref=e437]
+      - generic [ref=e438]:
+        - generic [ref=e439]:
+          - img "수료증 3"
+        - heading "수료증 디자인 3" [level=4] [ref=e441]
+  - generic [ref=e443]:
+    - generic [ref=e444]:
+      - generic [ref=e445]: People
+      - heading "운영진 및 멘토진" [level=2] [ref=e446]
+    - generic [ref=e447]:
+      - generic [ref=e448]:
+        - generic [ref=e449]: 총괄·사회
+        - heading "총괄·사회" [level=3] [ref=e450]
+        - paragraph [ref=e451]: 허동운, 이재환
+      - generic [ref=e452]:
+        - generic [ref=e453]: AI 우체국
+        - heading "AI 우체국" [level=3] [ref=e454]
+        - paragraph [ref=e455]: 정태양, 허동운
+      - generic [ref=e456]:
+        - generic [ref=e457]: 산출물·물품
+        - heading "산출물·물품" [level=3] [ref=e458]
+        - paragraph [ref=e459]: 정태양, 허동운
+      - generic [ref=e460]:
+        - generic [ref=e461]: 글가람실·안전
+        - heading "글가람실·안전" [level=3] [ref=e462]
+        - paragraph [ref=e463]: 방세준, 박동현
+      - generic [ref=e464]:
+        - generic [ref=e465]: 촬영·기록
+        - heading "촬영·기록" [level=3] [ref=e466]
+        - paragraph [ref=e467]: 이재환, 조하민
+      - generic [ref=e468]:
+        - generic [ref=e469]: 심사 지원
+        - heading "심사 지원" [level=3] [ref=e470]
+        - paragraph [ref=e471]: 허동운, 정태양
+      - generic [ref=e472]:
+        - generic [ref=e473]: 식음료·환경
+        - heading "식음료·환경" [level=3] [ref=e474]
+        - paragraph [ref=e475]: 허동운, 정태양
+      - generic [ref=e476]:
+        - generic [ref=e477]: 학생 멘토 평가조
+        - heading "학생 멘토 평가조" [level=3] [ref=e478]
+        - paragraph [ref=e479]: 방세준, 김민재, 권민재, 구현우
+  - generic [ref=e481]:
+    - generic [ref=e482]:
+      - generic [ref=e483]: FAQ
+      - heading "자주 묻는 질문" [level=2] [ref=e484]
+    - generic [ref=e485]:
+      - generic [ref=e486]:
+        - button "행사는 어떤 방식으로 진행되나요?" [ref=e487] [cursor=pointer]:
+          - generic [ref=e488]: 행사는 어떤 방식으로 진행되나요?
+        - paragraph [ref=e490]: Zero-Device 방식으로 개인 디지털 기기 없이 종이와 펜으로 기획을 진행합니다. AI 활용은 종이 편지를 통해 운영진이 중계하는 방식으로 이루어집니다.
+      - generic [ref=e491]:
+        - button "AI 우체국은 무엇인가요?" [ref=e492] [cursor=pointer]:
+          - generic [ref=e493]: AI 우체국은 무엇인가요?
+        - paragraph [ref=e495]: 팀이 종이에 질문을 작성하면 운영진이 스캔, 내부 서버 전달, LLM 답변 출력, 팀별 반환을 담당하는 시스템입니다.
+      - generic [ref=e496]:
+        - button "어떤 산출물을 만들어야 하나요?" [ref=e497] [cursor=pointer]:
+          - generic [ref=e498]: 어떤 산출물을 만들어야 하나요?
+        - paragraph [ref=e500]: 문제 정의 카드, 서비스 로직 설계지, 데이터 구조 설계지, AI 크레딧 기록지, 최종 아날로그 보드 총 5종입니다.
+      - generic [ref=e501]:
+        - button "심사는 어떻게 이루어지나요?" [ref=e502] [cursor=pointer]:
+          - generic [ref=e503]: 심사는 어떻게 이루어지나요?
+        - paragraph [ref=e505]: 선생님 채점위원 4명이 담당 영역별로 부스를 순회하며 발표와 꼬리질문을 평가합니다. 학생 멘토 평가조는 구성 및 협업을 관찰평가합니다.
+      - generic [ref=e506]:
+        - button "개인 기기를 사용할 수 있나요?" [ref=e507] [cursor=pointer]:
+          - generic [ref=e508]: 개인 기기를 사용할 수 있나요?
+        - paragraph [ref=e510]: Zero-Device 원칙에 따라 스마트폰, 노트북 등 개인 디지털 기기 사용이 제한됩니다. 글가람실 자료조사만 허용됩니다.
+  - contentinfo [ref=e511]:
+    - generic [ref=e512]:
+      - generic [ref=e513]: "2026 BSSM Poston : Dear AI"
+      - generic [ref=e514]:
+        - link "Google Drive 기록" [ref=e515] [cursor=pointer]:
+          - /url: https://drive.google.com/drive/folders/1_reIR3Dn1qMADM8sSQtKvnABjqma3wZf
+        - link "개인정보처리방침" [ref=e516] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e517]: 문의 허동운
+  - generic [ref=e519]:
+    - generic [ref=e520]: "• 2026 BSSM Poston : Dear AI • 1학년 64명 참가 • Zero-Device • AI Post Office • Analog Output • 2일간의 기획 여정 •"
+    - generic [ref=e521]: "• 2026 BSSM Poston : Dear AI • 1학년 64명 참가 • Zero-Device • AI Post Office • Analog Output • 2일간의 기획 여정 •"
+    - generic [ref=e522]: "• 2026 BSSM Poston : Dear AI • 1학년 64명 참가 • Zero-Device • AI Post Office • Analog Output • 2일간의 기획 여정 •"
+    - generic [ref=e523]: "• 2026 BSSM Poston : Dear AI • 1학년 64명 참가 • Zero-Device • AI Post Office • Analog Output • 2일간의 기획 여정 •"
+  - generic [ref=e525]:
+    - generic [ref=e526]: "🎉 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다"
+    - generic [ref=e527]: "🎉 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다"
+    - generic [ref=e528]: "🎉 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다"
+    - generic [ref=e529]: "🎉 2026 BSSM Poston : Dear AI 행사가 성공적으로 마무리되었습니다"
