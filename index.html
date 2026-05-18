@@ -856,10 +856,10 @@
     .lightbox-reflection {
       margin-top: 18px;
       padding: 16px;
-      border-radius: 14px;
+      border-radius: 18px;
       border: 1px solid rgba(144,247,121,0.25);
       background:
-        linear-gradient(180deg, rgba(144,247,121,0.10), rgba(144,247,121,0.035)),
+        linear-gradient(180deg, rgba(144,247,121,0.08), rgba(144,247,121,0.025)),
         rgba(255,255,255,0.03);
       color: rgba(255,255,255,0.84);
     }
@@ -874,11 +874,56 @@
       text-transform: uppercase;
     }
 
-    .lightbox-reflection p {
+    .lightbox-chat-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .lightbox-chat-bubble {
+      width: fit-content;
+      max-width: 88%;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--hairline);
+      background: rgba(255,255,255,0.06);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: chatRise 540ms var(--ease-cinematic) forwards;
+      animation-delay: calc(var(--i, 0) * 90ms);
+    }
+
+    .lightbox-chat-bubble.is-left {
+      justify-self: start;
+      border-bottom-left-radius: 6px;
+    }
+
+    .lightbox-chat-bubble.is-right {
+      justify-self: end;
+      border-color: rgba(144,247,121,0.28);
+      border-bottom-right-radius: 6px;
+      background: rgba(144,247,121,0.11);
+    }
+
+    .lightbox-chat-sender {
+      display: block;
+      margin-bottom: 4px;
+      color: rgba(255,255,255,0.52);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .lightbox-chat-bubble p {
       margin: 0;
       font-size: 14px;
       line-height: 1.65;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,0.80);
+    }
+
+    @keyframes chatRise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .lightbox-action {
@@ -2945,26 +2990,86 @@
       };
 
       const scheduleReflections = {
-        exam: '팀빌딩 고사는 단순히 점수를 내는 시간이 아니라, 처음 만날 팀의 균형을 만드는 출발점이라 운영진도 가장 조심스럽게 봤습니다.',
-        'team-review': '점수와 역할 선호도를 맞추는 과정에서 숫자만으로는 보이지 않는 팀 분위기까지 같이 상상하며 검수했습니다.',
-        preload: '본행사 전날 물품을 먼저 옮겨두며, 행사가 진짜 시작된다는 긴장감과 동시에 당일 흐름을 절대 밀리게 하면 안 된다는 부담이 있었습니다.',
-        entry: '입장과 자리 안내가 부드럽게 풀리면서 학생들이 빠르게 행사 분위기에 들어오는 것을 보고 운영진도 한숨 돌릴 수 있었습니다.',
-        orientation: '규칙 설명이 길어지면 집중이 떨어질 수 있어, 필요한 기준만 정확하게 전달하는 데 집중했습니다.',
-        tutorial: '첫 AI 편지 튜토리얼에서 학생들이 웃으면서 방식을 이해하는 모습을 보고, 아날로그 AI 우체국 콘셉트가 현장에서도 통한다는 확신이 생겼습니다.',
-        problem: '문제 정의 시간에는 팀마다 질문의 방향이 달라지는 게 보여서, 운영진 입장에서도 어떤 결과물이 나올지 가장 기대가 커졌습니다.',
-        design: '서비스 로직과 DB 설계로 넘어가면서 아이디어가 실제 구조로 바뀌는 순간들이 보였고, 학생들이 생각보다 깊게 파고드는 모습이 인상적이었습니다.',
-        letter1: '첫 정식 편지 제출 때는 스캔, 서버, 출력, 반환 흐름이 한 번에 맞아야 해서 운영팀 전체가 가장 예민하게 움직였습니다.',
-        letter2: '두 번째 제출부터는 학생들이 AI에게 더 구체적으로 묻기 시작했고, 질문을 설계하는 능력이 빠르게 올라오는 게 보였습니다.',
-        board: '저녁 보드 제작 시간에는 피곤함이 보였지만, 팀마다 끝까지 결과물을 완성하려는 집중력이 강하게 느껴졌습니다.',
-        letter3: '세 번째 편지는 발표와 최종 보드에 바로 반영되는 질문이 많아, 운영진도 답변 분류와 전달 속도를 특히 신경 썼습니다.',
-        letter4: '마지막 제출 시간에는 더 받고 싶은 마음도 있었지만, 마감 기준을 지켜야 다음 날 심사가 안정적으로 이어질 수 있었습니다.',
-        snack: '밤 늦게 간식이 들어가면서 분위기가 다시 살아났고, 운영진에게도 하루를 버티게 해준 작은 회복 시간이었습니다.',
-        dorm: '기숙사 이동 전 팀 자리에 산출물이 남겨진 모습을 보며, 첫날의 작업량이 눈에 보이는 형태로 쌓였다는 느낌이 들었습니다.',
-        'day2-entry': '둘째 날 아침에는 전날 만든 결과물이 심사 자료가 된다는 긴장감이 있었고, 팀들도 발표 모드로 빠르게 전환했습니다.',
-        'judging-brief': '심사 안내에서는 공정성과 동선이 핵심이라, 학생과 심사위원 모두 같은 기준을 이해하도록 설명하는 데 집중했습니다.',
-        judging: '부스 순회 심사는 운영진도 가장 벅찼던 시간입니다. 각 팀이 자신들의 논리를 직접 설명하는 장면에서 행사의 목적이 분명히 보였습니다.',
-        closing: '폐회식에서는 끝났다는 안도감보다, 1학년들이 기대 이상으로 잘 따라와 줬다는 고마움이 더 컸습니다.',
-        lunch2: '행사가 끝난 뒤에도 기록과 정리를 남기며, 다음 Poston은 더 나은 방식으로 만들 수 있겠다는 기준이 생겼습니다.'
+        exam: [
+          { side: 'left', sender: '기획팀', text: '팀을 나누는 게 생각보다 제일 부담됐습니다. 점수만 보면 편한데, 실제로는 팀 분위기까지 생각하게 됐습니다.' },
+          { side: 'right', sender: '운영팀', text: '그래도 이 과정이 있어야 본행사 때 팀별 격차가 덜 날 것 같아서 끝까지 조심스럽게 봤습니다.' }
+        ],
+        'team-review': [
+          { side: 'left', sender: '운영팀', text: '명단을 다시 볼수록 한 명 이동이 팀 전체 분위기를 바꿀 수 있어서 꽤 오래 붙잡고 있었습니다.' },
+          { side: 'right', sender: '교사 협의', text: '숫자로 안 보이는 부분은 선생님 의견을 같이 보면서 최종 팀을 맞췄습니다.' }
+        ],
+        preload: [
+          { side: 'left', sender: '물품팀', text: '전날부터 칠판이랑 배송 물품 옮기면서 이미 행사가 시작된 느낌이었습니다.' },
+          { side: 'right', sender: '운영팀', text: '솔직히 이때 빠뜨리면 당일 아침에 바로 터질 것 같아서 하나씩 계속 확인했습니다.' }
+        ],
+        entry: [
+          { side: 'left', sender: '현장팀', text: '학생들이 들어오는데 생각보다 분위기가 빨리 잡혀서 조금 안심했습니다.' },
+          { side: 'right', sender: '진행팀', text: '첫 20분이 꼬이면 하루가 밀릴 수 있어서 자리 안내와 팀 확인을 제일 먼저 안정시켰습니다.' }
+        ],
+        orientation: [
+          { side: 'left', sender: '진행팀', text: '설명할 건 많은데 길게 말하면 바로 집중이 떨어질 것 같아서 필요한 것만 꾹 눌러 담았습니다.' },
+          { side: 'right', sender: '기획팀', text: '개인기기 없이 진행한다는 점을 학생들이 받아들일지가 걱정이었는데, 생각보다 잘 따라와 줬습니다.' }
+        ],
+        tutorial: [
+          { side: 'left', sender: 'AI 우체국', text: '첫 편지 튜토리얼은 사실 우리도 긴장했습니다. 스캔하고 답변 뽑고 돌려주는 흐름이 진짜 돌아가야 했습니다.' },
+          { side: 'right', sender: '현장팀', text: '학생들이 웃으면서 방식에 적응하는 걸 보고, 이 콘셉트는 현장에서 먹히겠다고 느꼈습니다.' }
+        ],
+        problem: [
+          { side: 'left', sender: '운영팀', text: '문제 정의 시간부터 팀마다 방향이 완전히 달라져서 보는 재미가 있었습니다.' },
+          { side: 'right', sender: '기획팀', text: '반대로 여기서 흐려지면 뒤가 전부 흔들려서, 산출물 확인 때 문제와 사용자가 분명한지 계속 봤습니다.' }
+        ],
+        design: [
+          { side: 'left', sender: '멘토팀', text: '아이디어가 서비스 로직과 DB 설계로 바뀌는 순간부터 학생들이 진짜 기획을 하고 있다는 느낌이 났습니다.' },
+          { side: 'right', sender: '운영팀', text: '어려워하는 팀도 있었지만, 종이에 구조를 그리면서 스스로 정리해 가는 모습이 인상적이었습니다.' }
+        ],
+        letter1: [
+          { side: 'left', sender: 'AI 우체국', text: '첫 정식 제출 때는 운영진이 제일 예민했습니다. 스캔, 서버, 출력 중 하나만 밀려도 바로 티가 나는 구조였습니다.' },
+          { side: 'right', sender: '운영팀', text: '그래도 첫 흐름이 잡히고 나니까 이후 차수 운영 기준이 생겼습니다.' }
+        ],
+        letter2: [
+          { side: 'left', sender: 'AI 우체국', text: '두 번째부터는 질문이 확실히 구체적으로 바뀌었습니다. 그냥 물어보는 게 아니라 필요한 답을 얻으려는 느낌이었습니다.' },
+          { side: 'right', sender: '멘토팀', text: '질문을 잘 쓰는 팀과 대충 쓰는 팀의 차이가 바로 보여서, AI 활용도 결국 역량이라는 생각이 들었습니다.' }
+        ],
+        board: [
+          { side: 'left', sender: '현장팀', text: '저녁부터는 다들 피곤한 게 보였는데, 보드는 오히려 이때부터 제일 빠르게 채워졌습니다.' },
+          { side: 'right', sender: '운영팀', text: '운영진도 지쳤지만 팀들이 끝까지 붙잡고 만드는 걸 보니까 쉽게 쉬자는 말을 못 하겠더라고요.' }
+        ],
+        letter3: [
+          { side: 'left', sender: 'AI 우체국', text: '세 번째 편지는 발표와 보드에 바로 들어가는 질문이 많아서 답변 전달 속도가 중요했습니다.' },
+          { side: 'right', sender: '운영팀', text: '이때부터는 학생들도 크레딧을 막 쓰기보다 어디에 쓸지 계산하면서 내는 게 보였습니다.' }
+        ],
+        letter4: [
+          { side: 'left', sender: 'AI 우체국', text: '마지막 제출은 더 받고 싶어도 끊어야 했습니다. 여기서 흐려지면 다음 날 심사가 바로 흔들립니다.' },
+          { side: 'right', sender: '진행팀', text: '마감 기준을 지키는 게 미안하기도 했지만, 전체 운영을 위해서는 꼭 필요한 선이었습니다.' }
+        ],
+        snack: [
+          { side: 'left', sender: '식음료팀', text: '밤에 싸이버거 들어오니까 체육관 공기가 조금 풀렸습니다. 다들 그때 표정이 확 살아났습니다.' },
+          { side: 'right', sender: '운영팀', text: '운영진도 솔직히 이 시간이 꽤 필요했습니다. 하루 버틴 사람들끼리 잠깐 숨 돌리는 느낌이었습니다.' }
+        ],
+        dorm: [
+          { side: 'left', sender: '현장팀', text: '학생들이 나가고 난 뒤 팀 자리에 보드랑 산출물이 남아 있는 걸 보니까 첫날이 진짜 끝났다는 느낌이 났습니다.' },
+          { side: 'right', sender: '운영팀', text: '다음 날 심사까지 이어져야 해서 정리하면서도 혹시 빠진 자료가 없는지 계속 봤습니다.' }
+        ],
+        'day2-entry': [
+          { side: 'left', sender: '운영팀', text: '둘째 날 아침은 전날보다 조용했는데, 팀들이 바로 발표 모드로 들어가는 게 느껴졌습니다.' },
+          { side: 'right', sender: '현장팀', text: '전날 만든 것들이 이제 평가 자료가 된다는 긴장감이 학생들한테도 운영진한테도 있었습니다.' }
+        ],
+        'judging-brief': [
+          { side: 'left', sender: '진행팀', text: '심사 안내는 짧게 끝내고 싶었지만, 공정성 기준은 대충 넘길 수 없었습니다.' },
+          { side: 'right', sender: '운영팀', text: '선생님별 평가 영역이 달라서 팀들이 어디에 맞춰 설명해야 하는지 분명히 잡아주는 게 중요했습니다.' }
+        ],
+        judging: [
+          { side: 'left', sender: '운영팀', text: '부스 순회 심사는 진짜 벅찼습니다. 팀들이 자기 논리를 직접 설명하는 장면에서 행사의 목적이 보였습니다.' },
+          { side: 'right', sender: '멘토팀', text: '솔직히 예상보다 훨씬 잘했습니다. 1학년이 이 정도로 정리해서 말할 수 있다는 게 놀라웠습니다.' }
+        ],
+        closing: [
+          { side: 'left', sender: '총괄팀', text: '끝났다는 안도감보다 고마움이 먼저 왔습니다. 학생들도 운영진도 끝까지 버텨줬습니다.' },
+          { side: 'right', sender: '운영팀', text: '준비하면서 힘든 순간도 많았는데, 마지막에는 이 행사를 하길 잘했다는 생각이 확실히 들었습니다.' }
+        ],
+        lunch2: [
+          { side: 'left', sender: '운영팀', text: '행사가 끝나고 나니 바로 다음에는 뭘 더 잘할 수 있을지가 보였습니다.' },
+          { side: 'right', sender: '기록팀', text: '사진, 산출물, 평가 기록을 남기면서 이번 경험이 그냥 하루 행사로 끝나지 않게 정리했습니다.' }
+        ]
       };
 
       const planningImages = {
@@ -3142,16 +3247,32 @@
           p.textContent = text;
           lbBody.appendChild(p);
         });
-        if (safeDetail.reflection) {
+        if (safeDetail.reflections || safeDetail.reflection) {
+          const messages = Array.isArray(safeDetail.reflections)
+            ? safeDetail.reflections
+            : [{ side: 'left', sender: '운영진', text: safeDetail.reflection }];
           const note = document.createElement('div');
           note.className = 'lightbox-reflection';
           const label = document.createElement('span');
           label.className = 'lightbox-reflection-label';
-          label.textContent = '운영진 소감';
-          const text = document.createElement('p');
-          text.textContent = safeDetail.reflection;
+          label.textContent = '운영진 채팅 로그';
+          const list = document.createElement('div');
+          list.className = 'lightbox-chat-list';
+          messages.forEach(function(message, index) {
+            const bubble = document.createElement('div');
+            bubble.className = `lightbox-chat-bubble is-${message.side === 'right' ? 'right' : 'left'}`;
+            bubble.style.setProperty('--i', String(index));
+            const sender = document.createElement('span');
+            sender.className = 'lightbox-chat-sender';
+            sender.textContent = message.sender || '운영진';
+            const text = document.createElement('p');
+            text.textContent = message.text || String(message);
+            bubble.appendChild(sender);
+            bubble.appendChild(text);
+            list.appendChild(bubble);
+          });
           note.appendChild(label);
-          note.appendChild(text);
+          note.appendChild(list);
           lbBody.appendChild(note);
         }
         if (safeDetail.actionHref) {
@@ -3222,7 +3343,7 @@
         const title = titleCell ? titleCell.textContent.trim() : '행사 일정';
         const time = timeCell ? timeCell.textContent.trim() : '';
         const detail = Object.assign({}, scheduleStories[key] || createDefaultDetail(title, `${time} 일정 상세입니다.`));
-        if (scheduleReflections[key]) detail.reflection = scheduleReflections[key];
+        if (scheduleReflections[key]) detail.reflections = scheduleReflections[key];
         const media = scheduleImages[key] || { src: 'images/24_final-review.jpg', alt: '행사 일정 상세 이미지' };
         openInfoLightbox(detail, media.src, media.alt);
       }
