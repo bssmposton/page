@@ -1211,7 +1211,27 @@
       color: var(--muted);
     }
 
-    .footer-links a:hover { color: var(--text); }
+    .footer-links a,
+    .footer-link-button {
+      color: inherit;
+      font: inherit;
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover,
+    .footer-link-button:hover {
+      color: var(--text);
+    }
+
+    .footer-link-button:focus-visible {
+      outline: 2px solid rgba(144, 247, 121, 0.88);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
 
     .footer-contact {
       font-size: 14px;
@@ -2382,7 +2402,7 @@
       <div class="footer-brand">2026 BSSM Poston : Dear AI</div>
       <div class="footer-links">
         <a href="https://drive.google.com/drive/folders/1_reIR3Dn1qMADM8sSQtKvnABjqma3wZf" target="_blank" rel="noreferrer">Google Drive 기록</a>
-        <a href="#privacy-policy" id="privacy-policy-link">개인정보처리방침</a>
+        <button type="button" class="footer-link-button" id="privacy-policy-link">개인정보처리방침</button>
       </div>
       <div class="footer-contact">문의 허동운</div>
     </div>
