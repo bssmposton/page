@@ -579,6 +579,116 @@
       color: var(--text);
     }
 
+    .process-dialogue {
+      margin-top: 32px;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(144,247,121,0.08), transparent 30%),
+        rgba(255,255,255,0.035);
+      overflow: hidden;
+    }
+
+    .process-dialogue-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .process-dialogue-head h3 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.4px;
+    }
+
+    .process-dialogue-head p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .process-chat-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .process-chat-step {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 18px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .process-chat-step:last-child {
+      border-bottom: 0;
+    }
+
+    .process-chat-stage {
+      color: rgba(255,255,255,0.66);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .process-chat-stage strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.35;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .process-chat-thread {
+      display: grid;
+      gap: 10px;
+    }
+
+    .process-chat-bubble {
+      width: fit-content;
+      max-width: min(680px, 88%);
+      padding: 12px 14px;
+      border: 1px solid var(--hairline);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.055);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.18);
+    }
+
+    .process-chat-bubble.is-left {
+      justify-self: start;
+      border-bottom-left-radius: 6px;
+    }
+
+    .process-chat-bubble.is-right {
+      justify-self: end;
+      border-color: rgba(144,247,121,0.28);
+      border-bottom-right-radius: 6px;
+      background: rgba(144,247,121,0.10);
+    }
+
+    .process-chat-sender {
+      display: block;
+      margin-bottom: 5px;
+      color: rgba(255,255,255,0.52);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .process-chat-bubble p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
     /* =========================================================
        FLOW STEPS
        ========================================================= */
@@ -1074,86 +1184,6 @@
     }
 
     /* =========================================================
-       FAQ
-       ========================================================= */
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--hairline);
-    }
-
-    .faq-q {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 0;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 17px;
-      font-weight: 700;
-      text-align: left;
-      cursor: pointer;
-      letter-spacing: -0.25px;
-      line-height: 1.5;
-    }
-
-    .faq-q:hover { color: var(--text); }
-
-    .faq-icon {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      flex-shrink: 0;
-      margin-left: 16px;
-    }
-
-    .faq-icon::before,
-    .faq-icon::after {
-      content: '';
-      position: absolute;
-      background: var(--text);
-      transition: transform 300ms ease;
-    }
-
-    .faq-icon::before {
-      top: 50%; left: 0; right: 0;
-      height: 2px;
-      transform: translateY(-50%);
-    }
-
-    .faq-icon::after {
-      left: 50%; top: 0; bottom: 0;
-      width: 2px;
-      transform: translateX(-50%);
-    }
-
-    .faq-item.is-open .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
-
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 400ms ease, padding 400ms ease;
-    }
-
-    .faq-item.is-open .faq-a {
-      max-height: 500px;
-      padding-bottom: 22px;
-    }
-
-    .faq-a p {
-      margin: 0;
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* =========================================================
        FOOTER
        ========================================================= */
     .site-footer {
@@ -1512,6 +1542,8 @@
       .team-grid { grid-template-columns: repeat(2, 1fr); }
       .planning-grid { grid-template-columns: repeat(2, 1fr); }
       .design-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-dialogue-head { flex-direction: column; align-items: flex-start; }
+      .process-chat-step { grid-template-columns: 1fr; }
       .section-head-flex { flex-direction: column; align-items: flex-start; }
       .lightbox {
         padding: 76px 20px 28px;
@@ -1566,6 +1598,13 @@
       .team-grid { grid-template-columns: 1fr; }
       .planning-grid { grid-template-columns: 1fr; }
       .design-grid { grid-template-columns: 1fr; }
+      .process-dialogue-head,
+      .process-chat-step {
+        padding: 18px;
+      }
+      .process-chat-bubble {
+        max-width: 94%;
+      }
 
       .lightbox-nav { display: none; }
       .lightbox {
@@ -1882,6 +1921,80 @@
             <tr data-schedule-key="lunch2" tabindex="0"><td>Day 2 오전</td><td>12:30~13:20</td><td><strong>중식</strong></td></tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="process-dialogue reveal" aria-label="운영진과 참가자 반응">
+        <div class="process-dialogue-head">
+          <h3>현장에서 오간 말들</h3>
+          <p>운영진이 실제 진행 중 느꼈던 부담과 참가자 설문 응답의 취지를 공개용 문장으로 발췌·요약했습니다.</p>
+        </div>
+        <div class="process-chat-list">
+          <div class="process-chat-step reveal">
+            <div class="process-chat-stage">Day 1 Morning<strong>입장과 오리엔테이션</strong></div>
+            <div class="process-chat-thread">
+              <div class="process-chat-bubble is-left">
+                <span class="process-chat-sender">운영진</span>
+                <p>첫 20분이 꼬이면 하루가 밀릴 수 있어서 자리 안내와 팀 공개부터 최대한 단순하게 잡았습니다.</p>
+              </div>
+              <div class="process-chat-bubble is-right">
+                <span class="process-chat-sender">참가자 설문 발췌</span>
+                <p>처음에는 방식이 낯설었지만, 오리엔테이션 뒤에는 무엇을 해야 하는지 흐름이 잡혔다는 반응이 있었습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="process-chat-step reveal">
+            <div class="process-chat-stage">AI Letter<strong>AI 우체국과 편지</strong></div>
+            <div class="process-chat-thread">
+              <div class="process-chat-bubble is-left">
+                <span class="process-chat-sender">AI 우체국</span>
+                <p>스캔, 서버, 출력 중 하나만 밀려도 바로 티가 나서 첫 정식 제출 때는 운영진이 제일 예민했습니다.</p>
+              </div>
+              <div class="process-chat-bubble is-right">
+                <span class="process-chat-sender">참가자 설문 발췌</span>
+                <p>AI를 그냥 쓰는 것보다 질문을 종이에 정리해서 보내니, 팀 안에서 먼저 생각을 맞추게 됐다는 의견이 있었습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="process-chat-step reveal">
+            <div class="process-chat-stage">Team Work<strong>문제 정의와 설계</strong></div>
+            <div class="process-chat-thread">
+              <div class="process-chat-bubble is-left">
+                <span class="process-chat-sender">멘토팀</span>
+                <p>아이디어가 서비스 로직과 DB 설계로 바뀌는 순간부터 학생들이 진짜 기획을 하고 있다는 느낌이 났습니다.</p>
+              </div>
+              <div class="process-chat-bubble is-right">
+                <span class="process-chat-sender">참가자 설문 발췌</span>
+                <p>개인기기 없이 하니 팀원끼리 말로 맞춰야 해서 어렵지만, 오히려 협업이 더 잘 보였다는 반응이 나왔습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="process-chat-step reveal">
+            <div class="process-chat-stage">Final Board<strong>야간 최종 보드</strong></div>
+            <div class="process-chat-thread">
+              <div class="process-chat-bubble is-left">
+                <span class="process-chat-sender">운영진</span>
+                <p>운영진도 지쳤지만 팀들이 끝까지 붙잡고 만드는 걸 보니까 쉽게 쉬자는 말을 못 하겠더라고요.</p>
+              </div>
+              <div class="process-chat-bubble is-right">
+                <span class="process-chat-sender">참가자 설문 발췌</span>
+                <p>최종 보드를 만들면서 흩어져 있던 생각이 한 장으로 정리됐다는 의견이 반복적으로 나왔습니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="process-chat-step reveal">
+            <div class="process-chat-stage">Judging<strong>부스 순회 심사</strong></div>
+            <div class="process-chat-thread">
+              <div class="process-chat-bubble is-left">
+                <span class="process-chat-sender">운영진</span>
+                <p>부스 순회 심사는 진짜 벅찼습니다. 팀들이 자기 논리를 직접 설명하는 장면에서 행사의 목적이 보였습니다.</p>
+              </div>
+              <div class="process-chat-bubble is-right">
+                <span class="process-chat-sender">참가자 설문 발췌</span>
+                <p>발표가 긴장됐지만, 팀이 만든 결과물을 직접 설명해 보면서 뿌듯했다는 반응이 있었습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2233,9 +2346,9 @@
         </a>
         <a class="team-card organizer-card reveal" href="https://github.com/justhumannn" target="_blank" rel="noreferrer">
           <img class="organizer-avatar" src="images/team-justhumannn.png" alt="여철준 프로필 이미지" loading="lazy">
-          <div class="team-role">리허설·운영 지원</div>
+          <div class="team-role">사전 준비·리허설</div>
           <h3>여철준</h3>
-          <p class="team-names">사전 리허설과 현장 운영을 지원했습니다.</p>
+          <p class="team-names">행사 전 준비와 100분 사전 리허설을 지원했습니다.</p>
           <div class="organizer-link">github.com/justhumannn</div>
         </a>
         <a class="team-card organizer-card reveal" href="https://github.com/fixgramwork" target="_blank" rel="noreferrer">
@@ -2263,71 +2376,13 @@
     </div>
   </section>
 
-  <!-- ===================== FAQ ===================== -->
-  <section id="faq">
-    <div class="container">
-      <div class="section-head" style="text-align:center;margin-bottom:48px;">
-        <div class="section-kicker reveal">FAQ</div>
-        <h2 class="section-title reveal">자주 묻는 질문</h2>
-      </div>
-
-      <div class="faq-list">
-        <div class="faq-item reveal">
-          <button class="faq-q">
-            <span>행사는 어떤 방식으로 진행되나요?</span>
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            <p>Zero-Device 방식으로 개인 디지털 기기 없이 종이와 펜으로 기획을 진행합니다. AI 활용은 종이 편지를 통해 운영진이 중계하는 방식으로 이루어집니다.</p>
-          </div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q">
-            <span>AI 우체국은 무엇인가요?</span>
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            <p>팀이 종이에 질문을 작성하면 운영진이 스캔, 내부 서버 전달, LLM 답변 출력, 팀별 반환을 담당하는 시스템입니다.</p>
-          </div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q">
-            <span>어떤 산출물을 만들어야 하나요?</span>
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            <p>문제 정의 카드, 서비스 로직 설계지, 데이터 구조 설계지, AI 크레딧 기록지, 최종 아날로그 보드 총 5종입니다.</p>
-          </div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q">
-            <span>심사는 어떻게 이루어지나요?</span>
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            <p>선생님 채점위원 4명이 담당 영역별로 부스를 순회하며 발표와 꼬리질문을 평가합니다. 학생 멘토 평가조는 구성 및 협업을 관찰평가합니다.</p>
-          </div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-q">
-            <span>개인 기기를 사용할 수 있나요?</span>
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            <p>Zero-Device 원칙에 따라 스마트폰, 노트북 등 개인 디지털 기기 사용이 제한됩니다. 글가람실 자료조사만 허용됩니다.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">2026 BSSM Poston : Dear AI</div>
       <div class="footer-links">
         <a href="https://drive.google.com/drive/folders/1_reIR3Dn1qMADM8sSQtKvnABjqma3wZf" target="_blank" rel="noreferrer">Google Drive 기록</a>
-        <a href="#">개인정보처리방침</a>
+        <a href="#privacy-policy" id="privacy-policy-link">개인정보처리방침</a>
       </div>
       <div class="footer-contact">문의 허동운</div>
     </div>
@@ -2441,17 +2496,6 @@
       } else {
         revealEls.forEach(function(el) { el.classList.add('is-visible'); });
       }
-
-      /* ---------- FAQ accordion ---------- */
-      document.querySelectorAll('.faq-item').forEach(function(item) {
-        const btn = item.querySelector('.faq-q');
-        btn.addEventListener('click', function() {
-          const isOpen = item.classList.contains('is-open');
-          // close all
-          document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('is-open'); });
-          if (!isOpen) item.classList.add('is-open');
-        });
-      });
 
       /* ---------- Lightbox (all images) ---------- */
       const galleryItems = document.querySelectorAll('.gallery-item');
@@ -3186,11 +3230,11 @@
         },
         '여철준': {
           kicker: 'Rehearsal Support',
-          title: '여철준 / 리허설·운영 지원',
-          meta: ['사전 리허설', '현장 점검', '운영 보조'],
+          title: '여철준 / 사전 준비·리허설',
+          meta: ['사전 준비', '100분 리허설', '운영 흐름 점검'],
           body: [
-            '사전 리허설과 현장 운영 지원을 맡았습니다.',
-            '행사 전 10~11교시 리허설에서 AI 우체국, 출력, 크레딧, 산출물 흐름을 압축 점검하고 본행사에서 문제가 생기지 않도록 운영을 보조했습니다.'
+            '본행사 현장 운영이 아니라 행사 전 준비와 사전 리허설을 지원했습니다.',
+            '행사 전 10~11교시 리허설에서 AI 우체국, 출력, 크레딧, 산출물 흐름을 압축 점검하며 실제 행사 전에 위험 지점을 확인하는 역할을 맡았습니다.'
           ]
         },
         '김민재': {
@@ -3220,6 +3264,17 @@
             '팀별로 서비스 방향, 발표 구조, 데이터 설계의 근거를 다시 생각하게 하는 질문을 던지고, 심사 당일에는 팀의 구성과 협업 과정을 평가했습니다.'
           ]
         }
+      };
+
+      const privacyStory = {
+        kicker: 'Privacy Policy',
+        title: '개인정보처리방침',
+        meta: ['행사 기록', '비상업적 공개', '요청 시 조치'],
+        body: [
+          '이 페이지는 2026 BSSM Poston : Dear AI 행사를 소개하기 위해 제작된 비상업적 기록 페이지입니다.',
+          '행사 사진, 운영진 정보, GitHub 프로필 링크, 산출물 및 운영 기록 일부가 행사 소개와 아카이브 목적으로 사용됩니다.',
+          '사진 또는 이름 노출에 대한 수정·삭제 요청이 있으면 운영진에게 문의해 주세요. 확인 후 필요한 조치를 진행합니다.'
+        ]
       };
 
       function createDefaultDetail(title, bodyText) {
@@ -3381,6 +3436,14 @@
       document.querySelectorAll('.data-table tbody tr[data-schedule-key]').forEach(function(row) {
         bindKeyboardDetail(row, openScheduleLightbox);
       });
+
+      const privacyPolicyLink = document.getElementById('privacy-policy-link');
+      if (privacyPolicyLink) {
+        privacyPolicyLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          openInfoLightbox(privacyStory, 'images/24_final-review.jpg', '개인정보처리방침 안내');
+        });
+      }
 
       // Event delegation: any image click opens lightbox
       document.addEventListener('click', function(e) {
