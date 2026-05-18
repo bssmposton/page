@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>2026 BSSM Poston : Dear AI</title>
   <meta name="description" content="2026 BSSM Poston : Dear AI 행사 소개 페이지">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141516'/%3E%3Cpath d='M12 22h40v24H12z' fill='%23fff'/%3E%3Cpath d='M12 22l20 16 20-16' fill='none' stroke='%23141516' stroke-width='4' stroke-linejoin='round'/%3E%3Ccircle cx='49' cy='17' r='6' fill='%2390f779'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css">
   <style>
     /* =========================================================
@@ -195,14 +196,16 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('media/03_workshop.jpg') center/cover no-repeat;
+      background: url('images/24_final-review.jpg') center 42%/cover no-repeat;
     }
 
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.95) 100%);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.70) 54%, rgba(0,0,0,0.94) 100%),
+        radial-gradient(circle at 50% 42%, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 72%);
     }
 
     .hero-content {
@@ -454,6 +457,29 @@
 
     .data-table tbody tr:last-child td { border-bottom: none; }
     .data-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+    .data-table tbody tr[data-schedule-key] {
+      cursor: pointer;
+      transition: background 220ms ease, transform 220ms ease;
+    }
+    .data-table tbody tr[data-schedule-key]:hover {
+      transform: translateX(4px);
+    }
+    .data-table tbody tr[data-schedule-key] td:last-child::after {
+      content: '자세히';
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      margin-left: 10px;
+      padding: 0 9px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      color: #90f779;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      vertical-align: middle;
+      background: rgba(144,247,121,0.07);
+    }
 
     .data-table tbody td strong {
       font-weight: 700;
@@ -526,7 +552,11 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 18px;
+    }
+
+    .gallery-container {
+      max-width: min(1760px, calc(100vw - 28px));
     }
 
     .gallery-item {
@@ -571,6 +601,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 60px 28px 28px;
       opacity: 0;
       visibility: hidden;
       transition: opacity 300ms ease, visibility 300ms ease;
@@ -581,32 +612,126 @@
       visibility: visible;
     }
 
+    .lightbox-content {
+      width: min(1760px, calc(100vw - 56px));
+      max-height: 88vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.85fr) minmax(320px, 0.55fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .lightbox-media {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      border: 1px solid var(--hairline);
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
     .lightbox-img {
-      max-width: 90vw;
-      max-height: 80vh;
+      width: 100%;
+      height: 100%;
+      max-height: none;
       object-fit: contain;
-      border-radius: 8px;
       transform: scale(0.96);
       transition: transform 300ms ease;
     }
 
     .lightbox.is-open .lightbox-img { transform: scale(1); }
 
-    .lightbox-caption {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--muted);
+    .lightbox-story {
+      border-radius: 18px;
+      border: 1px solid var(--hairline);
+      background: rgba(20,21,22,0.96);
+      padding: 28px;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.34);
+    }
+
+    .lightbox-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: #90f779;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .lightbox-title {
+      margin: 0 0 14px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.18;
+      letter-spacing: -0.7px;
+    }
+
+    .lightbox-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .lightbox-meta span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+      font-weight: 800;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .lightbox-body {
+      display: grid;
+      gap: 12px;
+      color: rgba(255,255,255,0.74);
       font-size: 15px;
-      text-align: center;
-      max-width: 80vw;
+      line-height: 1.72;
+    }
+
+    .lightbox-body p {
+      margin: 0;
+    }
+
+    .lightbox-action {
+      display: none;
+      width: fit-content;
+      margin-top: 22px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline-strong);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 900;
+      background: rgba(255,255,255,0.06);
+      transition: border-color 200ms ease, background 200ms ease;
+    }
+
+    .lightbox-action.is-visible {
+      display: inline-flex;
+    }
+
+    .lightbox-action:hover {
+      border-color: rgba(144,247,121,0.62);
+      background: rgba(144,247,121,0.1);
     }
 
     .lightbox-close {
       position: absolute;
       top: 20px;
       right: 24px;
+      z-index: 2;
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -625,6 +750,7 @@
     .lightbox-nav {
       position: absolute;
       top: 50%;
+      z-index: 2;
       transform: translateY(-50%);
       width: 48px;
       height: 48px;
@@ -660,9 +786,30 @@
       transition: border-color 300ms ease, transform 300ms ease;
     }
 
+    .organizer-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 16px;
+      color: inherit;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
     .team-card:hover {
       border-color: var(--hairline-strong);
       transform: translateY(-4px);
+    }
+
+    .organizer-avatar {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--hairline);
+      background: rgba(255,255,255,0.04);
+      margin-bottom: 16px;
     }
 
     .team-role {
@@ -684,6 +831,20 @@
       font-size: 14px;
       color: var(--muted);
       line-height: 1.5;
+      margin: 0;
+    }
+
+    .organizer-link {
+      margin-top: auto;
+      padding-top: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      word-break: break-all;
+    }
+
+    .organizer-card:hover .organizer-link {
+      color: var(--text);
     }
 
     /* =========================================================
@@ -899,6 +1060,7 @@
       border: 1px solid var(--hairline);
       border-radius: var(--radius-card);
       padding: 24px;
+      position: relative;
       transition: border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
     }
 
@@ -906,6 +1068,34 @@
       border-color: var(--hairline-strong);
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+
+    .planning-card[data-planning-key] {
+      cursor: pointer;
+      padding-bottom: 54px;
+    }
+
+    .planning-card[data-planning-key]::after {
+      content: '자세히 보기';
+      position: absolute;
+      left: 24px;
+      bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      color: #90f779;
+      background: rgba(144,247,121,0.07);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .planning-card[data-planning-key]:focus-visible,
+    .data-table tbody tr[data-schedule-key]:focus-visible {
+      outline: 2px solid #90f779;
+      outline-offset: 4px;
     }
 
     .planning-num {
@@ -1049,6 +1239,20 @@
       .planning-grid { grid-template-columns: repeat(2, 1fr); }
       .design-grid { grid-template-columns: repeat(2, 1fr); }
       .section-head-flex { flex-direction: column; align-items: flex-start; }
+      .lightbox {
+        padding: 76px 20px 28px;
+      }
+      .lightbox-content {
+        grid-template-columns: 1fr;
+        max-height: 84vh;
+        overflow-y: auto;
+      }
+      .lightbox-media {
+        min-height: 0;
+      }
+      .lightbox-story {
+        max-height: none;
+      }
     }
 
     @media (max-width: 640px) {
@@ -1090,7 +1294,20 @@
       .design-grid { grid-template-columns: 1fr; }
 
       .lightbox-nav { display: none; }
-      .lightbox-img { max-width: 94vw; max-height: 70vh; }
+      .lightbox {
+        padding: 72px 12px 22px;
+      }
+      .lightbox-content {
+        width: 100%;
+        gap: 12px;
+      }
+      .lightbox-media {
+        min-height: 0;
+      }
+      .lightbox-img { max-height: none; }
+      .lightbox-story {
+        padding: 20px;
+      }
     }
 
     /* =========================================================
@@ -1145,7 +1362,7 @@
   <!-- ===================== EVENT INFO ===================== -->
   <section id="event-info" style="position:relative;overflow:hidden;">
     <div class="deco-svg" style="top:-40px;right:-40px;width:280px;height:280px;">
-      <img src="assets/Group%2048.svg" alt="" aria-hidden="true" loading="lazy">
+      <img src="images/group-48.svg" alt="" aria-hidden="true" loading="lazy">
     </div>
     <div class="container">
       <div class="section-head reveal">
@@ -1222,7 +1439,7 @@
         <h2 class="section-title">포스터 &amp; 배너</h2>
       </div>
       <div class="poster-banner reveal">
-        <img src="assets/Flex%20Banner.svg" alt="Flex Banner" loading="lazy">
+        <img src="images/flex-banner.svg" alt="Flex Banner" loading="lazy">
       </div>
     </div>
   </section>
@@ -1263,7 +1480,7 @@
   <!-- ===================== PLANNING PROCESS ===================== -->
   <section id="planning" style="position:relative;overflow:hidden;">
     <div class="deco-svg" style="top:-20px;left:-20px;width:260px;height:260px;">
-      <img src="assets/Group%2046.svg" alt="" aria-hidden="true" loading="lazy">
+      <img src="images/group-46.svg" alt="" aria-hidden="true" loading="lazy">
     </div>
     <div class="container">
       <div class="section-head reveal">
@@ -1273,67 +1490,67 @@
       </div>
 
       <div class="planning-grid stagger-children">
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="overview" role="button" tabindex="0">
           <div class="planning-num planning-num-warm">1</div>
           <h4>전체 행사 개요</h4>
           <p>행사 목적, 핵심 운영 원칙, 팀빌딩 방식</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="operation" role="button" tabindex="0">
           <div class="planning-num planning-num-warm">2</div>
           <h4>운영진 담당 업무</h4>
           <p>운영 조직, AI 우체국, 산출물 관리</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="scenario" role="button" tabindex="0">
           <div class="planning-num planning-num-warm">3</div>
           <h4>세부 진행 시나리오</h4>
           <p>사전 일정, 1일차·2일차 진행 흐름</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="outputs" role="button" tabindex="0">
           <div class="planning-num planning-num-warm">4</div>
           <h4>산출물 형태</h4>
           <p>문제 정의 카드, 서비스 로직 설계지, 데이터 구조 설계지, AI 크레딧 기록지</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="rubric" role="button" tabindex="0">
           <div class="planning-num planning-num-warm">5</div>
           <h4>채점기준</h4>
           <p>평가 영역, 배점, 5점 척도</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="awards" role="button" tabindex="0">
           <div class="planning-num planning-num-cool">6</div>
           <h4>시상 계획</h4>
           <p>수상 기준, 동점자 처리</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="team-building" role="button" tabindex="0">
           <div class="planning-num planning-num-cool">7</div>
           <h4>팀빌딩 고사</h4>
           <p>사전 고사 문항, 정답, 배점</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="student-guide" role="button" tabindex="0">
           <div class="planning-num planning-num-cool">8</div>
           <h4>1학년 행사 가이드</h4>
           <p>참가자 목표, 규칙, 활동 순서</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="promotion" role="button" tabindex="0">
           <div class="planning-num planning-num-cool">9</div>
           <h4>홍보 계획</h4>
           <p>다큐형 롱폼, 숏폼 컷다운</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="rehearsal" role="button" tabindex="0">
           <div class="planning-num planning-num-hot">10</div>
           <h4>시범운영 계획</h4>
           <p>100분 리허설 절차</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="mentor-guide" role="button" tabindex="0">
           <div class="planning-num planning-num-hot">11</div>
           <h4>학생 멘토 가이드</h4>
           <p>질문 응답 범위, 멘토링 운영</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="summary" role="button" tabindex="0">
           <div class="planning-num planning-num-hot">12</div>
           <h4>요약본</h4>
           <p>행사 기본 정보 전체 요약</p>
         </div>
-        <div class="planning-card reveal">
+        <div class="planning-card reveal" data-planning-key="survey" role="button" tabindex="0">
           <div class="planning-num planning-num-hot">13</div>
           <h4>설문조사</h4>
           <p>종료 피드백 설문</p>
@@ -1348,7 +1565,7 @@
   <!-- ===================== ABOUT 2 - 상세 일정 ===================== -->
   <section id="schedule" style="position:relative;overflow:hidden;">
     <div class="deco-svg" style="bottom:-30px;left:-30px;width:240px;height:240px;">
-      <img src="assets/Group%2047.svg" alt="" aria-hidden="true" loading="lazy">
+      <img src="images/group-47.svg" alt="" aria-hidden="true" loading="lazy">
     </div>
     <div class="container">
       <div class="section-head reveal">
@@ -1366,26 +1583,26 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Day 0</td><td>7교시</td><td><strong>팀빌딩 고사</strong></td></tr>
-            <tr><td>Day 0</td><td>8~11교시</td><td><strong>운영진·교사 팀 편성 검수</strong></td></tr>
-            <tr><td>Day 0</td><td>점호 후</td><td><strong>체육관 물품 사전 이동</strong></td></tr>
-            <tr><td>Day 1 오전</td><td>08:20~09:00</td><td><strong>등교 및 팀 공개</strong></td></tr>
-            <tr><td>Day 1 오전</td><td>09:00~09:20</td><td><strong>오리엔테이션</strong></td></tr>
-            <tr><td>Day 1 오전</td><td>09:20~09:45</td><td><strong>AI 편지 고백 게임 튜토리얼</strong></td></tr>
-            <tr><td>Day 1 오전</td><td>09:45~12:30</td><td><strong>문제 정의 카드 및 아이디어 카드</strong></td></tr>
-            <tr><td>Day 1 오후</td><td>13:20~17:40</td><td><strong>서비스 로직 설계 및 DB 설계</strong></td></tr>
-            <tr><td>Day 1 오후</td><td>14:10~14:25</td><td><strong>AI 편지 1차 제출</strong></td></tr>
-            <tr><td>Day 1 오후</td><td>16:10~16:25</td><td><strong>AI 편지 2차 제출</strong></td></tr>
-            <tr><td>Day 1 저녁</td><td>18:10~21:20</td><td><strong>최종 보드 제작</strong></td></tr>
-            <tr><td>Day 1 저녁</td><td>19:30~19:45</td><td><strong>AI 편지 3차 제출</strong></td></tr>
-            <tr><td>Day 1 저녁</td><td><strong>21:05~21:20</strong></td><td><strong>AI 편지 4차 제출</strong></td></tr>
-            <tr><td>Day 1 저녁</td><td><strong>21:20~22:20</strong></td><td><strong>싸이버거 배부 및 최종 정리</strong></td></tr>
-            <tr><td>Day 1 밤</td><td>22:20~22:30</td><td><strong>기숙사 이동</strong></td></tr>
-            <tr><td>Day 2 오전</td><td>08:40~09:00</td><td><strong>등교 및 산출물 확인</strong></td></tr>
-            <tr><td>Day 2 오전</td><td><strong>09:00~09:15</strong></td><td><strong>심사 안내</strong></td></tr>
-            <tr><td>Day 2 오전</td><td><strong>09:15~12:00</strong></td><td><strong>부스 순회 최종 발표 심사</strong></td></tr>
-            <tr><td>Day 2 오전</td><td>12:00~12:30</td><td><strong>폐회식</strong></td></tr>
-            <tr><td>Day 2 오전</td><td>12:30~13:20</td><td><strong>중식</strong></td></tr>
+            <tr data-schedule-key="exam" tabindex="0"><td>Day 0</td><td>7교시</td><td><strong>팀빌딩 고사</strong></td></tr>
+            <tr data-schedule-key="team-review" tabindex="0"><td>Day 0</td><td>8~11교시</td><td><strong>운영진·교사 팀 편성 검수</strong></td></tr>
+            <tr data-schedule-key="preload" tabindex="0"><td>Day 0</td><td>점호 후</td><td><strong>체육관 물품 사전 이동</strong></td></tr>
+            <tr data-schedule-key="entry" tabindex="0"><td>Day 1 오전</td><td>08:20~09:00</td><td><strong>등교 및 팀 공개</strong></td></tr>
+            <tr data-schedule-key="orientation" tabindex="0"><td>Day 1 오전</td><td>09:00~09:20</td><td><strong>오리엔테이션</strong></td></tr>
+            <tr data-schedule-key="tutorial" tabindex="0"><td>Day 1 오전</td><td>09:20~09:45</td><td><strong>AI 편지 고백 게임 튜토리얼</strong></td></tr>
+            <tr data-schedule-key="problem" tabindex="0"><td>Day 1 오전</td><td>09:45~12:30</td><td><strong>문제 정의 카드 및 아이디어 카드</strong></td></tr>
+            <tr data-schedule-key="design" tabindex="0"><td>Day 1 오후</td><td>13:20~17:40</td><td><strong>서비스 로직 설계 및 DB 설계</strong></td></tr>
+            <tr data-schedule-key="letter1" tabindex="0"><td>Day 1 오후</td><td>14:10~14:25</td><td><strong>AI 편지 1차 제출</strong></td></tr>
+            <tr data-schedule-key="letter2" tabindex="0"><td>Day 1 오후</td><td>16:10~16:25</td><td><strong>AI 편지 2차 제출</strong></td></tr>
+            <tr data-schedule-key="board" tabindex="0"><td>Day 1 저녁</td><td>18:10~21:20</td><td><strong>최종 보드 제작</strong></td></tr>
+            <tr data-schedule-key="letter3" tabindex="0"><td>Day 1 저녁</td><td>19:30~19:45</td><td><strong>AI 편지 3차 제출</strong></td></tr>
+            <tr data-schedule-key="letter4" tabindex="0"><td>Day 1 저녁</td><td><strong>21:05~21:20</strong></td><td><strong>AI 편지 4차 제출</strong></td></tr>
+            <tr data-schedule-key="snack" tabindex="0"><td>Day 1 저녁</td><td><strong>21:20~22:20</strong></td><td><strong>싸이버거 배부 및 최종 정리</strong></td></tr>
+            <tr data-schedule-key="dorm" tabindex="0"><td>Day 1 밤</td><td>22:20~22:30</td><td><strong>기숙사 이동</strong></td></tr>
+            <tr data-schedule-key="day2-entry" tabindex="0"><td>Day 2 오전</td><td>08:40~09:00</td><td><strong>등교 및 산출물 확인</strong></td></tr>
+            <tr data-schedule-key="judging-brief" tabindex="0"><td>Day 2 오전</td><td><strong>09:00~09:15</strong></td><td><strong>심사 안내</strong></td></tr>
+            <tr data-schedule-key="judging" tabindex="0"><td>Day 2 오전</td><td><strong>09:15~12:00</strong></td><td><strong>부스 순회 최종 발표 심사</strong></td></tr>
+            <tr data-schedule-key="closing" tabindex="0"><td>Day 2 오전</td><td>12:00~12:30</td><td><strong>폐회식</strong></td></tr>
+            <tr data-schedule-key="lunch2" tabindex="0"><td>Day 2 오전</td><td>12:30~13:20</td><td><strong>중식</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -1438,7 +1655,7 @@
   <!-- ===================== ABOUT 4 - 팀별 산출물 ===================== -->
   <section style="position:relative;overflow:hidden;">
     <div class="deco-svg" style="top:20px;right:-20px;width:220px;height:220px;">
-      <img src="assets/Vector%20110.svg" alt="" aria-hidden="true" loading="lazy">
+      <img src="images/vector-110.svg" alt="" aria-hidden="true" loading="lazy">
     </div>
     <div class="container">
       <div class="section-head reveal">
@@ -1487,7 +1704,7 @@
 
   <!-- ===================== GALLERY ===================== -->
   <section id="gallery">
-    <div class="container">
+    <div class="container gallery-container">
       <div class="section-head reveal">
         <div class="section-kicker">Photo Story</div>
         <h2 class="section-title">현장 기록</h2>
@@ -1495,99 +1712,99 @@
 
       <div class="gallery-grid stagger-children" id="gallery-grid">
         <figure class="gallery-item reveal" data-index="0">
-          <img src="media/01_setup.jpg" alt="행사 준비 장면" loading="lazy">
+          <img src="images/01_setup.jpg" alt="행사 준비 장면" loading="lazy">
           <figcaption class="gallery-caption">행사 준비와 공간 세팅</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="1">
-          <img src="media/02_entry.jpg" alt="학생 입장 장면" loading="lazy">
+          <img src="images/02_entry.jpg" alt="학생 입장 장면" loading="lazy">
           <figcaption class="gallery-caption">학생 입장과 팀 활동 시작</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="2">
-          <img src="media/03_workshop.jpg" alt="팀별 문제 정의 활동" loading="lazy">
+          <img src="images/03_workshop.jpg" alt="팀별 문제 정의 활동" loading="lazy">
           <figcaption class="gallery-caption">문제 정의와 아이디어 정리</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="3">
-          <img src="media/04_midday.jpg" alt="중간 작업 전환 장면" loading="lazy">
+          <img src="images/04_midday.jpg" alt="중간 작업 전환 장면" loading="lazy">
           <figcaption class="gallery-caption">점심 이후 다시 이어진 작업</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="4">
-          <img src="media/05_design.jpg" alt="서비스 설계 활동" loading="lazy">
+          <img src="images/05_design.jpg" alt="서비스 설계 활동" loading="lazy">
           <figcaption class="gallery-caption">서비스 로직과 데이터 구조 설계</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="5">
-          <img src="media/06_letter.jpg" alt="AI 편지 작업" loading="lazy">
+          <img src="images/06_letter.jpg" alt="AI 편지 작업" loading="lazy">
           <figcaption class="gallery-caption">AI 편지와 답변 활용</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="6">
-          <img src="media/07_mentor.jpg" alt="멘토와 학생 활동" loading="lazy">
+          <img src="images/07_mentor.jpg" alt="멘토와 학생 활동" loading="lazy">
           <figcaption class="gallery-caption">멘토 질문과 협업 점검</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="7">
-          <img src="media/08_evening.jpg" alt="야간 최종 보드 제작" loading="lazy">
+          <img src="images/08_evening.jpg" alt="야간 최종 보드 제작" loading="lazy">
           <figcaption class="gallery-caption">야간 마감과 최종 보드 제작</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="8">
-          <img src="media/09_morning-board.jpg" alt="오전 산출물 작업" loading="lazy">
+          <img src="images/09_morning-board.jpg" alt="오전 산출물 작업" loading="lazy">
           <figcaption class="gallery-caption">2일차 준비</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="9">
-          <img src="media/10_team-discussion.jpg" alt="팀별 토의 장면" loading="lazy">
+          <img src="images/10_team-discussion.jpg" alt="팀별 토의 장면" loading="lazy">
           <figcaption class="gallery-caption">팀별 토의와 역할 분담</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="10">
-          <img src="media/11_lunch-break.jpg" alt="점심 시간 장면" loading="lazy">
-          <figcaption class="gallery-caption">점심 시간과 재정비</figcaption>
+          <img src="images/11_lunch-break.jpg" alt="식사 시간 장면" loading="lazy">
+          <figcaption class="gallery-caption">식사 시간과 재정비</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="11">
-          <img src="media/12_midday-reset.jpg" alt="오후 활동 전환" loading="lazy">
+          <img src="images/12_midday-reset.jpg" alt="오후 활동 전환" loading="lazy">
           <figcaption class="gallery-caption">오후 활동으로 전환</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="12">
-          <img src="media/13_afternoon-start.jpg" alt="오후 설계 활동 시작" loading="lazy">
+          <img src="images/13_afternoon-start.jpg" alt="오후 설계 활동 시작" loading="lazy">
           <figcaption class="gallery-caption">오후 설계 활동 시작</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="13">
-          <img src="media/14_design-session.jpg" alt="서비스 설계 토의" loading="lazy">
+          <img src="images/14_design-session.jpg" alt="서비스 설계 토의" loading="lazy">
           <figcaption class="gallery-caption">서비스 흐름 구체화</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="14">
-          <img src="media/15_ai-letter-moment.jpg" alt="AI 편지 제출 장면" loading="lazy">
+          <img src="images/15_ai-letter-moment.jpg" alt="AI 편지 제출 장면" loading="lazy">
           <figcaption class="gallery-caption">AI 편지 제출과 답변 대기</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="15">
-          <img src="media/16_mentor-time.jpg" alt="멘토 질문 장면" loading="lazy">
+          <img src="images/16_mentor-time.jpg" alt="멘토 질문 장면" loading="lazy">
           <figcaption class="gallery-caption">멘토 질문과 방향 점검</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="16">
-          <img src="media/17_group-work.jpg" alt="팀 작업 장면" loading="lazy">
+          <img src="images/17_group-work.jpg" alt="팀 작업 장면" loading="lazy">
           <figcaption class="gallery-caption">팀 작업과 산출물 정리</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="17">
-          <img src="media/18_evening-build.jpg" alt="야간 최종 작업" loading="lazy">
+          <img src="images/18_evening-build.jpg" alt="야간 최종 작업" loading="lazy">
           <figcaption class="gallery-caption">야간 최종 작업 시작</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="18">
-          <img src="media/19_night-board.jpg" alt="최종 보드 제작" loading="lazy">
+          <img src="images/19_night-board.jpg" alt="최종 보드 제작" loading="lazy">
           <figcaption class="gallery-caption">최종 보드 제작</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="19">
-          <img src="media/20_night-checkpoint.jpg" alt="야간 체크포인트" loading="lazy">
+          <img src="images/20_night-checkpoint.jpg" alt="야간 체크포인트" loading="lazy">
           <figcaption class="gallery-caption">야간 체크포인트</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="20">
-          <img src="media/21_leave-materials.jpg" alt="산출물 보관 장면" loading="lazy">
+          <img src="images/21_leave-materials.jpg" alt="산출물 보관 장면" loading="lazy">
           <figcaption class="gallery-caption">산출물 정리와 보관</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="21">
-          <img src="media/22_day2-start.jpg" alt="2일차 시작 장면" loading="lazy">
+          <img src="images/22_day2-start.jpg" alt="2일차 시작 장면" loading="lazy">
           <figcaption class="gallery-caption">2일차 현장</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="22">
-          <img src="media/23_judging.jpg" alt="부스 순회 심사" loading="lazy">
+          <img src="images/23_judging.jpg" alt="부스 순회 심사" loading="lazy">
           <figcaption class="gallery-caption">부스 순회 심사</figcaption>
         </figure>
         <figure class="gallery-item reveal" data-index="23">
-          <img src="media/24_final-review.jpg" alt="최종 확인 장면" loading="lazy">
+          <img src="images/24_final-review.jpg" alt="최종 확인 장면" loading="lazy">
           <figcaption class="gallery-caption">최종 확인과 마무리</figcaption>
         </figure>
       </div>
@@ -1606,7 +1823,7 @@
       <div class="design-grid stagger-children">
         <div class="design-card reveal">
           <div class="design-card-img">
-            <img src="assets/AI%EC%B9%B4%EB%93%9C%20v1.svg" alt="AI 카드" loading="lazy">
+            <img src="images/ai-card-v1.svg" alt="AI 카드" loading="lazy">
           </div>
           <div class="design-card-body">
             <h4>AI 카드</h4>
@@ -1615,7 +1832,7 @@
         </div>
         <div class="design-card reveal">
           <div class="design-card-img">
-            <img src="assets/%EB%A9%98%ED%86%A0%EC%B9%B4%EB%93%9C%20v1.svg" alt="멘토 카드" loading="lazy">
+            <img src="images/mentor-card-v1.svg" alt="멘토 카드" loading="lazy">
           </div>
           <div class="design-card-body">
             <h4>멘토 카드</h4>
@@ -1624,7 +1841,7 @@
         </div>
         <div class="design-card reveal">
           <div class="design-card-img">
-            <img src="assets/%EB%A7%8C%EB%8A%A5%EC%B9%B4%EB%93%9C%20v1.svg" alt="만능 카드" loading="lazy">
+            <img src="images/universal-card-v1.svg" alt="만능 카드" loading="lazy">
           </div>
           <div class="design-card-body">
             <h4>만능 카드</h4>
@@ -1646,7 +1863,7 @@
       <div class="design-grid stagger-children">
         <div class="design-card reveal">
           <div class="design-card-img">
-            <img src="assets/certificate%20of%20award.svg" alt="수료증 1" loading="lazy">
+            <img src="images/certificate-of-award.svg" alt="수료증 1" loading="lazy">
           </div>
           <div class="design-card-body">
             <h4>수료증 디자인 1</h4>
@@ -1654,7 +1871,7 @@
         </div>
         <div class="design-card reveal">
           <div class="design-card-img">
-            <img src="assets/certificate%20of%20award-1.svg" alt="수료증 2" loading="lazy">
+            <img src="images/certificate-of-award-1.svg" alt="수료증 2" loading="lazy">
           </div>
           <div class="design-card-body">
             <h4>수료증 디자인 2</h4>
@@ -1662,7 +1879,7 @@
         </div>
         <div class="design-card reveal">
           <div class="design-card-img">
-            <img src="assets/certificate%20of%20award-2.svg" alt="수료증 3" loading="lazy">
+            <img src="images/certificate-of-award-2.svg" alt="수료증 3" loading="lazy">
           </div>
           <div class="design-card-body">
             <h4>수료증 디자인 3</h4>
@@ -1681,46 +1898,90 @@
       </div>
 
       <div class="team-grid stagger-children">
-        <div class="team-card reveal">
-          <div class="team-role">총괄·사회</div>
-          <h3>총괄·사회</h3>
-          <p class="team-names">허동운, 이재환</p>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-role">AI 우체국</div>
-          <h3>AI 우체국</h3>
-          <p class="team-names">정태양, 허동운</p>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-role">산출물·물품</div>
-          <h3>산출물·물품</h3>
-          <p class="team-names">정태양, 허동운</p>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-role">글가람실·안전</div>
-          <h3>글가람실·안전</h3>
-          <p class="team-names">방세준, 박동현</p>
-        </div>
-        <div class="team-card reveal">
+        <a class="team-card organizer-card reveal" href="https://github.com/heodongun" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-heodongun.png" alt="허동운 프로필 이미지" loading="lazy">
+          <div class="team-role">총괄 기획</div>
+          <h3>허동운</h3>
+          <p class="team-names">행사 기획과 전체 운영을 총괄했습니다.</p>
+          <div class="organizer-link">github.com/heodongun</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/jaehwan02" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-jaehwan02-custom.jpg" alt="이재환 프로필 이미지" loading="lazy">
+          <div class="team-role">사회·촬영 기록</div>
+          <h3>이재환</h3>
+          <p class="team-names">현장 진행과 행사 기록을 맡았습니다.</p>
+          <div class="organizer-link">github.com/jaehwan02</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/hamnnnyy" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-hamnnnyy.png" alt="조하민 프로필 이미지" loading="lazy">
           <div class="team-role">촬영·기록</div>
-          <h3>촬영·기록</h3>
-          <p class="team-names">이재환, 조하민</p>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-role">심사 지원</div>
-          <h3>심사 지원</h3>
-          <p class="team-names">허동운, 정태양</p>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-role">식음료·환경</div>
-          <h3>식음료·환경</h3>
-          <p class="team-names">허동운, 정태양</p>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-role">학생 멘토 평가조</div>
-          <h3>학생 멘토 평가조</h3>
-          <p class="team-names">방세준, 김민재, 권민재, 구현우</p>
-        </div>
+          <h3>조하민</h3>
+          <p class="team-names">행사 현장 기록과 홍보 아카이브를 맡았습니다.</p>
+          <div class="organizer-link">github.com/hamnnnyy</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/BitByte08" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-bitbyte08.png" alt="정태양 프로필 이미지" loading="lazy">
+          <div class="team-role">AI 우체국·산출물</div>
+          <h3>정태양</h3>
+          <p class="team-names">AI 우체국 운영과 산출물 관리를 지원했습니다.</p>
+          <div class="organizer-link">github.com/BitByte08</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/yuuki08noah" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-yuuki08noah.png" alt="방세준 프로필 이미지" loading="lazy">
+          <div class="team-role">글가람실·학생 멘토</div>
+          <h3>방세준</h3>
+          <p class="team-names">자료 조사 공간과 학생 멘토 운영을 지원했습니다.</p>
+          <div class="organizer-link">github.com/yuuki08noah</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/winshine0326" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-ryuseungchan-custom.jpg" alt="류승찬 프로필 이미지" loading="lazy">
+          <div class="team-role">운영 지원</div>
+          <h3>류승찬</h3>
+          <p class="team-names">현장 운영과 진행 보조를 지원했습니다.</p>
+          <div class="organizer-link">github.com/winshine0326</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/pdh0128" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-parkdonghyun-custom.jpg" alt="박동현 프로필 이미지" loading="lazy">
+          <div class="team-role">개발·운영 지원</div>
+          <h3>박동현</h3>
+          <p class="team-names">사이트 운영과 현장 기록 처리를 지원했습니다.</p>
+          <div class="organizer-link">github.com/pdh0128</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/KimKyuBong" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-kimkyubong.png" alt="김규봉 프로필 이미지" loading="lazy">
+          <div class="team-role">담당 교사</div>
+          <h3>김규봉</h3>
+          <p class="team-names">행사 운영과 심사 체계를 함께 조율했습니다.</p>
+          <div class="organizer-link">github.com/KimKyuBong</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/justhumannn" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-justhumannn.png" alt="여철준 프로필 이미지" loading="lazy">
+          <div class="team-role">리허설·운영 지원</div>
+          <h3>여철준</h3>
+          <p class="team-names">사전 리허설과 현장 운영을 지원했습니다.</p>
+          <div class="organizer-link">github.com/justhumannn</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/fixgramwork" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-fixgramwork.png" alt="김민재 프로필 이미지" loading="lazy">
+          <div class="team-role">학생 멘토 평가</div>
+          <h3>김민재</h3>
+          <p class="team-names">팀 협업과 구성 과정을 함께 관찰했습니다.</p>
+          <div class="organizer-link">github.com/fixgramwork</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/guhyunwoo" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-guhyunwoo-custom.jpg" alt="구현우 프로필 이미지" loading="lazy">
+          <div class="team-role">학생 멘토 평가</div>
+          <h3>구현우</h3>
+          <p class="team-names">팀 협업과 구성 과정을 함께 관찰했습니다.</p>
+          <div class="organizer-link">github.com/guhyunwoo</div>
+        </a>
+        <a class="team-card organizer-card reveal" href="https://github.com/kwonminjae5700" target="_blank" rel="noreferrer">
+          <img class="organizer-avatar" src="images/team-kwonminjae5700.png" alt="권민재 프로필 이미지" loading="lazy">
+          <div class="team-role">학생 멘토 평가</div>
+          <h3>권민재</h3>
+          <p class="team-names">팀 협업과 구성 과정을 함께 관찰했습니다.</p>
+          <div class="organizer-link">github.com/kwonminjae5700</div>
+        </a>
       </div>
     </div>
   </section>
@@ -1820,8 +2081,18 @@
     <button class="lightbox-close" id="lightbox-close" aria-label="닫기">&times;</button>
     <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="이전">&#10094;</button>
     <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="다음">&#10095;</button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="">
-    <div class="lightbox-caption" id="lightbox-caption"></div>
+    <div class="lightbox-content" id="lightbox-content">
+      <div class="lightbox-media">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+      </div>
+      <aside class="lightbox-story" aria-live="polite">
+        <div class="lightbox-kicker" id="lightbox-kicker">Photo Story</div>
+        <h3 class="lightbox-title" id="lightbox-title"></h3>
+        <div class="lightbox-meta" id="lightbox-meta"></div>
+        <div class="lightbox-body" id="lightbox-body"></div>
+        <a class="lightbox-action" id="lightbox-action" href="#" target="_blank" rel="noreferrer"></a>
+      </aside>
+    </div>
   </div>
 
   <!-- ===================== SCRIPTS ===================== -->
@@ -1886,16 +2157,689 @@
       const galleryItems = document.querySelectorAll('.gallery-item');
       const lightbox = document.getElementById('lightbox');
       const lbImg = document.getElementById('lightbox-img');
-      const lbCaption = document.getElementById('lightbox-caption');
+      const lbKicker = document.getElementById('lightbox-kicker');
+      const lbTitle = document.getElementById('lightbox-title');
+      const lbMeta = document.getElementById('lightbox-meta');
+      const lbBody = document.getElementById('lightbox-body');
+      const lbAction = document.getElementById('lightbox-action');
       const lbPrev = document.getElementById('lightbox-prev');
       const lbNext = document.getElementById('lightbox-next');
       let currentIdx = 0;
       let isGalleryMode = false;
 
-      function openLightbox(src, alt, caption) {
+      const galleryStories = [
+        {
+          kicker: 'Day 1 / Setup',
+          title: '행사 준비와 공간 세팅',
+          meta: ['05.14 08:20', '운영진 준비', '체육관 중심 운영'],
+          body: [
+            '행사는 개인 디지털 기기 없이 진행되는 Zero-Device 기획 캠프로 설계되었습니다. 운영진은 칠판, 인쇄물, 산출물 양식, 카드, 스캔·출력 흐름을 먼저 정리했습니다.',
+            '현장 운영의 기준은 체육관을 메인 공간으로 두고, 글가람실은 자료 조사 공간으로 분리하는 것이었습니다. 학생들이 종이와 펜으로 사고하고, 필요한 AI 사용은 AI 우체국을 통해서만 이루어지도록 준비했습니다.'
+          ]
+        },
+        {
+          kicker: 'Day 1 / Entry',
+          title: '학생 입장과 팀 활동 시작',
+          meta: ['08:40~09:00', '1학년 64명', '11개 팀'],
+          body: [
+            '1학년 64명이 11개 팀으로 나뉘어 체육관에 입장했습니다. 팀 구성은 팀빌딩 고사 결과, 역할 선호도, 담임 의견을 바탕으로 구성되었고, 6명 팀 9개와 5명 팀 2개로 운영되었습니다.',
+            '행사 초반에는 전체 규칙, 개인 기기 제한, 산출물 제출 흐름, AI 편지 사용 방식이 안내되었습니다. 주제는 초반 활동 이후 공개되어 학생들이 먼저 행사 방식에 적응할 수 있도록 했습니다.'
+          ]
+        },
+        {
+          kicker: 'Output 1',
+          title: '문제 정의 카드와 아이디어 카드',
+          meta: ['09:45~12:30', '문제 정의', '아이디어 요약'],
+          body: [
+            '첫 번째 핵심 작업은 인간과 AI가 공존하는 미래에 필요한 서비스를 기획하기 위해 문제와 사용자를 분명히 잡는 일이었습니다.',
+            '팀은 문제 정의 카드와 아이디어 카드를 통해 해결하려는 문제, 핵심 사용자, 상황, 서비스의 방향을 종이 산출물로 정리했습니다. 이 단계는 이후 서비스 로직과 데이터 설계의 기준점이 됩니다.'
+          ]
+        },
+        {
+          kicker: 'Day 1 / Reset',
+          title: '점심 이후 다시 이어진 작업',
+          meta: ['12:30~13:20', '중식', '작업 전환'],
+          body: [
+            '점심 시간 이후에는 오전에 정리한 문제와 아이디어를 바탕으로 서비스 구조를 더 구체화하는 단계로 넘어갔습니다.',
+            '운영진은 시간표, 체크포인트, 산출물 확인 흐름을 관리하고 학생들이 다시 팀별 작업 흐름으로 복귀할 수 있도록 현장을 정리했습니다.'
+          ]
+        },
+        {
+          kicker: 'Output 2 / 3',
+          title: '서비스 로직과 데이터 구조 설계',
+          meta: ['13:20~17:40', '서비스 로직 설계지', '데이터 구조 설계지'],
+          body: [
+            '오후 작업의 중심은 서비스가 실제로 어떤 순서로 작동하는지, 어떤 데이터가 필요하며 어떻게 흐르는지를 설계하는 것이었습니다.',
+            '문제 정의에서 끝나는 것이 아니라 기능 흐름, 사용자 행동, 데이터 입력과 출력, AI가 맡는 부분과 사람이 판단해야 하는 부분을 분리해 설명할 수 있어야 했습니다.'
+          ]
+        },
+        {
+          kicker: 'AI Post Office',
+          title: 'AI 편지와 답변 활용',
+          meta: ['AI 우체국', '기본 5크레딧', '스캔·출력'],
+          body: [
+            'AI 사용은 직접 노트북이나 스마트폰으로 하는 방식이 아니라 종이에 편지를 작성해 AI 우체국에 제출하는 방식으로 진행되었습니다.',
+            '운영진은 편지를 이미지로 스캔해 내부 서버로 전달하고, LLM 답변을 받은 뒤 다시 내부 서버를 거쳐 출력해 팀에게 돌려주었습니다. 일반우편 AI는 gpt-5-think, 등기우편 AI는 gpt-5.1, 특급우편 AI는 claude-sonnet-4.6으로 운영되었습니다.'
+          ]
+        },
+        {
+          kicker: 'Mentor Card',
+          title: '멘토 질문과 협업 점검',
+          meta: ['멘토카드 10분', '학생 멘토', '아이디어 보조'],
+          body: [
+            '학생 멘토는 아이디어를 대신 만들어주는 역할이 아니라, 팀이 스스로 생각을 정리할 수 있도록 질문을 던지는 역할을 맡았습니다.',
+            '1일차에는 서비스 방향, 사용자, 기능, 데이터, 발표 구조에 대한 질문을 돕고, 2일차에는 학생 멘토 평가조로서 팀의 구성과 협업 과정을 관찰했습니다.'
+          ]
+        },
+        {
+          kicker: 'Night Build',
+          title: '야간 마감과 최종 보드 제작',
+          meta: ['18:10~22:20', '최종 보드', '체육관 보관'],
+          body: [
+            '저녁 이후에는 팀별 산출물을 하나의 발표 흐름으로 묶고, 최종 보드를 제작하는 시간이 이어졌습니다.',
+            '1일차 종료 시점에는 산출물과 보드를 팀 자리에 두고 이동했습니다. 이 자료들은 2일차 부스 순회 심사의 핵심 근거로 사용되었습니다.'
+          ]
+        },
+        {
+          kicker: 'Day 2',
+          title: '2일차 준비',
+          meta: ['05.15 08:40', '최종 상태 확인', '심사 준비'],
+          body: [
+            '2일차 오전에는 팀별 부스와 최종 보드 상태를 정리하고, 심사 안내를 받는 시간이 진행되었습니다.',
+            '학생들은 각 선생님이 평가하는 영역이 다르다는 점을 기준으로, 문제 정의·해결 논리·데이터 설계·AI 활용 기록을 나누어 설명할 준비를 했습니다.'
+          ]
+        },
+        {
+          kicker: 'Teamwork',
+          title: '팀별 토의와 역할 분담',
+          meta: ['아날로그 협업', '대면 토의', '팀 운영'],
+          body: [
+            '개인 기기 없이 진행되는 만큼 팀 안에서 말로 합의하고, 종이에 구조를 그리며, 서로의 생각을 직접 조율하는 과정이 중요했습니다.',
+            '평가는 결과물만 보는 것이 아니라 팀이 어떤 방식으로 구성되고 협업했는지도 함께 반영했습니다.'
+          ]
+        },
+        {
+          kicker: 'Break',
+          title: '식사 시간과 재정비',
+          meta: ['중식', '식음료·환경', '현장 정리'],
+          body: [
+            '식사 시간은 단순한 휴식이 아니라 다음 작업을 위해 팀의 방향을 정리하는 전환점이었습니다.',
+            '운영진은 식음료 배부, 환경 정리, 안전 관리를 맡고 학생들이 다음 활동에 바로 들어갈 수 있도록 흐름을 유지했습니다.'
+          ]
+        },
+        {
+          kicker: 'Checkpoint',
+          title: '오후 활동으로 전환',
+          meta: ['서비스 설계', '중간 확인', '피드백 없음'],
+          body: [
+            '체크포인트는 중간 평가가 아니라 산출물 진행 상태를 확인하는 절차였습니다.',
+            '운영진은 필요한 자료가 누락되지 않았는지 확인하고 사이트 기록 흐름에 맞춰 관리했습니다. 이때 별도 피드백은 제공하지 않는 방식으로 운영되었습니다.'
+          ]
+        },
+        {
+          kicker: 'Design Start',
+          title: '오후 설계 활동 시작',
+          meta: ['서비스 로직', 'DB 설계', '구체화'],
+          body: [
+            '오후에는 오전의 문제 정의를 실제 서비스 구조로 변환하는 작업이 시작되었습니다.',
+            '팀은 사용자가 어떤 순서로 서비스를 이용하는지, AI는 어디에서 도움을 주는지, 데이터는 어떤 형태로 남는지를 산출물에 정리했습니다.'
+          ]
+        },
+        {
+          kicker: 'Service Logic',
+          title: '서비스 흐름 구체화',
+          meta: ['핵심 기능', '사용자 흐름', '판단 구조'],
+          body: [
+            '좋은 아이디어도 흐름이 불명확하면 서비스로 설명되기 어렵습니다. 그래서 팀들은 핵심 기능을 중심으로 사용자 흐름과 예외 상황을 정리했습니다.',
+            '특히 AI가 자동으로 처리하는 부분과 사람이 최종 판단해야 하는 부분을 구분하는 것이 중요한 설계 기준이었습니다.'
+          ]
+        },
+        {
+          kicker: 'AI Letter',
+          title: 'AI 편지 제출과 답변 대기',
+          meta: ['편지 제출', '크레딧 차감', '답변 출력'],
+          body: [
+            'AI 편지는 접수 순간 크레딧이 차감되는 구조였습니다. 편지 한 장마다 선택한 우편 등급에 따라 크레딧이 사용됩니다.',
+            '운영진은 질문의 적절성, 모델 선택, 크레딧 사용을 확인한 뒤 스캔과 출력 흐름을 처리했습니다. 단순히 AI 답변을 받는 것이 아니라 질문 설계 자체도 중요한 역량으로 보았습니다.'
+          ]
+        },
+        {
+          kicker: 'Mentoring',
+          title: '멘토 질문과 방향 점검',
+          meta: ['16:30~20:40', '멘토카드', '10분 질문'],
+          body: [
+            '멘토카드는 1장당 10분 질문권으로 운영되었습니다. 학생들은 아이디어 방향, 발표 구조, 서비스 구체화처럼 더 깊은 질문을 멘토에게 할 수 있었습니다.',
+            '멘토는 답을 대신 정해주지 않고, 팀이 스스로 근거를 세우도록 질문과 관점을 제공했습니다.'
+          ]
+        },
+        {
+          kicker: 'Output',
+          title: '팀 작업과 산출물 정리',
+          meta: ['산출물 확인', '종이 기반', '팀별 기록'],
+          body: [
+            '각 팀은 문제 정의 카드, 아이디어 카드, 서비스 로직 설계지, 데이터 구조 설계지를 정리하며 최종 발표를 위한 근거를 쌓았습니다.',
+            'AI 크레딧 기록은 질문과 답변 흐름을 남기는 자료로 활용되며, 어떤 질문을 했고 어떤 답변을 받았는지가 팀의 기획 과정에 포함되었습니다.'
+          ]
+        },
+        {
+          kicker: 'Evening',
+          title: '야간 최종 작업 시작',
+          meta: ['최종 보드', '발표 준비', '마감 관리'],
+          body: [
+            '야간 작업은 팀별 아이디어를 발표 가능한 형태로 묶어내는 시간이었습니다.',
+            '학생들은 산출물의 핵심 근거를 골라 최종 보드에 담고, 심사위원에게 어떤 순서로 설명할지 준비했습니다.'
+          ]
+        },
+        {
+          kicker: 'Final Board',
+          title: '최종 보드 제작',
+          meta: ['발표 자료', '아날로그 보드', '근거 정리'],
+          body: [
+            '최종 보드는 별도의 앱 화면이 아니라, 팀이 설계한 서비스를 부스에서 설명하기 위한 발표 자료였습니다.',
+            '문제, 사용자, 핵심 기능, 데이터 흐름, AI 활용 근거가 한눈에 보이도록 정리하는 것이 핵심이었습니다.'
+          ]
+        },
+        {
+          kicker: 'Night Check',
+          title: '야간 체크포인트',
+          meta: ['21:05~21:20', '4차 AI 편지', '최종 확인'],
+          body: [
+            '1일차 마지막 AI 편지 제출과 산출물 확인이 이어졌습니다.',
+            '이 시점 이후에는 남은 내용을 정리하고 2일차 심사에 필요한 자료가 팀 자리에 남아 있는지 확인했습니다.'
+          ]
+        },
+        {
+          kicker: 'Archive',
+          title: '산출물 정리와 보관',
+          meta: ['팀 자리 보관', '누락 확인', '2일차 연결'],
+          body: [
+            '1일차 종료 후 산출물과 보드는 팀 자리에 두고 이동했습니다.',
+            '운영진은 누락된 자료가 없는지 확인하고, 다음 날 심사가 같은 흐름으로 이어질 수 있도록 현장을 정리했습니다.'
+          ]
+        },
+        {
+          kicker: 'Day 2 / Start',
+          title: '2일차 현장',
+          meta: ['08:40~09:15', '등교 및 준비', '심사 안내'],
+          body: [
+            '2일차는 전날 만든 산출물을 바탕으로 발표와 심사를 진행하는 날이었습니다.',
+            '심사 전에는 선생님 채점위원의 평가 영역, 발표 권장 시간, 꼬리질문 방식, 학생 멘토 평가 방식이 안내되었습니다.'
+          ]
+        },
+        {
+          kicker: 'Judging',
+          title: '부스 순회 심사',
+          meta: ['09:15~12:00', '4명 선생님', '학생 멘토 평가조'],
+          body: [
+            '선생님 채점위원 4명은 모두 11개 팀을 순회하되 각자 담당 평가 영역만 평가했습니다. 팀은 해당 선생님이 보는 영역에 맞춰 발표를 구성해야 했습니다.',
+            '발표 5분, 꼬리질문 2분은 권장 시간으로 운영되었고, 학생 멘토 평가조는 팀의 구성과 협업 태도를 관찰했습니다.'
+          ]
+        },
+        {
+          kicker: 'Final',
+          title: '최종 확인과 마무리',
+          meta: ['폐회', '설문', '기록'],
+          body: [
+            '행사 마지막에는 정리, 설문, 마무리 안내가 진행되었습니다.',
+            'Poston은 완성된 코드를 만드는 행사가 아니라, 문제를 정의하고 AI와 인간의 역할을 나누어 미래 서비스를 설계하는 기획 중심 행사로 마무리되었습니다.'
+          ]
+        }
+      ];
+
+      const planningStories = {
+        'overview': {
+          kicker: 'Planning 01',
+          title: '전체 행사 개요',
+          meta: ['행사 목적', '운영 원칙', '팀 구성'],
+          body: [
+            '행사명은 2026 BSSM Poston : Dear AI이며, 주제는 인간과 AI가 공존하는 미래에 필요한 서비스 기획입니다.',
+            '대상은 1학년 64명, 총 11개 팀입니다. 6명 팀 9개와 5명 팀 2개로 운영했고, 직접 개발보다 문제 정의와 서비스 설계에 집중했습니다.'
+          ]
+        },
+        'operation': {
+          kicker: 'Planning 02',
+          title: '운영진 담당 업무',
+          meta: ['체육관 운영', 'AI 우체국', '스캔·출력'],
+          body: [
+            '체육관은 행사 메인 공간, 글가람실은 자료 조사 공간으로 두고 운영했습니다. 교무실에서 처리되는 스캔과 출력은 학생 동선에서 분리했습니다.',
+            'AI 편지는 운영진이 접수, 스캔, 내부 서버 전달, LLM 답변 출력, 팀 반환까지 맡았습니다. 학생은 종이와 펜으로 질문을 설계하는 데 집중했습니다.'
+          ]
+        },
+        'scenario': {
+          kicker: 'Planning 03',
+          title: '세부 진행 시나리오',
+          meta: ['1일차 흐름', '2일차 심사', '현장 멘트'],
+          body: [
+            '1일차는 팀 공개, 오리엔테이션, 주제 공개, 문제 정의, 서비스 설계, AI 편지 제출, 최종 보드 제작으로 이어졌습니다.',
+            '2일차는 등교 후 산출물과 부스를 정리하고, 선생님 채점위원과 학생 멘토 평가조가 순회하며 부스 발표를 보는 방식으로 진행했습니다.'
+          ]
+        },
+        'outputs': {
+          kicker: 'Planning 04',
+          title: '산출물 형태',
+          meta: ['문제 정의', '서비스 로직', '데이터 구조'],
+          body: [
+            '학생 산출물은 문제 정의 카드, 아이디어 카드, 서비스 로직 설계지, DB 설계지, AI 크레딧 기록을 중심으로 구성했습니다.',
+            '최종 보드는 별도 제출물이라기보다 부스 발표용 자료입니다. 산출물은 중간 체크포인트에서 운영진이 확인하지만, 그 자리에서 별도 피드백은 제공하지 않았습니다.'
+          ]
+        },
+        'rubric': {
+          kicker: 'Planning 05',
+          title: '채점기준',
+          meta: ['선생님 영역별 채점', '학생 멘토 20점', '사이트 입력'],
+          body: [
+            '송지훈 선생님은 문제 정의와 사용자 구체성, 박건우 선생님은 해결 논리와 핵심 기능, 조유진 선생님은 데이터 설계와 전공지식, 김규봉 선생님은 AI 활용 기록과 독창성을 평가했습니다.',
+            '학생 멘토 평가조는 팀 구성과 협업 태도를 관찰했습니다. 종이 채점지는 현장 보조이며, 최종 집계는 사이트 입력을 기준으로 했습니다.'
+          ]
+        },
+        'awards': {
+          kicker: 'Planning 06',
+          title: '시상 계획',
+          meta: ['결과 발표', '상장', '상품'],
+          body: [
+            '시상은 행사 종료 후 별도 결과 안내와 함께 진행되도록 설계했습니다. 상장은 행사 종료 직후 전달하고, 상품은 이후 개별 전달하는 흐름으로 정리했습니다.',
+            '동점자 처리와 수상 기준은 채점 기준 문서에 맞춰 운영했습니다.'
+          ]
+        },
+        'team-building': {
+          kicker: 'Planning 07',
+          title: '팀빌딩 고사',
+          meta: ['점수', '역할 선호도', '담임 의견'],
+          body: [
+            '팀 구성은 사전 팀빌딩 고사를 기반으로 했습니다. 점수, 역할 선호도, 담임 의견 순으로 우선순위를 두고 팀을 편성했습니다.',
+            '최고 득점자 팀과 상위 10명 추첨 보상은 AI 크레딧으로 연결해 행사 초반부터 참여 동기를 만들었습니다.'
+          ]
+        },
+        'student-guide': {
+          kicker: 'Planning 08',
+          title: '1학년 행사 가이드',
+          meta: ['학생용 안내', '규칙', 'AI 편지'],
+          body: [
+            '학생 가이드북은 처음 보는 용어를 이해할 수 있도록 AI 우체국, AI 편지, AI 크레딧, 멘토카드, 산출물, 부스 순회 심사를 설명했습니다.',
+            '개인 디지털 기기 없이 종이와 펜으로 기획하고, AI 활용은 편지 방식으로만 진행한다는 원칙을 학생용 문장으로 풀었습니다.'
+          ]
+        },
+        'promotion': {
+          kicker: 'Planning 09',
+          title: '홍보 계획',
+          meta: ['다큐형 롱폼', '인터뷰 숏폼', '현장 기록'],
+          body: [
+            '홍보는 사전 릴스보다 현장을 따라가는 다큐형 롱폼을 중심으로 잡았습니다.',
+            '도서관 이용, 체육관 작업, AI 편지 제출, 싸이버거 식사, 멘토링, 발표 심사 같은 장면을 기록하고 인터뷰는 숏폼으로 잘라 활용하는 방향이었습니다.'
+          ]
+        },
+        'rehearsal': {
+          kicker: 'Planning 10',
+          title: '시범운영 계획',
+          meta: ['10~11교시', '100분', '모둠학습실'],
+          body: [
+            '실제 행사 전 10~11교시에 모둠학습실에서 100분 압축 리허설을 진행했습니다.',
+            '종이와 펜으로 축소 운영을 해보며 AI 편지 접수, 스캔, 서버 기록, 출력, 크레딧 처리, 산출물 확인 흐름을 점검했습니다.'
+          ]
+        },
+        'mentor-guide': {
+          kicker: 'Planning 11',
+          title: '학생 멘토 가이드',
+          meta: ['10분 질문', '아이디어 보조', '평가 조율'],
+          body: [
+            '멘토카드 1장은 10분 질문권으로 운영했습니다. 멘토는 정답을 대신 정해주는 사람이 아니라 팀이 스스로 근거를 세우도록 질문을 던지는 역할입니다.',
+            '2일차에는 학생 멘토 평가조가 팀을 나누어 순회하고, 4명 평균으로 구성과 협업 점수를 반영하도록 설계했습니다.'
+          ]
+        },
+        'summary': {
+          kicker: 'Planning 12',
+          title: '요약본',
+          meta: ['운영진 공유', '학생 안내', '심사 기준'],
+          body: [
+            '요약본은 행사 목표, 장소, 팀 구성, AI 크레딧, 멘토카드, 산출물, 심사 방식, 비상 대응을 한 번에 확인하기 위한 문서입니다.',
+            '운영진 내부용, 학생 배포용, 심사위원 공유용 문서를 모두 연결하는 기준점으로 사용했습니다.'
+          ]
+        },
+        'survey': {
+          kicker: 'Planning 13',
+          title: '설문조사',
+          meta: ['행사 종료 후', '피드백', '평가와 무관'],
+          body: [
+            '설문은 행사 도중 평가에 영향을 주는 자료가 아니라, 종료 후 운영 개선을 위한 피드백 수집 방식입니다.',
+            '활동 만족도, AI 편지 방식, 멘토카드 활용, 어려웠던 점, 다음 행사 개선점을 중심으로 문항을 구성했습니다.'
+          ]
+        }
+      };
+
+      const scheduleStories = {
+        exam: {
+          kicker: 'Day 0',
+          title: '팀빌딩 고사',
+          meta: ['사전 편성', '점수 기반', '역할 선호도'],
+          body: [
+            '본행사 전 팀 구성을 위해 팀빌딩 고사를 진행했습니다. 단답형과 선다형 문항을 통해 문제 이해, 사용자 흐름, 조건 판단, 역할 선호도를 확인했습니다.',
+            '점수, 역할 선호도, 담임 의견을 바탕으로 1학년 64명을 11개 팀으로 편성했습니다.'
+          ]
+        },
+        'team-review': {
+          kicker: 'Day 0',
+          title: '운영진·교사 팀 편성 검수',
+          meta: ['8~11교시', '팀 구성 확인', '최소 인원 보정'],
+          body: [
+            '운영진과 교사가 팀 편성 결과를 함께 검수했습니다. 결석자나 미응시자가 있어도 팀별 최소 인원이 유지되도록 조정했습니다.',
+            '팀 공개는 본행사 1일차 오전 스크린을 통해 진행하도록 준비했습니다.'
+          ]
+        },
+        preload: {
+          kicker: 'Day 0',
+          title: '체육관 물품 사전 이동',
+          meta: ['점호 후', '체육관 앞', '사전 준비'],
+          body: [
+            '수요일 점호 후 체육대회 예선 일정이 있어, 운영진은 체육관 앞에 칠판과 배송 물품을 먼저 옮겨둘 수 있는 만큼 준비했습니다.',
+            '본행사 당일 바로 세팅할 수 있도록 칠판, 산출물 양식, 카드, 출력물, 물품 배치 기준을 미리 맞췄습니다.'
+          ]
+        },
+        entry: {
+          kicker: 'Day 1',
+          title: '등교 및 팀 공개',
+          meta: ['08:20~09:00', '체육관 입장', '팀 확인'],
+          body: [
+            '학생들은 체육관에 입장해 팀을 확인하고 팀별 자리에 앉았습니다.',
+            '팀 공개와 보상 크레딧 발표는 앞 스크린을 통해 진행되도록 설계했습니다.'
+          ]
+        },
+        orientation: {
+          kicker: 'Day 1',
+          title: '오리엔테이션',
+          meta: ['09:00~09:20', '규칙 안내', '진행 방식'],
+          body: [
+            '개인 디지털 기기 제한, AI 편지 사용법, 산출물 확인 방식, 멘토카드 사용법을 안내했습니다.',
+            '이번 행사는 코딩 구현보다 문제 정의와 서비스 설계가 핵심이라는 점을 먼저 분명히 했습니다.'
+          ]
+        },
+        tutorial: {
+          kicker: 'Day 1',
+          title: 'AI 편지 고백 게임 튜토리얼',
+          meta: ['09:20~09:45', 'AI 편지 연습', '주제 공개 전'],
+          body: [
+            'AI 편지 제출 방식을 익히기 위한 튜토리얼 활동입니다. 학생들은 종이에 Dear AI 형식으로 메시지를 쓰고, 운영진이 AI 답변을 받아 출력하는 흐름을 경험했습니다.',
+            '활동 후 본행사 주제가 공개되어, 학생들이 진행 방식에 먼저 적응한 뒤 본격 기획을 시작할 수 있도록 했습니다.'
+          ]
+        },
+        problem: {
+          kicker: 'Day 1',
+          title: '문제 정의 카드 및 아이디어 카드',
+          meta: ['09:45~12:30', '사용자', '문제 상황'],
+          body: [
+            '팀은 인간과 AI가 공존하는 미래 서비스라는 주제 아래 해결할 문제와 핵심 사용자를 정리했습니다.',
+            '아이디어를 빠르게 많이 내는 것보다 왜 필요한 서비스인지, 누구에게 어떤 변화가 생기는지를 종이 산출물로 설명하는 단계였습니다.'
+          ]
+        },
+        design: {
+          kicker: 'Day 1',
+          title: '서비스 로직 설계 및 DB 설계',
+          meta: ['13:20~17:40', '기능 흐름', '데이터 구조'],
+          body: [
+            '오전의 문제 정의를 바탕으로 서비스가 어떤 순서로 작동하는지 설계했습니다.',
+            '사용자 입력, AI가 도와주는 지점, 사람이 판단해야 하는 지점, 필요한 데이터와 저장 구조를 분리해 정리했습니다.'
+          ]
+        },
+        letter1: {
+          kicker: 'AI Letter',
+          title: 'AI 편지 1차 제출',
+          meta: ['14:10~14:25', '접수 즉시 차감', '출력 반환'],
+          body: [
+            '팀은 첫 번째 AI 편지를 제출해 문제 정의나 서비스 방향을 점검할 수 있었습니다.',
+            '편지 1장마다 크레딧이 차감되며, 운영진이 스캔과 출력 흐름을 담당했습니다.'
+          ]
+        },
+        letter2: {
+          kicker: 'AI Letter',
+          title: 'AI 편지 2차 제출',
+          meta: ['16:10~16:25', '설계 보강', '답변 활용'],
+          body: [
+            '두 번째 제출 차수는 서비스 로직과 데이터 설계를 보강하는 데 활용할 수 있도록 배치했습니다.',
+            'AI 답변 품질이 낮더라도 재질문은 기본적으로 제공하지 않았고, 질문을 설계하는 능력 자체를 중요하게 보았습니다.'
+          ]
+        },
+        board: {
+          kicker: 'Day 1',
+          title: '최종 보드 제작',
+          meta: ['18:10~21:20', '발표 자료', '팀 부스'],
+          body: [
+            '최종 보드는 팀이 만든 산출물을 발표 가능한 흐름으로 정리하는 자료입니다.',
+            '문제, 사용자, 핵심 기능, 데이터 흐름, AI 활용 근거를 부스에서 설명할 수 있도록 한눈에 정리했습니다.'
+          ]
+        },
+        letter3: {
+          kicker: 'AI Letter',
+          title: 'AI 편지 3차 제출',
+          meta: ['19:30~19:45', '최종 보완', '발표 준비'],
+          body: [
+            '세 번째 제출 차수는 최종 보드 제작 중 막히는 지점을 점검하기 위한 시간입니다.',
+            '팀은 남은 크레딧 안에서 필요한 만큼 편지를 제출할 수 있으며, 편지마다 크레딧이 각각 차감됩니다.'
+          ]
+        },
+        letter4: {
+          kicker: 'AI Letter',
+          title: 'AI 편지 4차 제출',
+          meta: ['21:05~21:20', '마지막 제출', '이후 추가 접수 없음'],
+          body: [
+            '네 번째 제출 차수는 1일차 마지막 AI 편지 제출 시간입니다.',
+            '21:20 이후에는 추가 AI 편지를 받지 않는 기준으로 운영해 마감 이후 흐름이 밀리지 않도록 했습니다.'
+          ]
+        },
+        snack: {
+          kicker: 'Day 1',
+          title: '싸이버거 배부 및 최종 정리',
+          meta: ['21:20~22:20', '80개 준비', '산출물 정리'],
+          body: [
+            '싸이버거는 80개 기준으로 준비했고, 64개는 1학년, 10개는 운영진, 나머지는 담임 선생님과 예비 수량으로 운영했습니다.',
+            '학생들은 산출물과 보드를 팀 자리에 두고 정리한 뒤 기숙사 이동을 준비했습니다.'
+          ]
+        },
+        dorm: {
+          kicker: 'Day 1',
+          title: '기숙사 이동',
+          meta: ['22:20~22:30', '체육관 퇴장', '팀 자리 보관'],
+          body: [
+            '1일차 종료 후 학생들은 체육관에서 나와 기숙사로 이동했습니다.',
+            '산출물과 최종 보드는 팀 자리에 두고 가며, 다음 날 심사 준비에 그대로 활용했습니다.'
+          ]
+        },
+        'day2-entry': {
+          kicker: 'Day 2',
+          title: '등교 및 산출물 확인',
+          meta: ['08:40~09:00', '부스 정리', '발표 준비'],
+          body: [
+            '2일차 오전에는 팀별 자리를 다시 정리하고 발표 자료 상태를 확인했습니다.',
+            '심사 전에 각 팀은 선생님별 평가 영역에 맞춰 어떤 내용을 설명할지 다시 맞췄습니다.'
+          ]
+        },
+        'judging-brief': {
+          kicker: 'Day 2',
+          title: '심사 안내',
+          meta: ['09:00~09:15', '순회 심사', '권장 시간'],
+          body: [
+            '선생님 채점위원 4명은 모두 11개 팀을 순회하되, 각자 담당 평가 영역만 평가했습니다.',
+            '발표 5분, 꼬리질문 2분은 권장 시간으로 안내했고, 팀은 선생님이 평가하는 부분에 맞춰 발표해야 했습니다.'
+          ]
+        },
+        judging: {
+          kicker: 'Day 2',
+          title: '부스 순회 최종 발표 심사',
+          meta: ['09:15~12:00', '선생님 4명', '학생 멘토 평가'],
+          body: [
+            '선생님들이 앞, 중간, 뒤 등 서로 다른 시작점에서 출발해 모든 팀을 순회했습니다.',
+            '학생 멘토 평가조는 구성과 협업 과정을 관찰했고, 4명 평균으로 학생 멘토 평가 점수를 반영했습니다.'
+          ]
+        },
+        closing: {
+          kicker: 'Day 2',
+          title: '폐회식',
+          meta: ['12:00~12:30', '행사 정리', '마무리 안내'],
+          body: [
+            '폐회식에서는 행사 정리, 마무리 안내, 설문 안내가 진행되었습니다.',
+            '설문은 평가와 무관하며, 다음 Poston 운영을 개선하기 위한 피드백 수집 용도로 사용했습니다.'
+          ]
+        },
+        lunch2: {
+          kicker: 'Day 2',
+          title: '중식',
+          meta: ['12:30~13:20', '행사 종료 후', '정리'],
+          body: [
+            '폐회 이후 중식 시간으로 이어졌습니다.',
+            '행사는 끝났지만 산출물, 사진, 평가 기록은 행사 소개와 후속 정리를 위해 남겼습니다.'
+          ]
+        }
+      };
+
+      const teamStories = {
+        '허동운': {
+          kicker: 'General Director',
+          title: '허동운 / 총괄 기획',
+          meta: ['행사 총괄', '사회·의사결정', '운영 기준 조율'],
+          body: [
+            '행사 전체 기획, 운영 시나리오, 일정 조정, 현장 의사결정 흐름을 총괄했습니다.',
+            '지연이나 변경이 발생할 때 김규봉 선생님과 협의해 시간표를 조정하고, 학생·운영진·멘토진이 같은 기준으로 움직일 수 있도록 운영 문서와 현장 안내를 맞췄습니다.'
+          ]
+        },
+        '이재환': {
+          kicker: 'Host / Archive',
+          title: '이재환 / 사회·촬영 기록',
+          meta: ['현장 진행', '촬영·기록', '홍보 아카이브'],
+          body: [
+            '현장 진행을 보조하고 행사 장면을 기록하는 역할을 맡았습니다.',
+            '문서 기준으로 촬영·기록 조는 다큐형 홍보 영상, 인터뷰, 산출물과 부스 장면을 남겨 행사 흐름이 외부에서도 이해되도록 기록하는 역할을 담당했습니다.'
+          ]
+        },
+        '조하민': {
+          kicker: 'Archive',
+          title: '조하민 / 촬영·기록',
+          meta: ['촬영·기록', '홍보 아카이브', '현장 장면 수집'],
+          body: [
+            '행사 현장의 주요 장면을 촬영하고 기록하는 역할을 맡았습니다.',
+            '다큐형 홍보 영상과 행사 소개 페이지에 사용할 수 있도록 팀 활동, 산출물 제작, 멘토링, 심사 장면을 기록해 Poston의 진행 흐름이 남을 수 있도록 지원했습니다.'
+          ]
+        },
+        '정태양': {
+          kicker: 'AI Post Office',
+          title: '정태양 / AI 우체국·산출물',
+          meta: ['AI 편지 접수', '크레딧 확인', '산출물 관리'],
+          body: [
+            'AI 우체국 운영과 산출물 관리 흐름을 지원했습니다.',
+            'AI 편지는 팀이 종이에 작성해 제출하면 운영진이 모델 등급과 크레딧을 확인하고, 스캔·LLM 전달·답변 출력·팀 반환 흐름을 처리했습니다. 산출물은 체크포인트마다 확인하고 누락이 없도록 관리했습니다.'
+          ]
+        },
+        '방세준': {
+          kicker: 'Library / Mentor',
+          title: '방세준 / 글가람실·학생 멘토',
+          meta: ['글가람실 관리', '멘토 평가 A조', '자료 조사 지원'],
+          body: [
+            '글가람실 자료 조사 흐름과 학생 멘토 운영을 함께 맡았습니다.',
+            '도서부 부장으로서 글가람실 이용 질서를 관리하고, 학생 멘토 평가조 A조로 김민재와 함께 팀의 구성 및 협업 과정을 관찰했습니다.'
+          ]
+        },
+        '류승찬': {
+          kicker: 'Operation Support',
+          title: '류승찬 / 운영 지원',
+          meta: ['현장 보조', '동선 지원', '운영 안정화'],
+          body: [
+            '현장에서 필요한 운영 보조와 진행 지원을 맡았습니다.',
+            'Poston은 산출물, AI 편지, 멘토카드, 식사, 이동이 계속 맞물리는 행사였기 때문에 운영 지원은 각 활동 사이의 흐름이 끊기지 않도록 돕는 역할이었습니다.'
+          ]
+        },
+        '박동현': {
+          kicker: 'System Support',
+          title: '박동현 / 개발·운영 지원',
+          meta: ['사이트 운영', '내부 서버', '수기 복구 담당'],
+          body: [
+            '사이트 운영과 내부 서버 처리 흐름을 지원했습니다.',
+            '문서 기준으로 서버 오류가 발생할 경우 수기 기록과 복구 후 사이트 입력을 담당하는 역할을 맡았고, AI 편지와 산출물 업로드 흐름이 현장에서 끊기지 않도록 보조했습니다.'
+          ]
+        },
+        '김규봉': {
+          kicker: 'Teacher Lead',
+          title: '김규봉 / 담당 교사',
+          meta: ['운영 협의', '심사위원', 'AI 활용·독창성'],
+          body: [
+            '행사 운영 방향과 일정 조정 권한을 함께 조율한 담당 교사입니다.',
+            '심사에서는 AI 활용 기록 및 독창성 영역을 담당하고, 전체 행사 운영에서 총괄 담당자와 협의해 현장 판단을 지원했습니다.'
+          ]
+        },
+        '여철준': {
+          kicker: 'Rehearsal Support',
+          title: '여철준 / 리허설·운영 지원',
+          meta: ['사전 리허설', '현장 점검', '운영 보조'],
+          body: [
+            '사전 리허설과 현장 운영 지원을 맡았습니다.',
+            '행사 전 10~11교시 리허설에서 AI 우체국, 출력, 크레딧, 산출물 흐름을 압축 점검하고 본행사에서 문제가 생기지 않도록 운영을 보조했습니다.'
+          ]
+        },
+        '김민재': {
+          kicker: 'Student Mentor',
+          title: '김민재 / 학생 멘토 평가',
+          meta: ['멘토 평가 A조', '구성·협업 관찰', '기획 질문'],
+          body: [
+            '방세준과 함께 학생 멘토 평가조 A조로 활동했습니다.',
+            '1일차에는 팀이 아이디어와 서비스 구조를 스스로 정리할 수 있도록 질문을 돕고, 2일차에는 팀 협업과 구성 과정을 관찰해 학생 멘토 평가에 반영했습니다.'
+          ]
+        },
+        '구현우': {
+          kicker: 'Student Mentor',
+          title: '구현우 / 학생 멘토 평가',
+          meta: ['멘토 평가 B조', '구성·협업 관찰', '기획 질문'],
+          body: [
+            '권민재와 함께 학생 멘토 평가조 B조로 활동했습니다.',
+            '멘토는 정답을 대신 주는 사람이 아니라 팀이 더 정확한 질문을 만들고 근거를 세울 수 있도록 돕는 역할이며, 2일차에는 협업 태도와 팀 구성 과정을 관찰했습니다.'
+          ]
+        },
+        '권민재': {
+          kicker: 'Student Mentor',
+          title: '권민재 / 학생 멘토 평가',
+          meta: ['멘토 평가 B조', '구성·협업 관찰', '기획 질문'],
+          body: [
+            '구현우와 함께 학생 멘토 평가조 B조로 활동했습니다.',
+            '팀별로 서비스 방향, 발표 구조, 데이터 설계의 근거를 다시 생각하게 하는 질문을 던지고, 심사 당일에는 팀의 구성과 협업 과정을 평가했습니다.'
+          ]
+        }
+      };
+
+      function createDefaultDetail(title, bodyText) {
+        return {
+          kicker: 'Detail',
+          title: title || '현장 기록',
+          meta: ['2026 BSSM Poston : Dear AI'],
+          body: [bodyText || '2026 BSSM Poston : Dear AI 행사 기록입니다.']
+        };
+      }
+
+      function renderLightboxDetail(detail) {
+        const safeDetail = detail || createDefaultDetail();
+        lbKicker.textContent = safeDetail.kicker || 'Detail';
+        lbTitle.textContent = safeDetail.title || '현장 기록';
+        lbMeta.innerHTML = '';
+        (safeDetail.meta || []).forEach(function(item) {
+          const span = document.createElement('span');
+          span.textContent = item;
+          lbMeta.appendChild(span);
+        });
+        lbBody.innerHTML = '';
+        (safeDetail.body || []).forEach(function(text) {
+          const p = document.createElement('p');
+          p.textContent = text;
+          lbBody.appendChild(p);
+        });
+        if (safeDetail.actionHref) {
+          lbAction.href = safeDetail.actionHref;
+          lbAction.textContent = safeDetail.actionLabel || '자세히 보기';
+          lbAction.classList.add('is-visible');
+        } else {
+          lbAction.removeAttribute('href');
+          lbAction.textContent = '';
+          lbAction.classList.remove('is-visible');
+        }
+      }
+
+      function openLightbox(src, alt, detail) {
         lbImg.src = src;
         lbImg.alt = alt;
-        lbCaption.textContent = caption || alt || '';
+        renderLightboxDetail(detail || createDefaultDetail(alt, alt));
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -1909,12 +2853,54 @@
         const item = galleryItems[index];
         const img = item.querySelector('img');
         const cap = item.querySelector('.gallery-caption');
-        openLightbox(img.src, img.alt, cap ? cap.textContent : '');
+        openLightbox(img.src, img.alt, galleryStories[index] || createDefaultDetail(cap ? cap.textContent : img.alt, img.alt));
       }
 
       function openSingleLightbox(img) {
         isGalleryMode = false;
-        openLightbox(img.src, img.alt, img.alt);
+        openLightbox(img.src, img.alt, createDefaultDetail(img.alt, img.alt));
+      }
+
+      function openOrganizerLightbox(card) {
+        const name = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
+        const img = card.querySelector('img');
+        const detail = Object.assign({}, teamStories[name] || createDefaultDetail(name || '운영진', '2026 BSSM Poston : Dear AI 운영진입니다.'));
+        detail.actionHref = card.href;
+        detail.actionLabel = 'GitHub 프로필 보기';
+        isGalleryMode = false;
+        openLightbox(img ? img.src : '', img ? img.alt : name, detail);
+      }
+
+      function openInfoLightbox(detail, imageSrc, imageAlt) {
+        const safeDetail = detail || createDefaultDetail('상세 내용', '행사 상세 기록입니다.');
+        isGalleryMode = false;
+        openLightbox(imageSrc || 'images/24_final-review.jpg', imageAlt || safeDetail.title || '상세 내용', safeDetail);
+      }
+
+      function openPlanningLightbox(card) {
+        const key = card.dataset.planningKey;
+        const title = card.querySelector('h4') ? card.querySelector('h4').textContent.trim() : '기획 과정';
+        const summary = card.querySelector('p') ? card.querySelector('p').textContent.trim() : title;
+        const detail = planningStories[key] || createDefaultDetail(title, summary);
+        openInfoLightbox(detail, 'images/03_workshop.jpg', '기획 과정 상세 이미지');
+      }
+
+      function openScheduleLightbox(row) {
+        const key = row.dataset.scheduleKey;
+        const titleCell = row.querySelector('td:nth-child(3)');
+        const timeCell = row.querySelector('td:nth-child(2)');
+        const title = titleCell ? titleCell.textContent.trim() : '행사 일정';
+        const time = timeCell ? timeCell.textContent.trim() : '';
+        const detail = scheduleStories[key] || createDefaultDetail(title, `${time} 일정 상세입니다.`);
+        openInfoLightbox(detail, 'images/24_final-review.jpg', '행사 일정 상세 이미지');
+      }
+
+      function bindKeyboardDetail(el, handler) {
+        el.addEventListener('keydown', function(e) {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          e.preventDefault();
+          handler(el);
+        });
       }
 
       function closeLightbox() {
@@ -1935,11 +2921,38 @@
         openGalleryLightbox(currentIdx);
       }
 
+      document.querySelectorAll('.planning-card[data-planning-key]').forEach(function(card) {
+        bindKeyboardDetail(card, openPlanningLightbox);
+      });
+
+      document.querySelectorAll('.data-table tbody tr[data-schedule-key]').forEach(function(row) {
+        bindKeyboardDetail(row, openScheduleLightbox);
+      });
+
       // Event delegation: any image click opens lightbox
       document.addEventListener('click', function(e) {
+        const organizerCard = e.target.closest('.organizer-card');
+        if (organizerCard) {
+          e.preventDefault();
+          openOrganizerLightbox(organizerCard);
+          return;
+        }
+
+        const planningCard = e.target.closest('.planning-card[data-planning-key]');
+        if (planningCard) {
+          openPlanningLightbox(planningCard);
+          return;
+        }
+
+        const scheduleRow = e.target.closest('.data-table tbody tr[data-schedule-key]');
+        if (scheduleRow) {
+          openScheduleLightbox(scheduleRow);
+          return;
+        }
+
         const img = e.target.closest('img');
         if (!img) return;
-        // Skip decorative SVGs
+        // Skip decorative SVGs.
         if (img.closest('.deco-svg')) return;
         const galleryItem = img.closest('.gallery-item');
         if (galleryItem) {
