@@ -585,8 +585,23 @@
       border-radius: var(--radius-card);
       background:
         radial-gradient(circle at 18% 0%, rgba(144,247,121,0.08), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.052), rgba(255,255,255,0.018)),
         rgba(255,255,255,0.035);
       overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 28px 90px rgba(0,0,0,0.20);
+    }
+
+    .process-dialogue::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.18;
     }
 
     .process-dialogue-head {
@@ -596,6 +611,8 @@
       gap: 20px;
       padding: 22px 24px;
       border-bottom: 1px solid var(--hairline);
+      position: relative;
+      z-index: 1;
     }
 
     .process-dialogue-head h3 {
@@ -615,6 +632,18 @@
     .process-chat-list {
       display: grid;
       gap: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-chat-list::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 114px;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.20), rgba(144,247,121,0.22), transparent);
     }
 
     .process-chat-step {
@@ -623,6 +652,37 @@
       gap: 18px;
       padding: 22px 24px;
       border-bottom: 1px solid var(--hairline);
+      position: relative;
+      isolation: isolate;
+      transition: background 720ms var(--ease-cinematic), opacity 720ms var(--ease-cinematic), transform 720ms var(--ease-cinematic);
+    }
+
+    .process-chat-step::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 108px;
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.34);
+      background: #141516;
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.03);
+      z-index: 1;
+      transition: background 520ms var(--ease-cinematic), border-color 520ms var(--ease-cinematic), box-shadow 520ms var(--ease-cinematic), transform 520ms var(--ease-cinematic);
+    }
+
+    .process-chat-step.is-chat-active {
+      background:
+        radial-gradient(circle at 78% 12%, rgba(144,247,121,0.12), transparent 28%),
+        linear-gradient(90deg, rgba(255,255,255,0.022), rgba(255,255,255,0.058), rgba(255,255,255,0.018));
+    }
+
+    .process-chat-step.is-chat-active::before {
+      background: #90f779;
+      border-color: rgba(144,247,121,0.9);
+      box-shadow: 0 0 0 6px rgba(144,247,121,0.10), 0 0 26px rgba(144,247,121,0.30);
+      transform: scale(1.08);
     }
 
     .process-chat-step:last-child {
@@ -647,24 +707,45 @@
       text-transform: none;
     }
 
+    .process-chat-note {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-top: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      background: rgba(255,255,255,0.035);
+    }
+
     .process-chat-thread {
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
 
     .process-chat-bubble {
       width: fit-content;
       max-width: min(680px, 88%);
-      padding: 12px 14px;
+      padding: 13px 15px;
       border: 1px solid var(--hairline);
       border-radius: 18px;
       background: rgba(255,255,255,0.055);
       box-shadow: 0 16px 44px rgba(0,0,0,0.18);
+      position: relative;
+      opacity: 0;
+      filter: blur(5px);
+      transform: translate3d(var(--bubble-x, 0), 18px, 0) scale(0.985);
+      transition: opacity 820ms var(--ease-cinematic), transform 820ms var(--ease-cinematic), filter 820ms var(--ease-cinematic), border-color 720ms var(--ease-cinematic), background 720ms var(--ease-cinematic), box-shadow 720ms var(--ease-cinematic);
     }
 
     .process-chat-bubble.is-left {
       justify-self: start;
       border-bottom-left-radius: 6px;
+      --bubble-x: -34px;
     }
 
     .process-chat-bubble.is-right {
@@ -672,6 +753,27 @@
       border-color: rgba(144,247,121,0.28);
       border-bottom-right-radius: 6px;
       background: rgba(144,247,121,0.10);
+      --bubble-x: 34px;
+    }
+
+    .process-chat-step.is-visible .process-chat-bubble {
+      opacity: 0.86;
+      filter: blur(0);
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .process-chat-step.is-visible .process-chat-bubble:nth-child(2) {
+      transition-delay: 120ms;
+    }
+
+    .process-chat-step.is-chat-active .process-chat-bubble {
+      opacity: 1;
+      box-shadow: 0 22px 64px rgba(0,0,0,0.24);
+    }
+
+    .process-chat-step.is-chat-active .process-chat-bubble.is-right {
+      border-color: rgba(144,247,121,0.42);
+      background: rgba(144,247,121,0.13);
     }
 
     .process-chat-sender {
@@ -680,6 +782,10 @@
       color: rgba(255,255,255,0.52);
       font-size: 11px;
       font-weight: 900;
+    }
+
+    .process-chat-bubble.is-right .process-chat-sender {
+      color: rgba(144,247,121,0.72);
     }
 
     .process-chat-bubble p {
@@ -1564,6 +1670,20 @@
       .design-grid { grid-template-columns: repeat(2, 1fr); }
       .process-dialogue-head { flex-direction: column; align-items: flex-start; }
       .process-chat-step { grid-template-columns: 1fr; }
+      .process-chat-list::before,
+      .process-chat-step::before {
+        display: none;
+      }
+      .process-chat-stage {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .process-chat-stage strong {
+        margin-top: 0;
+      }
       .section-head-flex { flex-direction: column; align-items: flex-start; }
       .lightbox {
         padding: 76px 20px 28px;
@@ -1624,6 +1744,7 @@
       }
       .process-chat-bubble {
         max-width: 94%;
+        --bubble-x: 0;
       }
 
       .lightbox-nav { display: none; }
@@ -1655,6 +1776,12 @@
       }
       .reveal {
         opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .process-chat-bubble {
+        opacity: 1 !important;
+        filter: none !important;
         transform: none !important;
         transition: none !important;
       }
@@ -1945,72 +2072,72 @@
 
       <div class="process-dialogue reveal" aria-label="운영진과 참가자 반응">
         <div class="process-dialogue-head">
-          <h3>현장에서 오간 말들</h3>
-          <p>운영진이 실제 진행 중 느꼈던 부담과 참가자 설문 응답의 취지를 공개용 문장으로 발췌·요약했습니다.</p>
+          <h3>과정별 현장 채팅 로그</h3>
+          <p>스크롤을 따라 행사 흐름이 지나가면 운영진의 현장 메모와 참가자 설문 응답이 대화처럼 함께 나타납니다.</p>
         </div>
         <div class="process-chat-list">
           <div class="process-chat-step reveal">
-            <div class="process-chat-stage">Day 1 Morning<strong>입장과 오리엔테이션</strong></div>
+            <div class="process-chat-stage">Day 1 Morning<strong>입장과 오리엔테이션</strong><span class="process-chat-note">09:00</span></div>
             <div class="process-chat-thread">
               <div class="process-chat-bubble is-left">
                 <span class="process-chat-sender">운영진</span>
-                <p>첫 20분이 꼬이면 하루가 밀릴 수 있어서 자리 안내와 팀 공개부터 최대한 단순하게 잡았습니다.</p>
+                <p>“처음 20분만 안정적으로 넘기자. 팀 공개, 자리 안내, 주제 공개 순서가 헷갈리면 하루가 다 밀린다.”</p>
               </div>
               <div class="process-chat-bubble is-right">
                 <span class="process-chat-sender">참가자 설문 발췌</span>
-                <p>처음에는 방식이 낯설었지만, 오리엔테이션 뒤에는 무엇을 해야 하는지 흐름이 잡혔다는 반응이 있었습니다.</p>
+                <p>“처음에는 뭐 하는 행사인지 감이 안 왔는데, 설명을 듣고 나니까 우리 팀이 뭘 만들어야 하는지 보였습니다.”</p>
               </div>
             </div>
           </div>
           <div class="process-chat-step reveal">
-            <div class="process-chat-stage">AI Letter<strong>AI 우체국과 편지</strong></div>
+            <div class="process-chat-stage">AI Letter<strong>AI 우체국과 편지</strong><span class="process-chat-note">제출 차수</span></div>
             <div class="process-chat-thread">
               <div class="process-chat-bubble is-left">
                 <span class="process-chat-sender">AI 우체국</span>
-                <p>스캔, 서버, 출력 중 하나만 밀려도 바로 티가 나서 첫 정식 제출 때는 운영진이 제일 예민했습니다.</p>
+                <p>“편지 들어왔다. 스캔하고 서버 올리고, 답변 나오면 바로 뽑아서 팀 자리로 돌려주자.”</p>
               </div>
               <div class="process-chat-bubble is-right">
                 <span class="process-chat-sender">참가자 설문 발췌</span>
-                <p>AI를 그냥 쓰는 것보다 질문을 종이에 정리해서 보내니, 팀 안에서 먼저 생각을 맞추게 됐다는 의견이 있었습니다.</p>
+                <p>“AI한테 바로 묻는 게 아니라 종이에 먼저 정리하니까 질문을 대충 못 쓰겠더라고요. 팀끼리 먼저 합의하게 됐습니다.”</p>
               </div>
             </div>
           </div>
           <div class="process-chat-step reveal">
-            <div class="process-chat-stage">Team Work<strong>문제 정의와 설계</strong></div>
+            <div class="process-chat-stage">Team Work<strong>문제 정의와 설계</strong><span class="process-chat-note">오후 작업</span></div>
             <div class="process-chat-thread">
               <div class="process-chat-bubble is-left">
                 <span class="process-chat-sender">멘토팀</span>
-                <p>아이디어가 서비스 로직과 DB 설계로 바뀌는 순간부터 학생들이 진짜 기획을 하고 있다는 느낌이 났습니다.</p>
+                <p>“아이디어는 좋은데 사용자 흐름이 아직 비어 있어. 대신 정해주지 말고, 왜 그 기능이 필요한지만 다시 물어보자.”</p>
               </div>
               <div class="process-chat-bubble is-right">
                 <span class="process-chat-sender">참가자 설문 발췌</span>
-                <p>개인기기 없이 하니 팀원끼리 말로 맞춰야 해서 어렵지만, 오히려 협업이 더 잘 보였다는 반응이 나왔습니다.</p>
+                <p>“개인기기 없이 하니까 답답한 순간도 있었지만, 팀원이랑 말로 계속 맞춰야 해서 협업이 더 잘 드러났습니다.”</p>
               </div>
             </div>
           </div>
           <div class="process-chat-step reveal">
-            <div class="process-chat-stage">Final Board<strong>야간 최종 보드</strong></div>
+            <div class="process-chat-stage">Final Board<strong>야간 최종 보드</strong><span class="process-chat-note">밤 작업</span></div>
             <div class="process-chat-thread">
               <div class="process-chat-bubble is-left">
                 <span class="process-chat-sender">운영진</span>
-                <p>운영진도 지쳤지만 팀들이 끝까지 붙잡고 만드는 걸 보니까 쉽게 쉬자는 말을 못 하겠더라고요.</p>
+                <p>“다들 지친 게 보이는데도 보드를 계속 고치고 있네. 이 시간대는 간식이랑 출력 흐름 끊기지 않게 보자.”</p>
               </div>
               <div class="process-chat-bubble is-right">
                 <span class="process-chat-sender">참가자 설문 발췌</span>
-                <p>최종 보드를 만들면서 흩어져 있던 생각이 한 장으로 정리됐다는 의견이 반복적으로 나왔습니다.</p>
+                <p>“최종 보드 만들 때 흩어져 있던 생각이 한 번에 정리됐습니다. 힘들었는데 결과물이 보이니까 뿌듯했습니다.”</p>
               </div>
             </div>
           </div>
           <div class="process-chat-step reveal">
-            <div class="process-chat-stage">Judging<strong>부스 순회 심사</strong></div>
+            <div class="process-chat-stage">Judging<strong>부스 순회 심사</strong><span class="process-chat-note">Day 2</span></div>
             <div class="process-chat-thread">
               <div class="process-chat-bubble is-left">
                 <span class="process-chat-sender">운영진</span>
-                <p>부스 순회 심사는 진짜 벅찼습니다. 팀들이 자기 논리를 직접 설명하는 장면에서 행사의 목적이 보였습니다.</p>
+                <p>“선생님들이 들어오면 담당 평가 영역에 맞춰 설명해야 해. 팀들이 자기 논리를 직접 말하는 장면이 제일 중요하다.”</p>
               </div>
               <div class="process-chat-bubble is-right">
                 <span class="process-chat-sender">참가자 설문 발췌</span>
-                <p>발표가 긴장됐지만, 팀이 만든 결과물을 직접 설명해 보면서 뿌듯했다는 반응이 있었습니다.</p>
+                <p>“발표는 긴장됐지만, 우리가 만든 걸 직접 설명해 보니까 진짜 완성했다는 느낌이 들었습니다.”</p>
               </div>
             </div>
           </div>
@@ -2515,6 +2642,47 @@
         revealEls.forEach(function(el) { revealObs.observe(el); });
       } else {
         revealEls.forEach(function(el) { el.classList.add('is-visible'); });
+      }
+
+      /* ---------- Process chat focus on scroll ---------- */
+      const processChatSteps = document.querySelectorAll('.process-chat-step');
+      if (processChatSteps.length) {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          function updateProcessChatFocus() {
+            const targetY = window.innerHeight * 0.52;
+            let closestStep = null;
+            let closestDistance = Infinity;
+            processChatSteps.forEach(function(step) {
+              const rect = step.getBoundingClientRect();
+              if (rect.bottom < 80 || rect.top > window.innerHeight - 80) return;
+              const stepCenter = rect.top + rect.height * 0.48;
+              const distance = Math.abs(stepCenter - targetY);
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestStep = step;
+              }
+            });
+            processChatSteps.forEach(function(step) {
+              step.classList.toggle('is-chat-active', step === closestStep);
+            });
+          }
+
+          let chatFocusTicking = false;
+          function requestProcessChatFocus() {
+            if (chatFocusTicking) return;
+            chatFocusTicking = true;
+            window.requestAnimationFrame(function() {
+              updateProcessChatFocus();
+              chatFocusTicking = false;
+            });
+          }
+
+          window.addEventListener('scroll', requestProcessChatFocus, { passive: true });
+          window.addEventListener('resize', requestProcessChatFocus);
+          updateProcessChatFocus();
+        } else {
+          processChatSteps.forEach(function(step) { step.classList.add('is-chat-active'); });
+        }
       }
 
       /* ---------- Lightbox (all images) ---------- */
