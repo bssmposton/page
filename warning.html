@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>이미지 사용 주의사항 - 2026 BSSM Poston : Dear AI</title>
+  <meta name="description" content="2026 BSSM Poston : Dear AI 이미지 사용 주의사항">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141516'/%3E%3Cpath d='M12 22h40v24H12z' fill='%23fff'/%3E%3Cpath d='M12 22l20 16 20-16' fill='none' stroke='%23141516' stroke-width='4' stroke-linejoin='round'/%3E%3Ccircle cx='49' cy='17' r='6' fill='%2390f779'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css">
+  <style>
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --card-bg: #141516;
+      --hairline: rgba(255,255,255,0.13);
+      --hairline-strong: rgba(255,255,255,0.22);
+      --muted: rgba(255,255,255,0.55);
+      --gradient-warm: linear-gradient(90deg, #ddf730, #ffbd19);
+      --gradient-hot: linear-gradient(90deg, #ff638a, #ff1fe0);
+      --max-width: 800px;
+      --radius-card: 16px;
+      --ease-cinematic: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SUITE Variable', 'SUIT', 'Apple SD Gothic Neo', system-ui, sans-serif;
+      font-weight: 500;
+      letter-spacing: -0.25px;
+      line-height: 1.7;
+      word-break: keep-all;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.35); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.55); }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .page-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1001;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      gap: 20px;
+    }
+
+    .header-logo {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-back {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+
+    .header-back:hover { color: var(--text); }
+
+    /* Hero */
+    .hero {
+      padding: 120px 0 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,99,138,0.4);
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #ff638a;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin: 0 0 16px;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Content */
+    .content {
+      padding-bottom: 80px;
+    }
+
+    .warning-card {
+      background: var(--card-bg);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-card);
+      padding: 36px;
+      margin-bottom: 24px;
+    }
+
+    .warning-card h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .warning-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+
+    .warning-card h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .warning-card p {
+      margin: 0 0 16px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+    }
+
+    .warning-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .warning-card ul {
+      margin: 0 0 16px;
+      padding-left: 20px;
+    }
+
+    .warning-card li {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+    }
+
+    .warning-card strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .danger-box {
+      background: rgba(255,99,138,0.06);
+      border-left: 3px solid #ff638a;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+
+    .danger-box p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .danger-box strong {
+      color: #ff638a;
+    }
+
+    .law-box {
+      background: rgba(4,243,255,0.04);
+      border: 1px solid rgba(4,243,255,0.15);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .law-box h4 {
+      font-size: 15px;
+      font-weight: 800;
+      margin: 0 0 12px;
+      color: #04f3ff;
+    }
+
+    .law-box p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    .law-box ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .law-box li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(255,99,138,0.08), rgba(255,31,224,0.04));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 0;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .contact-box a {
+      color: #ff638a;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--hairline);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .page-footer p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-brand {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero { padding: 100px 0 40px; }
+      .warning-card { padding: 24px; }
+      .container { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="container header-inner">
+      <a class="header-logo" href="index.html">Poston : Dear AI</a>
+      <a class="header-back" href="index.html">&#8592; 돌아가기</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Image Usage Warning</div>
+      <h1 class="hero-title">이미지 사용 주의사항</h1>
+      <p class="hero-subtitle">본 페이지의 모든 사진, 영상, 이미지 자료는 참가자의 초상권과 저작권을 보호받습니다.</p>
+    </div>
+  </section>
+
+  <main class="content">
+    <div class="container">
+      <div class="warning-card">
+        <h2>1. 기본 원칙</h2>
+        <p>본 페이지에 게시된 모든 이미지 자료(사진, 영상, 산출물 디자인 등)는 다음 목적으로만 사용 가능합니다.</p>
+        <ul>
+          <li>학교 및 행사 홍보</li>
+          <li>교육 기록 및 아카이브</li>
+          <li>참가자 개인의 포트폴리오 및 이력서 (본인 관련 자료에 한함)</li>
+        </ul>
+
+        <div class="danger-box">
+          <p><strong>엄격히 금지됩니다.</strong> 당사자의 동의 없는 2차 가공, 편집, 상업적 이용, 불법 유포는 모두 금지됩니다.</p>
+        </div>
+
+        <h2>2. 딥페이크 및 AI 변형 금지</h2>
+        <p>최근 증가하고 있는 딥페이크(Deepfake) 및 AI 기반 이미지 변형 기술의 악용을 방지하기 위해 다음 행위를 <strong>엄격히 금지</strong>합니다.</p>
+        <ul>
+          <li><strong>얼굴 합성:</strong> 참가자의 얼굴을 다른 사람의 몸에 합성하거나, 타인의 얼굴로 교체하는 행위</li>
+          <li><strong>음성 조작:</strong> 참가자의 음성을 AI로 복제·변형하여 허위 발언을 생성하는 행위</li>
+          <li><strong>영상 합성:</strong> 참가자의 영상을 편집·변형하여 실제와 다른 상황을 연출하는 행위</li>
+          <li><strong>콘텐츠 생성:</strong> 참가자의 초상을 학습 데이터로 사용하여 AI 이미지/영상을 생성하는 행위</li>
+          <li><strong>악의적 편집:</strong> 참가자의 명예를 훼손하거나 불쾌감을 유발하는 의도로 이미지를 편집하는 행위</li>
+        </ul>
+
+        <h2>3. 2차 가공 및 편집 제한</h2>
+        <p>원본 이미지의 무단 변형은 당사자의 의도와 다르게 전달될 수 있으므로 다음을 준수합니다.</p>
+        <ul>
+          <li>크롭, 필터 적용, 색상 보정 등 <strong>경미한 편집도 원칙적으로 금지</strong></li>
+          <li>밈(Meme) 제작, 콜라주, 합성 등 어떤 형태의 재가공도 금지</li>
+          <li>페이스북, 인스타그램, 틱톡 등 <strong>SNS 재업로드 시 원본 그대로</strong> 게시 (편집 불가)</li>
+          <li>출처 표기 없는 사용 금지</li>
+        </ul>
+
+        <h2>4. 공유 및 재배포 규칙</h2>
+        <p>본 페이지 이미지를 공유할 경우 다음 사항을 반드시 준수해야 합니다.</p>
+        <ul>
+          <li><strong>원본 링크 공유를 권장</strong>합니다. 직접 파일 다운로드 후 재업로드는 지양해 주세요.</li>
+          <li>외부 사이트, 블로그, 커뮤니티 등에 게시 시 반드시 출처를 명시합니다.</li>
+          <li>뉴스, 기사 등에 사용 시 사전 승인이 필요합니다.</li>
+          <li>타 기관, 단체, 기업의 홍보 자료에 사용할 수 없습니다.</li>
+        </ul>
+
+        <h2>5. 위반 시 조치</h2>
+        <p>본 주의사항을 위반하거나 참가자의 권리를 침해하는 방식으로 이미지가 사용된 경우, 운영진은 게시 중단 및 삭제 요청 등 필요한 조치를 진행할 수 있습니다.</p>
+
+        <div class="law-box">
+          <h4>운영 기준</h4>
+          <ul>
+            <li>참가자 본인 또는 보호자의 삭제·수정 요청을 우선 확인합니다.</li>
+            <li>행사 목적과 무관한 재업로드, 2차 가공, 상업적 사용은 허용하지 않습니다.</li>
+            <li>AI 합성, 딥페이크, 악의적 편집 등 초상권을 침해할 수 있는 활용은 금지합니다.</li>
+            <li>문제가 확인된 경우 해당 자료를 비공개 처리하거나 삭제할 수 있습니다.</li>
+          </ul>
+        </div>
+
+        <div class="danger-box">
+          <p><strong>특히 AI 합성 및 딥페이크 형태의 사용은 금지됩니다.</strong> 행사 기록은 참가자의 노력과 현장 분위기를 보존하기 위한 목적이며, 개인을 조롱하거나 왜곡하는 용도로 사용할 수 없습니다.</p>
+        </div>
+
+        <h2>6. 신고 및 문의</h2>
+        <p>본 주의사항 위반 사항을 발견하시거나, 본인의 이미지가 부적절하게 사용되고 있다고 판단되시면 즉시 신고해 주세요.</p>
+        <ul>
+          <li>본 행사 이미지 관련 문의: 행사 운영진</li>
+          <li>삭제 또는 수정 요청: 아래 연락처로 요청 내용과 해당 이미지 위치를 함께 전달</li>
+          <li>권리 침해가 의심되는 외부 게시물: 운영진 확인 후 가능한 범위에서 조치</li>
+        </ul>
+
+        <div class="contact-box">
+          <p>이미지 삭제 요청, 수정 요청, 기타 문의는<br><a href="mailto:heodongun08@gmail.com">heodongun08@gmail.com</a>으로 연락해 주세요.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-brand">2026 BSSM Poston : Dear AI</div>
+      <p>&copy; 2026 BSSM. 모든 참가자의 권리를 존중합니다.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -2,6 +2,14 @@
 .wrangler/
 .playwright-mcp/
 .omx/
+.sisyphus/
+/process-chat-*.png
+/lightbox-chat-*.png
+/schedule-desktop.png
+/footer-*.png
+/final-footer-with-warning.png
+/privacy-page.png
+/warning-page.png
 AGENTS.md
 DESIGN_SYSTEM.md
 images/drive-image-manifest.json
